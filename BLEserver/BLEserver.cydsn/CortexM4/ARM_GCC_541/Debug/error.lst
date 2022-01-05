@@ -1,0 +1,751 @@
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"error.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.writeToLog,"ax",%progbits
+  21              		.align	2
+  22              		.global	writeToLog
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	writeToLog, %function
+  26              	writeToLog:
+  27              	.LFB137:
+  28              		.file 1 "error.c"
+   1:error.c       **** /*
+   2:error.c       **** error.c
+   3:error.c       **** 
+   4:error.c       **** manages errors and writes log files
+   5:error.c       **** 
+   6:error.c       **** made by Donald Shannon
+   7:error.c       **** for BLEdoor lock project
+   8:error.c       **** */
+   9:error.c       **** 
+  10:error.c       **** #include <stdio.h>
+  11:error.c       **** 
+  12:error.c       **** #include "global.h"
+  13:error.c       **** 
+  14:error.c       **** // TODO doesnt work
+  15:error.c       **** void writeToLog(char* message)
+  16:error.c       **** {
+  29              		.loc 1 16 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 08B5     		push	{r3, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  17:error.c       ****     if(DEBUG_2) printf(message);
+  38              		.loc 1 17 0
+  39 0002 FFF7FEFF 		bl	printf
+  40              	.LVL1:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 2
+
+
+  41 0006 08BD     		pop	{r3, pc}
+  42              		.cfi_endproc
+  43              	.LFE137:
+  44              		.size	writeToLog, .-writeToLog
+  45              		.section	.text.throwError,"ax",%progbits
+  46              		.align	2
+  47              		.global	throwError
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	throwError, %function
+  51              	throwError:
+  52              	.LFB138:
+  18:error.c       ****     
+  19:error.c       ****     // TODO: implement write to log file
+  20:error.c       ****     
+  21:error.c       **** }
+  22:error.c       **** 
+  23:error.c       **** // TODO doesnt work
+  24:error.c       **** void throwError(char* error, uint32_t severe)
+  25:error.c       **** {
+  53              		.loc 1 25 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              	.LVL2:
+  58 0000 08B5     		push	{r3, lr}
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 3, -8
+  61              		.cfi_offset 14, -4
+  26:error.c       ****     if (severe)
+  62              		.loc 1 26 0
+  63 0002 11B1     		cbz	r1, .L4
+  27:error.c       ****     {
+  28:error.c       ****         writeToLog(error);
+  64              		.loc 1 28 0
+  65 0004 FFF7FEFF 		bl	writeToLog
+  66              	.LVL3:
+  67              	.L5:
+  68 0008 FEE7     		b	.L5
+  69              	.LVL4:
+  70              	.L4:
+  29:error.c       ****         while(true)
+  30:error.c       ****         {
+  31:error.c       ****             // stalls program
+  32:error.c       ****             ;;
+  33:error.c       ****         }
+  34:error.c       ****     }
+  35:error.c       ****     else
+  36:error.c       ****     {
+  37:error.c       ****         writeToLog(error);
+  71              		.loc 1 37 0
+  72 000a FFF7FEFF 		bl	writeToLog
+  73              	.LVL5:
+  74 000e 08BD     		pop	{r3, pc}
+  75              		.cfi_endproc
+  76              	.LFE138:
+  77              		.size	throwError, .-throwError
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 3
+
+
+  78              		.text
+  79              	.Letext0:
+  80              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  81              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  82              		.file 4 "Generated_Source\\PSoC6\\pdl\\cmsis/include/core_cm4.h"
+  83              		.file 5 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  84              		.section	.debug_info,"",%progbits
+  85              	.Ldebug_info0:
+  86 0000 61010000 		.4byte	0x161
+  87 0004 0400     		.2byte	0x4
+  88 0006 00000000 		.4byte	.Ldebug_abbrev0
+  89 000a 04       		.byte	0x4
+  90 000b 01       		.uleb128 0x1
+  91 000c 0E000000 		.4byte	.LASF23
+  92 0010 0C       		.byte	0xc
+  93 0011 99010000 		.4byte	.LASF24
+  94 0015 09010000 		.4byte	.LASF25
+  95 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  96 001d 00000000 		.4byte	0
+  97 0021 00000000 		.4byte	.Ldebug_line0
+  98 0025 02       		.uleb128 0x2
+  99 0026 01       		.byte	0x1
+ 100 0027 06       		.byte	0x6
+ 101 0028 D4000000 		.4byte	.LASF0
+ 102 002c 02       		.uleb128 0x2
+ 103 002d 01       		.byte	0x1
+ 104 002e 08       		.byte	0x8
+ 105 002f 54010000 		.4byte	.LASF1
+ 106 0033 02       		.uleb128 0x2
+ 107 0034 02       		.byte	0x2
+ 108 0035 05       		.byte	0x5
+ 109 0036 8F010000 		.4byte	.LASF2
+ 110 003a 02       		.uleb128 0x2
+ 111 003b 02       		.byte	0x2
+ 112 003c 07       		.byte	0x7
+ 113 003d B1010000 		.4byte	.LASF3
+ 114 0041 03       		.uleb128 0x3
+ 115 0042 D8010000 		.4byte	.LASF5
+ 116 0046 02       		.byte	0x2
+ 117 0047 3F       		.byte	0x3f
+ 118 0048 4C000000 		.4byte	0x4c
+ 119 004c 02       		.uleb128 0x2
+ 120 004d 04       		.byte	0x4
+ 121 004e 05       		.byte	0x5
+ 122 004f A8010000 		.4byte	.LASF4
+ 123 0053 03       		.uleb128 0x3
+ 124 0054 C9000000 		.4byte	.LASF6
+ 125 0058 02       		.byte	0x2
+ 126 0059 41       		.byte	0x41
+ 127 005a 5E000000 		.4byte	0x5e
+ 128 005e 02       		.uleb128 0x2
+ 129 005f 04       		.byte	0x4
+ 130 0060 07       		.byte	0x7
+ 131 0061 E0000000 		.4byte	.LASF7
+ 132 0065 02       		.uleb128 0x2
+ 133 0066 08       		.byte	0x8
+ 134 0067 05       		.byte	0x5
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 4
+
+
+ 135 0068 00000000 		.4byte	.LASF8
+ 136 006c 02       		.uleb128 0x2
+ 137 006d 08       		.byte	0x8
+ 138 006e 07       		.byte	0x7
+ 139 006f F2000000 		.4byte	.LASF9
+ 140 0073 04       		.uleb128 0x4
+ 141 0074 04       		.byte	0x4
+ 142 0075 05       		.byte	0x5
+ 143 0076 696E7400 		.ascii	"int\000"
+ 144 007a 02       		.uleb128 0x2
+ 145 007b 04       		.byte	0x4
+ 146 007c 07       		.byte	0x7
+ 147 007d CB010000 		.4byte	.LASF10
+ 148 0081 02       		.uleb128 0x2
+ 149 0082 08       		.byte	0x8
+ 150 0083 04       		.byte	0x4
+ 151 0084 E2010000 		.4byte	.LASF11
+ 152 0088 02       		.uleb128 0x2
+ 153 0089 04       		.byte	0x4
+ 154 008a 07       		.byte	0x7
+ 155 008b 02020000 		.4byte	.LASF12
+ 156 008f 05       		.uleb128 0x5
+ 157 0090 04       		.byte	0x4
+ 158 0091 95000000 		.4byte	0x95
+ 159 0095 02       		.uleb128 0x2
+ 160 0096 01       		.byte	0x1
+ 161 0097 08       		.byte	0x8
+ 162 0098 6D010000 		.4byte	.LASF13
+ 163 009c 03       		.uleb128 0x3
+ 164 009d F4010000 		.4byte	.LASF14
+ 165 00a1 03       		.byte	0x3
+ 166 00a2 2C       		.byte	0x2c
+ 167 00a3 41000000 		.4byte	0x41
+ 168 00a7 03       		.uleb128 0x3
+ 169 00a8 72010000 		.4byte	.LASF15
+ 170 00ac 03       		.byte	0x3
+ 171 00ad 30       		.byte	0x30
+ 172 00ae 53000000 		.4byte	0x53
+ 173 00b2 02       		.uleb128 0x2
+ 174 00b3 04       		.byte	0x4
+ 175 00b4 04       		.byte	0x4
+ 176 00b5 EE010000 		.4byte	.LASF16
+ 177 00b9 02       		.uleb128 0x2
+ 178 00ba 08       		.byte	0x8
+ 179 00bb 04       		.byte	0x4
+ 180 00bc A1010000 		.4byte	.LASF17
+ 181 00c0 06       		.uleb128 0x6
+ 182 00c1 49010000 		.4byte	.LASF18
+ 183 00c5 01       		.byte	0x1
+ 184 00c6 0F       		.byte	0xf
+ 185 00c7 00000000 		.4byte	.LFB137
+ 186 00cb 08000000 		.4byte	.LFE137-.LFB137
+ 187 00cf 01       		.uleb128 0x1
+ 188 00d0 9C       		.byte	0x9c
+ 189 00d1 F6000000 		.4byte	0xf6
+ 190 00d5 07       		.uleb128 0x7
+ 191 00d6 C1000000 		.4byte	.LASF20
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 5
+
+
+ 192 00da 01       		.byte	0x1
+ 193 00db 0F       		.byte	0xf
+ 194 00dc 8F000000 		.4byte	0x8f
+ 195 00e0 00000000 		.4byte	.LLST0
+ 196 00e4 08       		.uleb128 0x8
+ 197 00e5 06000000 		.4byte	.LVL1
+ 198 00e9 59010000 		.4byte	0x159
+ 199 00ed 09       		.uleb128 0x9
+ 200 00ee 01       		.uleb128 0x1
+ 201 00ef 50       		.byte	0x50
+ 202 00f0 03       		.uleb128 0x3
+ 203 00f1 F3       		.byte	0xf3
+ 204 00f2 01       		.uleb128 0x1
+ 205 00f3 50       		.byte	0x50
+ 206 00f4 00       		.byte	0
+ 207 00f5 00       		.byte	0
+ 208 00f6 06       		.uleb128 0x6
+ 209 00f7 62010000 		.4byte	.LASF19
+ 210 00fb 01       		.byte	0x1
+ 211 00fc 18       		.byte	0x18
+ 212 00fd 00000000 		.4byte	.LFB138
+ 213 0101 10000000 		.4byte	.LFE138-.LFB138
+ 214 0105 01       		.uleb128 0x1
+ 215 0106 9C       		.byte	0x9c
+ 216 0107 48010000 		.4byte	0x148
+ 217 010b 07       		.uleb128 0x7
+ 218 010c FC010000 		.4byte	.LASF21
+ 219 0110 01       		.byte	0x1
+ 220 0111 18       		.byte	0x18
+ 221 0112 8F000000 		.4byte	0x8f
+ 222 0116 21000000 		.4byte	.LLST1
+ 223 011a 07       		.uleb128 0x7
+ 224 011b 88010000 		.4byte	.LASF22
+ 225 011f 01       		.byte	0x1
+ 226 0120 18       		.byte	0x18
+ 227 0121 A7000000 		.4byte	0xa7
+ 228 0125 5B000000 		.4byte	.LLST2
+ 229 0129 0A       		.uleb128 0xa
+ 230 012a 08000000 		.4byte	.LVL3
+ 231 012e C0000000 		.4byte	0xc0
+ 232 0132 3E010000 		.4byte	0x13e
+ 233 0136 09       		.uleb128 0x9
+ 234 0137 01       		.uleb128 0x1
+ 235 0138 50       		.byte	0x50
+ 236 0139 03       		.uleb128 0x3
+ 237 013a F3       		.byte	0xf3
+ 238 013b 01       		.uleb128 0x1
+ 239 013c 50       		.byte	0x50
+ 240 013d 00       		.byte	0
+ 241 013e 0B       		.uleb128 0xb
+ 242 013f 0E000000 		.4byte	.LVL5
+ 243 0143 C0000000 		.4byte	0xc0
+ 244 0147 00       		.byte	0
+ 245 0148 0C       		.uleb128 0xc
+ 246 0149 7B010000 		.4byte	.LASF26
+ 247 014d 04       		.byte	0x4
+ 248 014e F907     		.2byte	0x7f9
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 6
+
+
+ 249 0150 54010000 		.4byte	0x154
+ 250 0154 0D       		.uleb128 0xd
+ 251 0155 9C000000 		.4byte	0x9c
+ 252 0159 0E       		.uleb128 0xe
+ 253 015a C4010000 		.4byte	.LASF27
+ 254 015e C4010000 		.4byte	.LASF27
+ 255 0162 05       		.byte	0x5
+ 256 0163 BB       		.byte	0xbb
+ 257 0164 00       		.byte	0
+ 258              		.section	.debug_abbrev,"",%progbits
+ 259              	.Ldebug_abbrev0:
+ 260 0000 01       		.uleb128 0x1
+ 261 0001 11       		.uleb128 0x11
+ 262 0002 01       		.byte	0x1
+ 263 0003 25       		.uleb128 0x25
+ 264 0004 0E       		.uleb128 0xe
+ 265 0005 13       		.uleb128 0x13
+ 266 0006 0B       		.uleb128 0xb
+ 267 0007 03       		.uleb128 0x3
+ 268 0008 0E       		.uleb128 0xe
+ 269 0009 1B       		.uleb128 0x1b
+ 270 000a 0E       		.uleb128 0xe
+ 271 000b 55       		.uleb128 0x55
+ 272 000c 17       		.uleb128 0x17
+ 273 000d 11       		.uleb128 0x11
+ 274 000e 01       		.uleb128 0x1
+ 275 000f 10       		.uleb128 0x10
+ 276 0010 17       		.uleb128 0x17
+ 277 0011 00       		.byte	0
+ 278 0012 00       		.byte	0
+ 279 0013 02       		.uleb128 0x2
+ 280 0014 24       		.uleb128 0x24
+ 281 0015 00       		.byte	0
+ 282 0016 0B       		.uleb128 0xb
+ 283 0017 0B       		.uleb128 0xb
+ 284 0018 3E       		.uleb128 0x3e
+ 285 0019 0B       		.uleb128 0xb
+ 286 001a 03       		.uleb128 0x3
+ 287 001b 0E       		.uleb128 0xe
+ 288 001c 00       		.byte	0
+ 289 001d 00       		.byte	0
+ 290 001e 03       		.uleb128 0x3
+ 291 001f 16       		.uleb128 0x16
+ 292 0020 00       		.byte	0
+ 293 0021 03       		.uleb128 0x3
+ 294 0022 0E       		.uleb128 0xe
+ 295 0023 3A       		.uleb128 0x3a
+ 296 0024 0B       		.uleb128 0xb
+ 297 0025 3B       		.uleb128 0x3b
+ 298 0026 0B       		.uleb128 0xb
+ 299 0027 49       		.uleb128 0x49
+ 300 0028 13       		.uleb128 0x13
+ 301 0029 00       		.byte	0
+ 302 002a 00       		.byte	0
+ 303 002b 04       		.uleb128 0x4
+ 304 002c 24       		.uleb128 0x24
+ 305 002d 00       		.byte	0
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 7
+
+
+ 306 002e 0B       		.uleb128 0xb
+ 307 002f 0B       		.uleb128 0xb
+ 308 0030 3E       		.uleb128 0x3e
+ 309 0031 0B       		.uleb128 0xb
+ 310 0032 03       		.uleb128 0x3
+ 311 0033 08       		.uleb128 0x8
+ 312 0034 00       		.byte	0
+ 313 0035 00       		.byte	0
+ 314 0036 05       		.uleb128 0x5
+ 315 0037 0F       		.uleb128 0xf
+ 316 0038 00       		.byte	0
+ 317 0039 0B       		.uleb128 0xb
+ 318 003a 0B       		.uleb128 0xb
+ 319 003b 49       		.uleb128 0x49
+ 320 003c 13       		.uleb128 0x13
+ 321 003d 00       		.byte	0
+ 322 003e 00       		.byte	0
+ 323 003f 06       		.uleb128 0x6
+ 324 0040 2E       		.uleb128 0x2e
+ 325 0041 01       		.byte	0x1
+ 326 0042 3F       		.uleb128 0x3f
+ 327 0043 19       		.uleb128 0x19
+ 328 0044 03       		.uleb128 0x3
+ 329 0045 0E       		.uleb128 0xe
+ 330 0046 3A       		.uleb128 0x3a
+ 331 0047 0B       		.uleb128 0xb
+ 332 0048 3B       		.uleb128 0x3b
+ 333 0049 0B       		.uleb128 0xb
+ 334 004a 27       		.uleb128 0x27
+ 335 004b 19       		.uleb128 0x19
+ 336 004c 11       		.uleb128 0x11
+ 337 004d 01       		.uleb128 0x1
+ 338 004e 12       		.uleb128 0x12
+ 339 004f 06       		.uleb128 0x6
+ 340 0050 40       		.uleb128 0x40
+ 341 0051 18       		.uleb128 0x18
+ 342 0052 9742     		.uleb128 0x2117
+ 343 0054 19       		.uleb128 0x19
+ 344 0055 01       		.uleb128 0x1
+ 345 0056 13       		.uleb128 0x13
+ 346 0057 00       		.byte	0
+ 347 0058 00       		.byte	0
+ 348 0059 07       		.uleb128 0x7
+ 349 005a 05       		.uleb128 0x5
+ 350 005b 00       		.byte	0
+ 351 005c 03       		.uleb128 0x3
+ 352 005d 0E       		.uleb128 0xe
+ 353 005e 3A       		.uleb128 0x3a
+ 354 005f 0B       		.uleb128 0xb
+ 355 0060 3B       		.uleb128 0x3b
+ 356 0061 0B       		.uleb128 0xb
+ 357 0062 49       		.uleb128 0x49
+ 358 0063 13       		.uleb128 0x13
+ 359 0064 02       		.uleb128 0x2
+ 360 0065 17       		.uleb128 0x17
+ 361 0066 00       		.byte	0
+ 362 0067 00       		.byte	0
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 8
+
+
+ 363 0068 08       		.uleb128 0x8
+ 364 0069 898201   		.uleb128 0x4109
+ 365 006c 01       		.byte	0x1
+ 366 006d 11       		.uleb128 0x11
+ 367 006e 01       		.uleb128 0x1
+ 368 006f 31       		.uleb128 0x31
+ 369 0070 13       		.uleb128 0x13
+ 370 0071 00       		.byte	0
+ 371 0072 00       		.byte	0
+ 372 0073 09       		.uleb128 0x9
+ 373 0074 8A8201   		.uleb128 0x410a
+ 374 0077 00       		.byte	0
+ 375 0078 02       		.uleb128 0x2
+ 376 0079 18       		.uleb128 0x18
+ 377 007a 9142     		.uleb128 0x2111
+ 378 007c 18       		.uleb128 0x18
+ 379 007d 00       		.byte	0
+ 380 007e 00       		.byte	0
+ 381 007f 0A       		.uleb128 0xa
+ 382 0080 898201   		.uleb128 0x4109
+ 383 0083 01       		.byte	0x1
+ 384 0084 11       		.uleb128 0x11
+ 385 0085 01       		.uleb128 0x1
+ 386 0086 31       		.uleb128 0x31
+ 387 0087 13       		.uleb128 0x13
+ 388 0088 01       		.uleb128 0x1
+ 389 0089 13       		.uleb128 0x13
+ 390 008a 00       		.byte	0
+ 391 008b 00       		.byte	0
+ 392 008c 0B       		.uleb128 0xb
+ 393 008d 898201   		.uleb128 0x4109
+ 394 0090 00       		.byte	0
+ 395 0091 11       		.uleb128 0x11
+ 396 0092 01       		.uleb128 0x1
+ 397 0093 31       		.uleb128 0x31
+ 398 0094 13       		.uleb128 0x13
+ 399 0095 00       		.byte	0
+ 400 0096 00       		.byte	0
+ 401 0097 0C       		.uleb128 0xc
+ 402 0098 34       		.uleb128 0x34
+ 403 0099 00       		.byte	0
+ 404 009a 03       		.uleb128 0x3
+ 405 009b 0E       		.uleb128 0xe
+ 406 009c 3A       		.uleb128 0x3a
+ 407 009d 0B       		.uleb128 0xb
+ 408 009e 3B       		.uleb128 0x3b
+ 409 009f 05       		.uleb128 0x5
+ 410 00a0 49       		.uleb128 0x49
+ 411 00a1 13       		.uleb128 0x13
+ 412 00a2 3F       		.uleb128 0x3f
+ 413 00a3 19       		.uleb128 0x19
+ 414 00a4 3C       		.uleb128 0x3c
+ 415 00a5 19       		.uleb128 0x19
+ 416 00a6 00       		.byte	0
+ 417 00a7 00       		.byte	0
+ 418 00a8 0D       		.uleb128 0xd
+ 419 00a9 35       		.uleb128 0x35
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 9
+
+
+ 420 00aa 00       		.byte	0
+ 421 00ab 49       		.uleb128 0x49
+ 422 00ac 13       		.uleb128 0x13
+ 423 00ad 00       		.byte	0
+ 424 00ae 00       		.byte	0
+ 425 00af 0E       		.uleb128 0xe
+ 426 00b0 2E       		.uleb128 0x2e
+ 427 00b1 00       		.byte	0
+ 428 00b2 3F       		.uleb128 0x3f
+ 429 00b3 19       		.uleb128 0x19
+ 430 00b4 3C       		.uleb128 0x3c
+ 431 00b5 19       		.uleb128 0x19
+ 432 00b6 6E       		.uleb128 0x6e
+ 433 00b7 0E       		.uleb128 0xe
+ 434 00b8 03       		.uleb128 0x3
+ 435 00b9 0E       		.uleb128 0xe
+ 436 00ba 3A       		.uleb128 0x3a
+ 437 00bb 0B       		.uleb128 0xb
+ 438 00bc 3B       		.uleb128 0x3b
+ 439 00bd 0B       		.uleb128 0xb
+ 440 00be 00       		.byte	0
+ 441 00bf 00       		.byte	0
+ 442 00c0 00       		.byte	0
+ 443              		.section	.debug_loc,"",%progbits
+ 444              	.Ldebug_loc0:
+ 445              	.LLST0:
+ 446 0000 00000000 		.4byte	.LVL0
+ 447 0004 05000000 		.4byte	.LVL1-1
+ 448 0008 0100     		.2byte	0x1
+ 449 000a 50       		.byte	0x50
+ 450 000b 05000000 		.4byte	.LVL1-1
+ 451 000f 08000000 		.4byte	.LFE137
+ 452 0013 0400     		.2byte	0x4
+ 453 0015 F3       		.byte	0xf3
+ 454 0016 01       		.uleb128 0x1
+ 455 0017 50       		.byte	0x50
+ 456 0018 9F       		.byte	0x9f
+ 457 0019 00000000 		.4byte	0
+ 458 001d 00000000 		.4byte	0
+ 459              	.LLST1:
+ 460 0021 00000000 		.4byte	.LVL2
+ 461 0025 07000000 		.4byte	.LVL3-1
+ 462 0029 0100     		.2byte	0x1
+ 463 002b 50       		.byte	0x50
+ 464 002c 07000000 		.4byte	.LVL3-1
+ 465 0030 0A000000 		.4byte	.LVL4
+ 466 0034 0400     		.2byte	0x4
+ 467 0036 F3       		.byte	0xf3
+ 468 0037 01       		.uleb128 0x1
+ 469 0038 50       		.byte	0x50
+ 470 0039 9F       		.byte	0x9f
+ 471 003a 0A000000 		.4byte	.LVL4
+ 472 003e 0D000000 		.4byte	.LVL5-1
+ 473 0042 0100     		.2byte	0x1
+ 474 0044 50       		.byte	0x50
+ 475 0045 0D000000 		.4byte	.LVL5-1
+ 476 0049 10000000 		.4byte	.LFE138
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 10
+
+
+ 477 004d 0400     		.2byte	0x4
+ 478 004f F3       		.byte	0xf3
+ 479 0050 01       		.uleb128 0x1
+ 480 0051 50       		.byte	0x50
+ 481 0052 9F       		.byte	0x9f
+ 482 0053 00000000 		.4byte	0
+ 483 0057 00000000 		.4byte	0
+ 484              	.LLST2:
+ 485 005b 00000000 		.4byte	.LVL2
+ 486 005f 07000000 		.4byte	.LVL3-1
+ 487 0063 0100     		.2byte	0x1
+ 488 0065 51       		.byte	0x51
+ 489 0066 07000000 		.4byte	.LVL3-1
+ 490 006a 0A000000 		.4byte	.LVL4
+ 491 006e 0400     		.2byte	0x4
+ 492 0070 F3       		.byte	0xf3
+ 493 0071 01       		.uleb128 0x1
+ 494 0072 51       		.byte	0x51
+ 495 0073 9F       		.byte	0x9f
+ 496 0074 0A000000 		.4byte	.LVL4
+ 497 0078 0D000000 		.4byte	.LVL5-1
+ 498 007c 0100     		.2byte	0x1
+ 499 007e 51       		.byte	0x51
+ 500 007f 0D000000 		.4byte	.LVL5-1
+ 501 0083 10000000 		.4byte	.LFE138
+ 502 0087 0400     		.2byte	0x4
+ 503 0089 F3       		.byte	0xf3
+ 504 008a 01       		.uleb128 0x1
+ 505 008b 51       		.byte	0x51
+ 506 008c 9F       		.byte	0x9f
+ 507 008d 00000000 		.4byte	0
+ 508 0091 00000000 		.4byte	0
+ 509              		.section	.debug_aranges,"",%progbits
+ 510 0000 24000000 		.4byte	0x24
+ 511 0004 0200     		.2byte	0x2
+ 512 0006 00000000 		.4byte	.Ldebug_info0
+ 513 000a 04       		.byte	0x4
+ 514 000b 00       		.byte	0
+ 515 000c 0000     		.2byte	0
+ 516 000e 0000     		.2byte	0
+ 517 0010 00000000 		.4byte	.LFB137
+ 518 0014 08000000 		.4byte	.LFE137-.LFB137
+ 519 0018 00000000 		.4byte	.LFB138
+ 520 001c 10000000 		.4byte	.LFE138-.LFB138
+ 521 0020 00000000 		.4byte	0
+ 522 0024 00000000 		.4byte	0
+ 523              		.section	.debug_ranges,"",%progbits
+ 524              	.Ldebug_ranges0:
+ 525 0000 00000000 		.4byte	.LFB137
+ 526 0004 08000000 		.4byte	.LFE137
+ 527 0008 00000000 		.4byte	.LFB138
+ 528 000c 10000000 		.4byte	.LFE138
+ 529 0010 00000000 		.4byte	0
+ 530 0014 00000000 		.4byte	0
+ 531              		.section	.debug_line,"",%progbits
+ 532              	.Ldebug_line0:
+ 533 0000 EF010000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 11
+
+
+ 533      0200C501 
+ 533      00000201 
+ 533      FB0E0D00 
+ 533      01010101 
+ 534              	.LASF8:
+ 535 0000 6C6F6E67 		.ascii	"long long int\000"
+ 535      206C6F6E 
+ 535      6720696E 
+ 535      7400
+ 536              	.LASF23:
+ 537 000e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 537      43313120 
+ 537      352E342E 
+ 537      31203230 
+ 537      31363036 
+ 538 0041 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+ 538      20726576 
+ 538      6973696F 
+ 538      6E203233 
+ 538      37373135 
+ 539 0074 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+ 539      70202D6D 
+ 539      6670753D 
+ 539      66707634 
+ 539      2D73702D 
+ 540 00a7 65637469 		.ascii	"ections -ffat-lto-objects\000"
+ 540      6F6E7320 
+ 540      2D666661 
+ 540      742D6C74 
+ 540      6F2D6F62 
+ 541              	.LASF20:
+ 542 00c1 6D657373 		.ascii	"message\000"
+ 542      61676500 
+ 543              	.LASF6:
+ 544 00c9 5F5F7569 		.ascii	"__uint32_t\000"
+ 544      6E743332 
+ 544      5F7400
+ 545              	.LASF0:
+ 546 00d4 7369676E 		.ascii	"signed char\000"
+ 546      65642063 
+ 546      68617200 
+ 547              	.LASF7:
+ 548 00e0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 548      20756E73 
+ 548      69676E65 
+ 548      6420696E 
+ 548      7400
+ 549              	.LASF9:
+ 550 00f2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 550      206C6F6E 
+ 550      6720756E 
+ 550      7369676E 
+ 550      65642069 
+ 551              	.LASF25:
+ 552 0109 433A5C55 		.ascii	"C:\\Users\\donni\\Documents\\PSoC Creator\\BLEserve"
+ 552      73657273 
+ 552      5C646F6E 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 12
+
+
+ 552      6E695C44 
+ 552      6F63756D 
+ 553 0137 725C424C 		.ascii	"r\\BLEserver.cydsn\000"
+ 553      45736572 
+ 553      7665722E 
+ 553      63796473 
+ 553      6E00
+ 554              	.LASF18:
+ 555 0149 77726974 		.ascii	"writeToLog\000"
+ 555      65546F4C 
+ 555      6F6700
+ 556              	.LASF1:
+ 557 0154 756E7369 		.ascii	"unsigned char\000"
+ 557      676E6564 
+ 557      20636861 
+ 557      7200
+ 558              	.LASF19:
+ 559 0162 7468726F 		.ascii	"throwError\000"
+ 559      77457272 
+ 559      6F7200
+ 560              	.LASF13:
+ 561 016d 63686172 		.ascii	"char\000"
+ 561      00
+ 562              	.LASF15:
+ 563 0172 75696E74 		.ascii	"uint32_t\000"
+ 563      33325F74 
+ 563      00
+ 564              	.LASF26:
+ 565 017b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 565      52784275 
+ 565      66666572 
+ 565      00
+ 566              	.LASF22:
+ 567 0188 73657665 		.ascii	"severe\000"
+ 567      726500
+ 568              	.LASF2:
+ 569 018f 73686F72 		.ascii	"short int\000"
+ 569      7420696E 
+ 569      7400
+ 570              	.LASF24:
+ 571 0199 6572726F 		.ascii	"error.c\000"
+ 571      722E6300 
+ 572              	.LASF17:
+ 573 01a1 646F7562 		.ascii	"double\000"
+ 573      6C6500
+ 574              	.LASF4:
+ 575 01a8 6C6F6E67 		.ascii	"long int\000"
+ 575      20696E74 
+ 575      00
+ 576              	.LASF3:
+ 577 01b1 73686F72 		.ascii	"short unsigned int\000"
+ 577      7420756E 
+ 577      7369676E 
+ 577      65642069 
+ 577      6E7400
+ 578              	.LASF27:
+ 579 01c4 7072696E 		.ascii	"printf\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\ccmOdEDv.s 			page 13
+
+
+ 579      746600
+ 580              	.LASF10:
+ 581 01cb 756E7369 		.ascii	"unsigned int\000"
+ 581      676E6564 
+ 581      20696E74 
+ 581      00
+ 582              	.LASF5:
+ 583 01d8 5F5F696E 		.ascii	"__int32_t\000"
+ 583      7433325F 
+ 583      7400
+ 584              	.LASF11:
+ 585 01e2 6C6F6E67 		.ascii	"long double\000"
+ 585      20646F75 
+ 585      626C6500 
+ 586              	.LASF16:
+ 587 01ee 666C6F61 		.ascii	"float\000"
+ 587      7400
+ 588              	.LASF14:
+ 589 01f4 696E7433 		.ascii	"int32_t\000"
+ 589      325F7400 
+ 590              	.LASF21:
+ 591 01fc 6572726F 		.ascii	"error\000"
+ 591      7200
+ 592              	.LASF12:
+ 593 0202 73697A65 		.ascii	"sizetype\000"
+ 593      74797065 
+ 593      00
+ 594              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

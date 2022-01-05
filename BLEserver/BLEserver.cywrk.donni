@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BLEserver\BLEserver\CM4 (Core 1)\Header Files\FreeRTOSConfig.h">
+<ExpandedNodeIds>
+<v>BLEserver</v>
+<v>BLEserver\BLEserver</v>
+<v>BLEserver\BLEserver\TopDesign</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\Pins</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\Analog</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\DMA</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\Clocks</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\Interrupts</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\System</v>
+<v>BLEserver\BLEserver\BLEserver.cydwr\Directives</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\ARM IAR Generic\cy8c6xx7_cm0plus.icf</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\ARM MDK Generic\cy8c6xx7_cm0plus.scat</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Header Files</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files\ARM GCC Generic\startup_psoc6_01_cm0plus.S</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files\ARM IAR Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files\ARM MDK Generic\startup_psoc6_01_cm0plus.s</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files\main_cm0p.c</v>
+<v>BLEserver\BLEserver\CM0p (Core 0)\Source Files\system_psoc6_cm0plus.c</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\ARM GCC Generic\cy8c6xx7_cm4_dual.ld</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\ARM IAR Generic\cy8c6xx7_cm4_dual.icf</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\ARM MDK Generic\cy8c6xx7_cm4_dual.scat</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Header Files</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Header Files\FreeRTOSConfig.h</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\ARM GCC Generic\startup_psoc6_01_cm4.S</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\ARM IAR Generic\startup_psoc6_01_cm4.s</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\ARM MDK Generic\startup_psoc6_01_cm4.s</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\BLEstuff.c</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\BLEstuff.h</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\error.c</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\error.h</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\global.h</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\lockControl.c</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\lockControl.h</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\main_cm4.c</v>
+<v>BLEserver\BLEserver\CM4 (Core 1)\Source Files\system_psoc6_cm4.c</v>
+<v>BLEserver\BLEserver\Shared Files</v>
+<v>BLEserver\BLEserver\Shared Files\cy_ble_config.h</v>
+<v>BLEserver\BLEserver\Shared Files\cyapicallbacks.h</v>
+<v>BLEserver\BLEserver\Shared Files\stdio_user.c</v>
+<v>BLEserver\BLEserver\Shared Files\stdio_user.h</v>
+<v>BLEserver\BLEserver\Shared Files\system_psoc6.h</v>
+<v>BLEserver\BLEserver\Generated_Source\PSoC6</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLEserver</v>
+<v>BLEserver\BLEserver</v>
+<v>BLEserver\BLEserver\TopDesign</v>
+<v>BLEserver\BLEserver\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLEserver</v>
+<v>BLEserver\BLEserver</v>
+<v>BLEserver\BLEserver\CortexM0p</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\main_cm0p.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm0plus.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm0plus.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\BLEserver.elf</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\BLEserver.hex</v>
+<v>BLEserver\BLEserver\CortexM0p\ARM_GCC_541\Debug\BLEserver.map</v>
+<v>BLEserver\BLEserver\CortexM4</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE_config.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\BLE_custom_config.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\BLEstuff.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_aios.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ancs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ans.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bas.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bcs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bls.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bms.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_bts.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cgms.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_clk.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cps.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cscs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_cts.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_custom.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_dis.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ess.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_event_handler.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gap.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gatt.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_gls.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_int.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hal_pvt.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hids.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hps.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hrs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_hts.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ias.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ips.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lls.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_lns.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_ndcs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_pass.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_plxs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rscs.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_rtus.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_scps.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_tps.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_uds.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wpts.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ble_wss.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_device.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_efuse.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_flash.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_gpio.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_drv.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_pipe.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_ipc_sema.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_lvd.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_profile.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_prot.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_common.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_ezi2c.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_i2c.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_spi.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_scb_uart.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysanalog.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysclk.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_sysint.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syslib_gcc.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_syspm.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_systick.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_trigmux.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cy_wdt.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cyfitter_sysint_cfg.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\error.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\heap_1.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\lockControl.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\main_cm4.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\retarget.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\startup_psoc6_01_cm4.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\stdio_user.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\system_psoc6_cm4.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\BLEserver.elf</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\BLEserver.hex</v>
+<v>BLEserver\BLEserver\CortexM4\ARM_GCC_541\Debug\BLEserver.map</v>
+<v>BLEserver\BLEserver\BLEserver.gpdsc</v>
+<v>BLEserver\BLEserver\BLEserver.rpt</v>
+<v>BLEserver\BLEserver\BLEserver_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BLEserver</v>
+<v>BLEserver\BLEserver</v>
+<v>BLEserver\BLEserver\PSoC 6 Architecture TRM</v>
+<v>BLEserver\BLEserver\PSoC 63 Family Datasheet</v>
+<v>BLEserver\BLEserver\Peripheral Driver Library</v>
+<v>BLEserver\BLEserver\System Reference Guides</v>
+<v>BLEserver\BLEserver\BLE_PDL_v2_20.pdf</v>
+<v>BLEserver\BLEserver\GPIO_PDL_v1_0.pdf</v>
+<v>BLEserver\BLEserver\SCB_UART_PDL_v2_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\BLEserver.cydsn\BLEserver.cydwr" />
+<name v=".\BLEserver.cydsn\main_cm0p.c" />
+<name v=".\BLEserver.cydsn\FreeRTOSConfig.h" />
+<name v=".\BLEserver.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\BLEserver.cydsn\main_cm4.c" />
+<name v=".\BLEserver.cydsn\error.c" />
+<name v=".\BLEserver.cydsn\lockControl.c" />
+<name v=".\BLEserver.cydsn\global.h" />
+<name v=".\BLEserver.cydsn\BLEstuff.h" />
+<name v=".\BLEserver.cydsn\error.h" />
+<name v=".\BLEserver.cydsn\lockControl.h" />
+<name v=".\BLEserver.cydsn\BLEstuff.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="957, 1111" SelectedTabbedMdiWindow="a4942641-d81d-4194-be69-2fa08ece67de"><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\BLEserver.cydwr" Guid="43bcc310-55a8-4d35-a3b0-d0639602ee10" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\main_cm0p.c" Guid="c990f550-37fa-45bb-bbc8-8ea462a90d9e" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\FreeRTOSConfig.h" Guid="6dcc8781-2a39-4c24-99f9-4c15228fcd50" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\TopDesign\TopDesign.cysch" Guid="779b8c90-ecf9-4ba9-a8ce-947eeaedc41a" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\main_cm4.c" Guid="a4942641-d81d-4194-be69-2fa08ece67de" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\error.c" Guid="16a90480-4b7d-4688-b366-6ae2cb8edef3" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\lockControl.c" Guid="80cf7cad-b5af-4e44-b05f-c86cf1090b7c" /></TabbedMdiContainer><TabbedMdiContainer Size="958, 1111" SelectedTabbedMdiWindow="7c100cc7-6861-471d-b118-dccd1199147e"><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\global.h" Guid="be3f06eb-87b7-4fee-88ae-f98af0c1048b" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\BLEstuff.h" Guid="225df0a8-6608-431a-b522-99aff83ffda3" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\error.h" Guid="687d259f-cca4-4980-b7d2-557549a10d88" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\lockControl.h" Guid="7cf72a0c-752c-47ae-ac72-a878bc89a4d3" /><DocumentWindow Key="C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\BLEstuff.c" Guid="7c100cc7-6861-471d-b118-dccd1199147e" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

@@ -1,0 +1,6 @@
+C:\Users\donni\Documents\PSoC Creator\BLEserver\BLEserver.cydsn\BLEserver.cyprj|289dffe4-78af-4f0f-bd2f-7add8de21c55
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|023435b9-a1f2-4fc5-92b9-2a29fb92ebb9
+C:\Users\donni\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|fb7d9536-d7a6-4e32-91a6-d4001dc48fba
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b19a4f6b-3a03-498b-9dff-7ff5527e276b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a7515b31-f191-4e31-966f-a6a9ab56b77f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b47d01c5-8dda-4008-8bc1-ecace166cf32

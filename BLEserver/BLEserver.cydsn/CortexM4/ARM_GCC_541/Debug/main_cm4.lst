@@ -1,0 +1,5564 @@
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"main_cm4.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.main,"ax",%progbits
+  21              		.align	2
+  22              		.global	main
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	main, %function
+  26              	main:
+  27              	.LFB496:
+  28              		.file 1 "main_cm4.c"
+   1:main_cm4.c    **** /*
+   2:main_cm4.c    **** main_cm4.c
+   3:main_cm4.c    **** 
+   4:main_cm4.c    **** main loop for starting tasks etc
+   5:main_cm4.c    **** 
+   6:main_cm4.c    **** made by Donald Shannon
+   7:main_cm4.c    **** for BLEdoor lock project
+   8:main_cm4.c    **** */
+   9:main_cm4.c    **** 
+  10:main_cm4.c    **** #include <stdio.h>
+  11:main_cm4.c    **** #include <limits.h>
+  12:main_cm4.c    **** 
+  13:main_cm4.c    **** #include "project.h"
+  14:main_cm4.c    **** #include "FreeRTOS.h"
+  15:main_cm4.c    **** #include "task.h"
+  16:main_cm4.c    **** #include "semphr.h"
+  17:main_cm4.c    **** 
+  18:main_cm4.c    **** #include "global.h"
+  19:main_cm4.c    **** #include "BLEstuff.h"
+  20:main_cm4.c    **** #include "error.h"
+  21:main_cm4.c    **** 
+  22:main_cm4.c    **** SemaphoreHandle_t bleSemaphore;
+  23:main_cm4.c    **** 
+  24:main_cm4.c    **** int main(void)
+  25:main_cm4.c    **** {
+  29              		.loc 1 25 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 2
+
+
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  37 0002 82B0     		sub	sp, sp, #8
+  38              		.cfi_def_cfa_offset 16
+  39              	.LBB4:
+  40              	.LBB5:
+  41              		.file 2 "Generated_Source\\PSoC6\\pdl\\cmsis/include/cmsis_gcc.h"
+   1:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /**************************************************************************//**
+   2:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * @version  V5.0.3
+   5:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * @date     16. January 2018
+   6:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  ******************************************************************************/
+   7:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /*
+   8:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * Copyright (c) 2009-2017 ARM Limited. All rights reserved.
+   9:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  *
+  10:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  *
+  12:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  *
+  16:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  *
+  18:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  * limitations under the License.
+  23:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  */
+  24:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+  25:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+  28:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+  34:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  38:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+  39:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __ASM
+  41:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  43:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  46:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 3
+
+
+  49:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif                                           
+  52:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  55:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __USED
+  56:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  58:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  61:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __PACKED
+  62:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  64:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  67:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  70:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  78:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  86:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+  94:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+ 102:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 4
+
+
+ 106:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+ 110:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+ 113:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** #endif
+ 116:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+ 117:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+ 118:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ 119:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 120:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 121:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   @{
+ 122:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  */
+ 123:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** 
+ 124:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** /**
+ 125:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 126:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 127:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 128:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****  */
+ 129:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 130:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h **** {
+ 131:Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+  42              		.loc 2 131 0
+  43              		.syntax unified
+  44              	@ 131 "Generated_Source\PSoC6\pdl\cmsis/include/cmsis_gcc.h" 1
+  45 0004 62B6     		cpsie i
+  46              	@ 0 "" 2
+  47              		.thumb
+  48              		.syntax unified
+  49              	.LBE5:
+  50              	.LBE4:
+  26:main_cm4.c    ****     __enable_irq(); /* Enable global interrupts. */
+  27:main_cm4.c    ****     
+  28:main_cm4.c    ****     // starts the debug uart
+  29:main_cm4.c    ****     UART_1_Start();
+  51              		.loc 1 29 0
+  52 0006 FFF7FEFF 		bl	UART_1_Start
+  53              	.LVL0:
+  30:main_cm4.c    ****     setvbuf(stdin, NULL, _IONBF, 0);
+  54              		.loc 1 30 0
+  55 000a 134C     		ldr	r4, .L3
+  56 000c 2068     		ldr	r0, [r4]
+  57 000e 0023     		movs	r3, #0
+  58 0010 0222     		movs	r2, #2
+  59 0012 1946     		mov	r1, r3
+  60 0014 4068     		ldr	r0, [r0, #4]
+  61 0016 FFF7FEFF 		bl	setvbuf
+  62              	.LVL1:
+  31:main_cm4.c    ****     setvbuf(stdout, NULL, _IONBF, 0);
+  63              		.loc 1 31 0
+  64 001a 2068     		ldr	r0, [r4]
+  65 001c 0023     		movs	r3, #0
+  66 001e 0222     		movs	r2, #2
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 5
+
+
+  67 0020 1946     		mov	r1, r3
+  68 0022 8068     		ldr	r0, [r0, #8]
+  69 0024 FFF7FEFF 		bl	setvbuf
+  70              	.LVL2:
+  32:main_cm4.c    ****     writeToLog("UART debug console started\n");
+  71              		.loc 1 32 0
+  72 0028 0C48     		ldr	r0, .L3+4
+  73 002a FFF7FEFF 		bl	writeToLog
+  74              	.LVL3:
+  33:main_cm4.c    **** 
+  34:main_cm4.c    ****     // creates the ble task
+  35:main_cm4.c    ****     xTaskCreate(bleTask, "bleTask", (8*1024), 0, 2, 0);
+  75              		.loc 1 35 0
+  76 002e 0024     		movs	r4, #0
+  77 0030 0194     		str	r4, [sp, #4]
+  78 0032 0223     		movs	r3, #2
+  79 0034 0093     		str	r3, [sp]
+  80 0036 2346     		mov	r3, r4
+  81 0038 4FF40052 		mov	r2, #8192
+  82 003c 0849     		ldr	r1, .L3+8
+  83 003e 0948     		ldr	r0, .L3+12
+  84 0040 FFF7FEFF 		bl	xTaskCreate
+  85              	.LVL4:
+  36:main_cm4.c    ****     
+  37:main_cm4.c    ****     // starts running tasks
+  38:main_cm4.c    ****     vTaskStartScheduler();
+  86              		.loc 1 38 0
+  87 0044 FFF7FEFF 		bl	vTaskStartScheduler
+  88              	.LVL5:
+  39:main_cm4.c    ****     
+  40:main_cm4.c    ****     // should not get to here
+  41:main_cm4.c    ****     throwError("freeRTOS scheduler stopped in main\n", TRUE);
+  89              		.loc 1 41 0
+  90 0048 0121     		movs	r1, #1
+  91 004a 0748     		ldr	r0, .L3+16
+  92 004c FFF7FEFF 		bl	throwError
+  93              	.LVL6:
+  42:main_cm4.c    **** }
+  94              		.loc 1 42 0
+  95 0050 2046     		mov	r0, r4
+  96 0052 02B0     		add	sp, sp, #8
+  97              		.cfi_def_cfa_offset 8
+  98              		@ sp needed
+  99 0054 10BD     		pop	{r4, pc}
+ 100              	.L4:
+ 101 0056 00BF     		.align	2
+ 102              	.L3:
+ 103 0058 00000000 		.word	_impure_ptr
+ 104 005c 00000000 		.word	.LC0
+ 105 0060 1C000000 		.word	.LC1
+ 106 0064 00000000 		.word	bleTask
+ 107 0068 24000000 		.word	.LC2
+ 108              		.cfi_endproc
+ 109              	.LFE496:
+ 110              		.size	main, .-main
+ 111              		.comm	bleSemaphore,4,4
+ 112              		.section	.rodata.str1.4,"aMS",%progbits,1
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 6
+
+
+ 113              		.align	2
+ 114              	.LC0:
+ 115 0000 55415254 		.ascii	"UART debug console started\012\000"
+ 115      20646562 
+ 115      75672063 
+ 115      6F6E736F 
+ 115      6C652073 
+ 116              	.LC1:
+ 117 001c 626C6554 		.ascii	"bleTask\000"
+ 117      61736B00 
+ 118              	.LC2:
+ 119 0024 66726565 		.ascii	"freeRTOS scheduler stopped in main\012\000"
+ 119      52544F53 
+ 119      20736368 
+ 119      6564756C 
+ 119      65722073 
+ 120              		.text
+ 121              	.Letext0:
+ 122              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 123              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 124              		.file 5 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 125              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 126              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 127              		.file 8 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 128              		.file 9 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/device/cy_device.h"
+ 129              		.file 10 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/scb/cy_scb_uart.h"
+ 130              		.file 11 "Generated_Source\\PSoC6\\pdl\\middleware/ble/cy_ble_stack_host_main.h"
+ 131              		.file 12 "Generated_Source\\PSoC6\\pdl\\middleware/ble/cy_ble_stack.h"
+ 132              		.file 13 "Generated_Source\\PSoC6\\pdl\\middleware/ble/cy_ble_gap.h"
+ 133              		.file 14 "Generated_Source\\PSoC6\\pdl\\rtos/FreeRTOS/10.0.1/Source/include/queue.h"
+ 134              		.file 15 "Generated_Source\\PSoC6\\pdl\\rtos/FreeRTOS/10.0.1/Source/include/semphr.h"
+ 135              		.file 16 "Generated_Source\\PSoC6\\pdl\\cmsis/include/core_cm4.h"
+ 136              		.file 17 "Generated_Source\\PSoC6/UART_1.h"
+ 137              		.file 18 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4
+ 138              		.file 19 "error.h"
+ 139              		.file 20 "Generated_Source\\PSoC6\\pdl\\rtos/FreeRTOS/10.0.1/Source/include/task.h"
+ 140              		.section	.debug_info,"",%progbits
+ 141              	.Ldebug_info0:
+ 142 0000 B4130000 		.4byte	0x13b4
+ 143 0004 0400     		.2byte	0x4
+ 144 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 145 000a 04       		.byte	0x4
+ 146 000b 01       		.uleb128 0x1
+ 147 000c 00050000 		.4byte	.LASF386
+ 148 0010 0C       		.byte	0xc
+ 149 0011 BC000000 		.4byte	.LASF387
+ 150 0015 8C110000 		.4byte	.LASF388
+ 151 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 152 001d 00000000 		.4byte	0
+ 153 0021 00000000 		.4byte	.Ldebug_line0
+ 154 0025 02       		.uleb128 0x2
+ 155 0026 01       		.byte	0x1
+ 156 0027 06       		.byte	0x6
+ 157 0028 171C0000 		.4byte	.LASF0
+ 158 002c 03       		.uleb128 0x3
+ 159 002d 32180000 		.4byte	.LASF2
+ 160 0031 03       		.byte	0x3
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 7
+
+
+ 161 0032 1D       		.byte	0x1d
+ 162 0033 37000000 		.4byte	0x37
+ 163 0037 02       		.uleb128 0x2
+ 164 0038 01       		.byte	0x1
+ 165 0039 08       		.byte	0x8
+ 166 003a 341A0000 		.4byte	.LASF1
+ 167 003e 03       		.uleb128 0x3
+ 168 003f 31110000 		.4byte	.LASF3
+ 169 0043 03       		.byte	0x3
+ 170 0044 29       		.byte	0x29
+ 171 0045 49000000 		.4byte	0x49
+ 172 0049 02       		.uleb128 0x2
+ 173 004a 02       		.byte	0x2
+ 174 004b 05       		.byte	0x5
+ 175 004c 56160000 		.4byte	.LASF4
+ 176 0050 03       		.uleb128 0x3
+ 177 0051 A50C0000 		.4byte	.LASF5
+ 178 0055 03       		.byte	0x3
+ 179 0056 2B       		.byte	0x2b
+ 180 0057 5B000000 		.4byte	0x5b
+ 181 005b 02       		.uleb128 0x2
+ 182 005c 02       		.byte	0x2
+ 183 005d 07       		.byte	0x7
+ 184 005e 07140000 		.4byte	.LASF6
+ 185 0062 03       		.uleb128 0x3
+ 186 0063 23030000 		.4byte	.LASF7
+ 187 0067 03       		.byte	0x3
+ 188 0068 3F       		.byte	0x3f
+ 189 0069 6D000000 		.4byte	0x6d
+ 190 006d 02       		.uleb128 0x2
+ 191 006e 04       		.byte	0x4
+ 192 006f 05       		.byte	0x5
+ 193 0070 9B160000 		.4byte	.LASF8
+ 194 0074 03       		.uleb128 0x3
+ 195 0075 6F1A0000 		.4byte	.LASF9
+ 196 0079 03       		.byte	0x3
+ 197 007a 41       		.byte	0x41
+ 198 007b 7F000000 		.4byte	0x7f
+ 199 007f 02       		.uleb128 0x2
+ 200 0080 04       		.byte	0x4
+ 201 0081 07       		.byte	0x7
+ 202 0082 A0190000 		.4byte	.LASF10
+ 203 0086 02       		.uleb128 0x2
+ 204 0087 08       		.byte	0x8
+ 205 0088 05       		.byte	0x5
+ 206 0089 4F100000 		.4byte	.LASF11
+ 207 008d 02       		.uleb128 0x2
+ 208 008e 08       		.byte	0x8
+ 209 008f 07       		.byte	0x7
+ 210 0090 5D080000 		.4byte	.LASF12
+ 211 0094 04       		.uleb128 0x4
+ 212 0095 04       		.byte	0x4
+ 213 0096 05       		.byte	0x5
+ 214 0097 696E7400 		.ascii	"int\000"
+ 215 009b 02       		.uleb128 0x2
+ 216 009c 04       		.byte	0x4
+ 217 009d 07       		.byte	0x7
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 8
+
+
+ 218 009e 55020000 		.4byte	.LASF13
+ 219 00a2 02       		.uleb128 0x2
+ 220 00a3 08       		.byte	0x8
+ 221 00a4 04       		.byte	0x4
+ 222 00a5 24140000 		.4byte	.LASF14
+ 223 00a9 05       		.uleb128 0x5
+ 224 00aa 04       		.byte	0x4
+ 225 00ab 03       		.uleb128 0x3
+ 226 00ac D9030000 		.4byte	.LASF15
+ 227 00b0 04       		.byte	0x4
+ 228 00b1 07       		.byte	0x7
+ 229 00b2 94000000 		.4byte	0x94
+ 230 00b6 03       		.uleb128 0x3
+ 231 00b7 111D0000 		.4byte	.LASF16
+ 232 00bb 05       		.byte	0x5
+ 233 00bc 2C       		.byte	0x2c
+ 234 00bd 6D000000 		.4byte	0x6d
+ 235 00c1 03       		.uleb128 0x3
+ 236 00c2 37020000 		.4byte	.LASF17
+ 237 00c6 05       		.byte	0x5
+ 238 00c7 72       		.byte	0x72
+ 239 00c8 6D000000 		.4byte	0x6d
+ 240 00cc 06       		.uleb128 0x6
+ 241 00cd C5190000 		.4byte	.LASF18
+ 242 00d1 06       		.byte	0x6
+ 243 00d2 6501     		.2byte	0x165
+ 244 00d4 9B000000 		.4byte	0x9b
+ 245 00d8 07       		.uleb128 0x7
+ 246 00d9 04       		.byte	0x4
+ 247 00da 05       		.byte	0x5
+ 248 00db A6       		.byte	0xa6
+ 249 00dc F7000000 		.4byte	0xf7
+ 250 00e0 08       		.uleb128 0x8
+ 251 00e1 ED0E0000 		.4byte	.LASF19
+ 252 00e5 05       		.byte	0x5
+ 253 00e6 A8       		.byte	0xa8
+ 254 00e7 CC000000 		.4byte	0xcc
+ 255 00eb 08       		.uleb128 0x8
+ 256 00ec 76170000 		.4byte	.LASF20
+ 257 00f0 05       		.byte	0x5
+ 258 00f1 A9       		.byte	0xa9
+ 259 00f2 F7000000 		.4byte	0xf7
+ 260 00f6 00       		.byte	0
+ 261 00f7 09       		.uleb128 0x9
+ 262 00f8 37000000 		.4byte	0x37
+ 263 00fc 07010000 		.4byte	0x107
+ 264 0100 0A       		.uleb128 0xa
+ 265 0101 07010000 		.4byte	0x107
+ 266 0105 03       		.byte	0x3
+ 267 0106 00       		.byte	0
+ 268 0107 02       		.uleb128 0x2
+ 269 0108 04       		.byte	0x4
+ 270 0109 07       		.byte	0x7
+ 271 010a 72150000 		.4byte	.LASF21
+ 272 010e 0B       		.uleb128 0xb
+ 273 010f 08       		.byte	0x8
+ 274 0110 05       		.byte	0x5
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 9
+
+
+ 275 0111 A3       		.byte	0xa3
+ 276 0112 2F010000 		.4byte	0x12f
+ 277 0116 0C       		.uleb128 0xc
+ 278 0117 79070000 		.4byte	.LASF22
+ 279 011b 05       		.byte	0x5
+ 280 011c A5       		.byte	0xa5
+ 281 011d 94000000 		.4byte	0x94
+ 282 0121 00       		.byte	0
+ 283 0122 0C       		.uleb128 0xc
+ 284 0123 8C0C0000 		.4byte	.LASF23
+ 285 0127 05       		.byte	0x5
+ 286 0128 AA       		.byte	0xaa
+ 287 0129 D8000000 		.4byte	0xd8
+ 288 012d 04       		.byte	0x4
+ 289 012e 00       		.byte	0
+ 290 012f 03       		.uleb128 0x3
+ 291 0130 F2110000 		.4byte	.LASF24
+ 292 0134 05       		.byte	0x5
+ 293 0135 AB       		.byte	0xab
+ 294 0136 0E010000 		.4byte	0x10e
+ 295 013a 03       		.uleb128 0x3
+ 296 013b 690E0000 		.4byte	.LASF25
+ 297 013f 05       		.byte	0x5
+ 298 0140 AF       		.byte	0xaf
+ 299 0141 AB000000 		.4byte	0xab
+ 300 0145 03       		.uleb128 0x3
+ 301 0146 4C190000 		.4byte	.LASF26
+ 302 014a 07       		.byte	0x7
+ 303 014b 16       		.byte	0x16
+ 304 014c 7F000000 		.4byte	0x7f
+ 305 0150 0D       		.uleb128 0xd
+ 306 0151 90060000 		.4byte	.LASF31
+ 307 0155 18       		.byte	0x18
+ 308 0156 07       		.byte	0x7
+ 309 0157 2D       		.byte	0x2d
+ 310 0158 A3010000 		.4byte	0x1a3
+ 311 015c 0C       		.uleb128 0xc
+ 312 015d 400B0000 		.4byte	.LASF27
+ 313 0161 07       		.byte	0x7
+ 314 0162 2F       		.byte	0x2f
+ 315 0163 A3010000 		.4byte	0x1a3
+ 316 0167 00       		.byte	0
+ 317 0168 0E       		.uleb128 0xe
+ 318 0169 5F6B00   		.ascii	"_k\000"
+ 319 016c 07       		.byte	0x7
+ 320 016d 30       		.byte	0x30
+ 321 016e 94000000 		.4byte	0x94
+ 322 0172 04       		.byte	0x4
+ 323 0173 0C       		.uleb128 0xc
+ 324 0174 49180000 		.4byte	.LASF28
+ 325 0178 07       		.byte	0x7
+ 326 0179 30       		.byte	0x30
+ 327 017a 94000000 		.4byte	0x94
+ 328 017e 08       		.byte	0x8
+ 329 017f 0C       		.uleb128 0xc
+ 330 0180 42170000 		.4byte	.LASF29
+ 331 0184 07       		.byte	0x7
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 10
+
+
+ 332 0185 30       		.byte	0x30
+ 333 0186 94000000 		.4byte	0x94
+ 334 018a 0C       		.byte	0xc
+ 335 018b 0C       		.uleb128 0xc
+ 336 018c D8080000 		.4byte	.LASF30
+ 337 0190 07       		.byte	0x7
+ 338 0191 30       		.byte	0x30
+ 339 0192 94000000 		.4byte	0x94
+ 340 0196 10       		.byte	0x10
+ 341 0197 0E       		.uleb128 0xe
+ 342 0198 5F7800   		.ascii	"_x\000"
+ 343 019b 07       		.byte	0x7
+ 344 019c 31       		.byte	0x31
+ 345 019d A9010000 		.4byte	0x1a9
+ 346 01a1 14       		.byte	0x14
+ 347 01a2 00       		.byte	0
+ 348 01a3 0F       		.uleb128 0xf
+ 349 01a4 04       		.byte	0x4
+ 350 01a5 50010000 		.4byte	0x150
+ 351 01a9 09       		.uleb128 0x9
+ 352 01aa 45010000 		.4byte	0x145
+ 353 01ae B9010000 		.4byte	0x1b9
+ 354 01b2 0A       		.uleb128 0xa
+ 355 01b3 07010000 		.4byte	0x107
+ 356 01b7 00       		.byte	0
+ 357 01b8 00       		.byte	0
+ 358 01b9 0D       		.uleb128 0xd
+ 359 01ba 6A190000 		.4byte	.LASF32
+ 360 01be 24       		.byte	0x24
+ 361 01bf 07       		.byte	0x7
+ 362 01c0 35       		.byte	0x35
+ 363 01c1 32020000 		.4byte	0x232
+ 364 01c5 0C       		.uleb128 0xc
+ 365 01c6 C00A0000 		.4byte	.LASF33
+ 366 01ca 07       		.byte	0x7
+ 367 01cb 37       		.byte	0x37
+ 368 01cc 94000000 		.4byte	0x94
+ 369 01d0 00       		.byte	0
+ 370 01d1 0C       		.uleb128 0xc
+ 371 01d2 B0070000 		.4byte	.LASF34
+ 372 01d6 07       		.byte	0x7
+ 373 01d7 38       		.byte	0x38
+ 374 01d8 94000000 		.4byte	0x94
+ 375 01dc 04       		.byte	0x4
+ 376 01dd 0C       		.uleb128 0xc
+ 377 01de DB060000 		.4byte	.LASF35
+ 378 01e2 07       		.byte	0x7
+ 379 01e3 39       		.byte	0x39
+ 380 01e4 94000000 		.4byte	0x94
+ 381 01e8 08       		.byte	0x8
+ 382 01e9 0C       		.uleb128 0xc
+ 383 01ea 3F020000 		.4byte	.LASF36
+ 384 01ee 07       		.byte	0x7
+ 385 01ef 3A       		.byte	0x3a
+ 386 01f0 94000000 		.4byte	0x94
+ 387 01f4 0C       		.byte	0xc
+ 388 01f5 0C       		.uleb128 0xc
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 11
+
+
+ 389 01f6 FE130000 		.4byte	.LASF37
+ 390 01fa 07       		.byte	0x7
+ 391 01fb 3B       		.byte	0x3b
+ 392 01fc 94000000 		.4byte	0x94
+ 393 0200 10       		.byte	0x10
+ 394 0201 0C       		.uleb128 0xc
+ 395 0202 7D170000 		.4byte	.LASF38
+ 396 0206 07       		.byte	0x7
+ 397 0207 3C       		.byte	0x3c
+ 398 0208 94000000 		.4byte	0x94
+ 399 020c 14       		.byte	0x14
+ 400 020d 0C       		.uleb128 0xc
+ 401 020e A1060000 		.4byte	.LASF39
+ 402 0212 07       		.byte	0x7
+ 403 0213 3D       		.byte	0x3d
+ 404 0214 94000000 		.4byte	0x94
+ 405 0218 18       		.byte	0x18
+ 406 0219 0C       		.uleb128 0xc
+ 407 021a 131B0000 		.4byte	.LASF40
+ 408 021e 07       		.byte	0x7
+ 409 021f 3E       		.byte	0x3e
+ 410 0220 94000000 		.4byte	0x94
+ 411 0224 1C       		.byte	0x1c
+ 412 0225 0C       		.uleb128 0xc
+ 413 0226 65120000 		.4byte	.LASF41
+ 414 022a 07       		.byte	0x7
+ 415 022b 3F       		.byte	0x3f
+ 416 022c 94000000 		.4byte	0x94
+ 417 0230 20       		.byte	0x20
+ 418 0231 00       		.byte	0
+ 419 0232 10       		.uleb128 0x10
+ 420 0233 A1010000 		.4byte	.LASF42
+ 421 0237 0801     		.2byte	0x108
+ 422 0239 07       		.byte	0x7
+ 423 023a 48       		.byte	0x48
+ 424 023b 72020000 		.4byte	0x272
+ 425 023f 0C       		.uleb128 0xc
+ 426 0240 0F1C0000 		.4byte	.LASF43
+ 427 0244 07       		.byte	0x7
+ 428 0245 49       		.byte	0x49
+ 429 0246 72020000 		.4byte	0x272
+ 430 024a 00       		.byte	0
+ 431 024b 0C       		.uleb128 0xc
+ 432 024c F7190000 		.4byte	.LASF44
+ 433 0250 07       		.byte	0x7
+ 434 0251 4A       		.byte	0x4a
+ 435 0252 72020000 		.4byte	0x272
+ 436 0256 80       		.byte	0x80
+ 437 0257 11       		.uleb128 0x11
+ 438 0258 C31C0000 		.4byte	.LASF45
+ 439 025c 07       		.byte	0x7
+ 440 025d 4C       		.byte	0x4c
+ 441 025e 45010000 		.4byte	0x145
+ 442 0262 0001     		.2byte	0x100
+ 443 0264 11       		.uleb128 0x11
+ 444 0265 AD1D0000 		.4byte	.LASF46
+ 445 0269 07       		.byte	0x7
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 12
+
+
+ 446 026a 4F       		.byte	0x4f
+ 447 026b 45010000 		.4byte	0x145
+ 448 026f 0401     		.2byte	0x104
+ 449 0271 00       		.byte	0
+ 450 0272 09       		.uleb128 0x9
+ 451 0273 A9000000 		.4byte	0xa9
+ 452 0277 82020000 		.4byte	0x282
+ 453 027b 0A       		.uleb128 0xa
+ 454 027c 07010000 		.4byte	0x107
+ 455 0280 1F       		.byte	0x1f
+ 456 0281 00       		.byte	0
+ 457 0282 10       		.uleb128 0x10
+ 458 0283 E1140000 		.4byte	.LASF47
+ 459 0287 9001     		.2byte	0x190
+ 460 0289 07       		.byte	0x7
+ 461 028a 5B       		.byte	0x5b
+ 462 028b C0020000 		.4byte	0x2c0
+ 463 028f 0C       		.uleb128 0xc
+ 464 0290 400B0000 		.4byte	.LASF27
+ 465 0294 07       		.byte	0x7
+ 466 0295 5C       		.byte	0x5c
+ 467 0296 C0020000 		.4byte	0x2c0
+ 468 029a 00       		.byte	0
+ 469 029b 0C       		.uleb128 0xc
+ 470 029c F60A0000 		.4byte	.LASF48
+ 471 02a0 07       		.byte	0x7
+ 472 02a1 5D       		.byte	0x5d
+ 473 02a2 94000000 		.4byte	0x94
+ 474 02a6 04       		.byte	0x4
+ 475 02a7 0C       		.uleb128 0xc
+ 476 02a8 17060000 		.4byte	.LASF49
+ 477 02ac 07       		.byte	0x7
+ 478 02ad 5F       		.byte	0x5f
+ 479 02ae C6020000 		.4byte	0x2c6
+ 480 02b2 08       		.byte	0x8
+ 481 02b3 0C       		.uleb128 0xc
+ 482 02b4 A1010000 		.4byte	.LASF42
+ 483 02b8 07       		.byte	0x7
+ 484 02b9 60       		.byte	0x60
+ 485 02ba 32020000 		.4byte	0x232
+ 486 02be 88       		.byte	0x88
+ 487 02bf 00       		.byte	0
+ 488 02c0 0F       		.uleb128 0xf
+ 489 02c1 04       		.byte	0x4
+ 490 02c2 82020000 		.4byte	0x282
+ 491 02c6 09       		.uleb128 0x9
+ 492 02c7 D6020000 		.4byte	0x2d6
+ 493 02cb D6020000 		.4byte	0x2d6
+ 494 02cf 0A       		.uleb128 0xa
+ 495 02d0 07010000 		.4byte	0x107
+ 496 02d4 1F       		.byte	0x1f
+ 497 02d5 00       		.byte	0
+ 498 02d6 0F       		.uleb128 0xf
+ 499 02d7 04       		.byte	0x4
+ 500 02d8 DC020000 		.4byte	0x2dc
+ 501 02dc 12       		.uleb128 0x12
+ 502 02dd 0D       		.uleb128 0xd
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 13
+
+
+ 503 02de 331B0000 		.4byte	.LASF50
+ 504 02e2 08       		.byte	0x8
+ 505 02e3 07       		.byte	0x7
+ 506 02e4 73       		.byte	0x73
+ 507 02e5 02030000 		.4byte	0x302
+ 508 02e9 0C       		.uleb128 0xc
+ 509 02ea 9E100000 		.4byte	.LASF51
+ 510 02ee 07       		.byte	0x7
+ 511 02ef 74       		.byte	0x74
+ 512 02f0 02030000 		.4byte	0x302
+ 513 02f4 00       		.byte	0
+ 514 02f5 0C       		.uleb128 0xc
+ 515 02f6 FB1C0000 		.4byte	.LASF52
+ 516 02fa 07       		.byte	0x7
+ 517 02fb 75       		.byte	0x75
+ 518 02fc 94000000 		.4byte	0x94
+ 519 0300 04       		.byte	0x4
+ 520 0301 00       		.byte	0
+ 521 0302 0F       		.uleb128 0xf
+ 522 0303 04       		.byte	0x4
+ 523 0304 37000000 		.4byte	0x37
+ 524 0308 0D       		.uleb128 0xd
+ 525 0309 CC1C0000 		.4byte	.LASF53
+ 526 030d 68       		.byte	0x68
+ 527 030e 07       		.byte	0x7
+ 528 030f B3       		.byte	0xb3
+ 529 0310 32040000 		.4byte	0x432
+ 530 0314 0E       		.uleb128 0xe
+ 531 0315 5F7000   		.ascii	"_p\000"
+ 532 0318 07       		.byte	0x7
+ 533 0319 B4       		.byte	0xb4
+ 534 031a 02030000 		.4byte	0x302
+ 535 031e 00       		.byte	0
+ 536 031f 0E       		.uleb128 0xe
+ 537 0320 5F7200   		.ascii	"_r\000"
+ 538 0323 07       		.byte	0x7
+ 539 0324 B5       		.byte	0xb5
+ 540 0325 94000000 		.4byte	0x94
+ 541 0329 04       		.byte	0x4
+ 542 032a 0E       		.uleb128 0xe
+ 543 032b 5F7700   		.ascii	"_w\000"
+ 544 032e 07       		.byte	0x7
+ 545 032f B6       		.byte	0xb6
+ 546 0330 94000000 		.4byte	0x94
+ 547 0334 08       		.byte	0x8
+ 548 0335 0C       		.uleb128 0xc
+ 549 0336 03030000 		.4byte	.LASF54
+ 550 033a 07       		.byte	0x7
+ 551 033b B7       		.byte	0xb7
+ 552 033c 49000000 		.4byte	0x49
+ 553 0340 0C       		.byte	0xc
+ 554 0341 0C       		.uleb128 0xc
+ 555 0342 2B110000 		.4byte	.LASF55
+ 556 0346 07       		.byte	0x7
+ 557 0347 B8       		.byte	0xb8
+ 558 0348 49000000 		.4byte	0x49
+ 559 034c 0E       		.byte	0xe
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 14
+
+
+ 560 034d 0E       		.uleb128 0xe
+ 561 034e 5F626600 		.ascii	"_bf\000"
+ 562 0352 07       		.byte	0x7
+ 563 0353 B9       		.byte	0xb9
+ 564 0354 DD020000 		.4byte	0x2dd
+ 565 0358 10       		.byte	0x10
+ 566 0359 0C       		.uleb128 0xc
+ 567 035a FA020000 		.4byte	.LASF56
+ 568 035e 07       		.byte	0x7
+ 569 035f BA       		.byte	0xba
+ 570 0360 94000000 		.4byte	0x94
+ 571 0364 18       		.byte	0x18
+ 572 0365 0C       		.uleb128 0xc
+ 573 0366 1C060000 		.4byte	.LASF57
+ 574 036a 07       		.byte	0x7
+ 575 036b C1       		.byte	0xc1
+ 576 036c A9000000 		.4byte	0xa9
+ 577 0370 1C       		.byte	0x1c
+ 578 0371 0C       		.uleb128 0xc
+ 579 0372 36040000 		.4byte	.LASF58
+ 580 0376 07       		.byte	0x7
+ 581 0377 C3       		.byte	0xc3
+ 582 0378 95050000 		.4byte	0x595
+ 583 037c 20       		.byte	0x20
+ 584 037d 0C       		.uleb128 0xc
+ 585 037e 23180000 		.4byte	.LASF59
+ 586 0382 07       		.byte	0x7
+ 587 0383 C5       		.byte	0xc5
+ 588 0384 C4050000 		.4byte	0x5c4
+ 589 0388 24       		.byte	0x24
+ 590 0389 0C       		.uleb128 0xc
+ 591 038a 001E0000 		.4byte	.LASF60
+ 592 038e 07       		.byte	0x7
+ 593 038f C8       		.byte	0xc8
+ 594 0390 E8050000 		.4byte	0x5e8
+ 595 0394 28       		.byte	0x28
+ 596 0395 0C       		.uleb128 0xc
+ 597 0396 5C0F0000 		.4byte	.LASF61
+ 598 039a 07       		.byte	0x7
+ 599 039b C9       		.byte	0xc9
+ 600 039c 02060000 		.4byte	0x602
+ 601 03a0 2C       		.byte	0x2c
+ 602 03a1 0E       		.uleb128 0xe
+ 603 03a2 5F756200 		.ascii	"_ub\000"
+ 604 03a6 07       		.byte	0x7
+ 605 03a7 CC       		.byte	0xcc
+ 606 03a8 DD020000 		.4byte	0x2dd
+ 607 03ac 30       		.byte	0x30
+ 608 03ad 0E       		.uleb128 0xe
+ 609 03ae 5F757000 		.ascii	"_up\000"
+ 610 03b2 07       		.byte	0x7
+ 611 03b3 CD       		.byte	0xcd
+ 612 03b4 02030000 		.4byte	0x302
+ 613 03b8 38       		.byte	0x38
+ 614 03b9 0E       		.uleb128 0xe
+ 615 03ba 5F757200 		.ascii	"_ur\000"
+ 616 03be 07       		.byte	0x7
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 15
+
+
+ 617 03bf CE       		.byte	0xce
+ 618 03c0 94000000 		.4byte	0x94
+ 619 03c4 3C       		.byte	0x3c
+ 620 03c5 0C       		.uleb128 0xc
+ 621 03c6 441E0000 		.4byte	.LASF62
+ 622 03ca 07       		.byte	0x7
+ 623 03cb D1       		.byte	0xd1
+ 624 03cc 08060000 		.4byte	0x608
+ 625 03d0 40       		.byte	0x40
+ 626 03d1 0C       		.uleb128 0xc
+ 627 03d2 271D0000 		.4byte	.LASF63
+ 628 03d6 07       		.byte	0x7
+ 629 03d7 D2       		.byte	0xd2
+ 630 03d8 18060000 		.4byte	0x618
+ 631 03dc 43       		.byte	0x43
+ 632 03dd 0E       		.uleb128 0xe
+ 633 03de 5F6C6200 		.ascii	"_lb\000"
+ 634 03e2 07       		.byte	0x7
+ 635 03e3 D5       		.byte	0xd5
+ 636 03e4 DD020000 		.4byte	0x2dd
+ 637 03e8 44       		.byte	0x44
+ 638 03e9 0C       		.uleb128 0xc
+ 639 03ea 190E0000 		.4byte	.LASF64
+ 640 03ee 07       		.byte	0x7
+ 641 03ef D8       		.byte	0xd8
+ 642 03f0 94000000 		.4byte	0x94
+ 643 03f4 4C       		.byte	0x4c
+ 644 03f5 0C       		.uleb128 0xc
+ 645 03f6 6E090000 		.4byte	.LASF65
+ 646 03fa 07       		.byte	0x7
+ 647 03fb D9       		.byte	0xd9
+ 648 03fc B6000000 		.4byte	0xb6
+ 649 0400 50       		.byte	0x50
+ 650 0401 0C       		.uleb128 0xc
+ 651 0402 70170000 		.4byte	.LASF66
+ 652 0406 07       		.byte	0x7
+ 653 0407 DC       		.byte	0xdc
+ 654 0408 50040000 		.4byte	0x450
+ 655 040c 54       		.byte	0x54
+ 656 040d 0C       		.uleb128 0xc
+ 657 040e 82190000 		.4byte	.LASF67
+ 658 0412 07       		.byte	0x7
+ 659 0413 E0       		.byte	0xe0
+ 660 0414 3A010000 		.4byte	0x13a
+ 661 0418 58       		.byte	0x58
+ 662 0419 0C       		.uleb128 0xc
+ 663 041a 98060000 		.4byte	.LASF68
+ 664 041e 07       		.byte	0x7
+ 665 041f E2       		.byte	0xe2
+ 666 0420 2F010000 		.4byte	0x12f
+ 667 0424 5C       		.byte	0x5c
+ 668 0425 0C       		.uleb128 0xc
+ 669 0426 751D0000 		.4byte	.LASF69
+ 670 042a 07       		.byte	0x7
+ 671 042b E3       		.byte	0xe3
+ 672 042c 94000000 		.4byte	0x94
+ 673 0430 64       		.byte	0x64
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 16
+
+
+ 674 0431 00       		.byte	0
+ 675 0432 13       		.uleb128 0x13
+ 676 0433 94000000 		.4byte	0x94
+ 677 0437 50040000 		.4byte	0x450
+ 678 043b 14       		.uleb128 0x14
+ 679 043c 50040000 		.4byte	0x450
+ 680 0440 14       		.uleb128 0x14
+ 681 0441 A9000000 		.4byte	0xa9
+ 682 0445 14       		.uleb128 0x14
+ 683 0446 88050000 		.4byte	0x588
+ 684 044a 14       		.uleb128 0x14
+ 685 044b 94000000 		.4byte	0x94
+ 686 044f 00       		.byte	0
+ 687 0450 0F       		.uleb128 0xf
+ 688 0451 04       		.byte	0x4
+ 689 0452 56040000 		.4byte	0x456
+ 690 0456 15       		.uleb128 0x15
+ 691 0457 341C0000 		.4byte	.LASF70
+ 692 045b 2804     		.2byte	0x428
+ 693 045d 07       		.byte	0x7
+ 694 045e 3802     		.2byte	0x238
+ 695 0460 88050000 		.4byte	0x588
+ 696 0464 16       		.uleb128 0x16
+ 697 0465 2D030000 		.4byte	.LASF71
+ 698 0469 07       		.byte	0x7
+ 699 046a 3A02     		.2byte	0x23a
+ 700 046c 94000000 		.4byte	0x94
+ 701 0470 00       		.byte	0
+ 702 0471 16       		.uleb128 0x16
+ 703 0472 17100000 		.4byte	.LASF72
+ 704 0476 07       		.byte	0x7
+ 705 0477 3F02     		.2byte	0x23f
+ 706 0479 6F060000 		.4byte	0x66f
+ 707 047d 04       		.byte	0x4
+ 708 047e 16       		.uleb128 0x16
+ 709 047f F8040000 		.4byte	.LASF73
+ 710 0483 07       		.byte	0x7
+ 711 0484 3F02     		.2byte	0x23f
+ 712 0486 6F060000 		.4byte	0x66f
+ 713 048a 08       		.byte	0x8
+ 714 048b 16       		.uleb128 0x16
+ 715 048c 421A0000 		.4byte	.LASF74
+ 716 0490 07       		.byte	0x7
+ 717 0491 3F02     		.2byte	0x23f
+ 718 0493 6F060000 		.4byte	0x66f
+ 719 0497 0C       		.byte	0xc
+ 720 0498 16       		.uleb128 0x16
+ 721 0499 F10A0000 		.4byte	.LASF75
+ 722 049d 07       		.byte	0x7
+ 723 049e 4102     		.2byte	0x241
+ 724 04a0 94000000 		.4byte	0x94
+ 725 04a4 10       		.byte	0x10
+ 726 04a5 16       		.uleb128 0x16
+ 727 04a6 150A0000 		.4byte	.LASF76
+ 728 04aa 07       		.byte	0x7
+ 729 04ab 4202     		.2byte	0x242
+ 730 04ad 51080000 		.4byte	0x851
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 17
+
+
+ 731 04b1 14       		.byte	0x14
+ 732 04b2 16       		.uleb128 0x16
+ 733 04b3 5B180000 		.4byte	.LASF77
+ 734 04b7 07       		.byte	0x7
+ 735 04b8 4402     		.2byte	0x244
+ 736 04ba 94000000 		.4byte	0x94
+ 737 04be 30       		.byte	0x30
+ 738 04bf 16       		.uleb128 0x16
+ 739 04c0 7E0A0000 		.4byte	.LASF78
+ 740 04c4 07       		.byte	0x7
+ 741 04c5 4502     		.2byte	0x245
+ 742 04c7 B9050000 		.4byte	0x5b9
+ 743 04cb 34       		.byte	0x34
+ 744 04cc 16       		.uleb128 0x16
+ 745 04cd 630F0000 		.4byte	.LASF79
+ 746 04d1 07       		.byte	0x7
+ 747 04d2 4702     		.2byte	0x247
+ 748 04d4 94000000 		.4byte	0x94
+ 749 04d8 38       		.byte	0x38
+ 750 04d9 16       		.uleb128 0x16
+ 751 04da DB110000 		.4byte	.LASF80
+ 752 04de 07       		.byte	0x7
+ 753 04df 4902     		.2byte	0x249
+ 754 04e1 6C080000 		.4byte	0x86c
+ 755 04e5 3C       		.byte	0x3c
+ 756 04e6 16       		.uleb128 0x16
+ 757 04e7 AB060000 		.4byte	.LASF81
+ 758 04eb 07       		.byte	0x7
+ 759 04ec 4C02     		.2byte	0x24c
+ 760 04ee A3010000 		.4byte	0x1a3
+ 761 04f2 40       		.byte	0x40
+ 762 04f3 16       		.uleb128 0x16
+ 763 04f4 53080000 		.4byte	.LASF82
+ 764 04f8 07       		.byte	0x7
+ 765 04f9 4D02     		.2byte	0x24d
+ 766 04fb 94000000 		.4byte	0x94
+ 767 04ff 44       		.byte	0x44
+ 768 0500 16       		.uleb128 0x16
+ 769 0501 BB0C0000 		.4byte	.LASF83
+ 770 0505 07       		.byte	0x7
+ 771 0506 4E02     		.2byte	0x24e
+ 772 0508 A3010000 		.4byte	0x1a3
+ 773 050c 48       		.byte	0x48
+ 774 050d 16       		.uleb128 0x16
+ 775 050e A4100000 		.4byte	.LASF84
+ 776 0512 07       		.byte	0x7
+ 777 0513 4F02     		.2byte	0x24f
+ 778 0515 72080000 		.4byte	0x872
+ 779 0519 4C       		.byte	0x4c
+ 780 051a 16       		.uleb128 0x16
+ 781 051b 41180000 		.4byte	.LASF85
+ 782 051f 07       		.byte	0x7
+ 783 0520 5202     		.2byte	0x252
+ 784 0522 94000000 		.4byte	0x94
+ 785 0526 50       		.byte	0x50
+ 786 0527 16       		.uleb128 0x16
+ 787 0528 2C1A0000 		.4byte	.LASF86
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 18
+
+
+ 788 052c 07       		.byte	0x7
+ 789 052d 5302     		.2byte	0x253
+ 790 052f 88050000 		.4byte	0x588
+ 791 0533 54       		.byte	0x54
+ 792 0534 16       		.uleb128 0x16
+ 793 0535 3C180000 		.4byte	.LASF87
+ 794 0539 07       		.byte	0x7
+ 795 053a 7602     		.2byte	0x276
+ 796 053c 2F080000 		.4byte	0x82f
+ 797 0540 58       		.byte	0x58
+ 798 0541 17       		.uleb128 0x17
+ 799 0542 E1140000 		.4byte	.LASF47
+ 800 0546 07       		.byte	0x7
+ 801 0547 7A02     		.2byte	0x27a
+ 802 0549 C0020000 		.4byte	0x2c0
+ 803 054d 4801     		.2byte	0x148
+ 804 054f 17       		.uleb128 0x17
+ 805 0550 54140000 		.4byte	.LASF88
+ 806 0554 07       		.byte	0x7
+ 807 0555 7B02     		.2byte	0x27b
+ 808 0557 82020000 		.4byte	0x282
+ 809 055b 4C01     		.2byte	0x14c
+ 810 055d 17       		.uleb128 0x17
+ 811 055e B80D0000 		.4byte	.LASF89
+ 812 0562 07       		.byte	0x7
+ 813 0563 7F02     		.2byte	0x27f
+ 814 0565 83080000 		.4byte	0x883
+ 815 0569 DC02     		.2byte	0x2dc
+ 816 056b 17       		.uleb128 0x17
+ 817 056c 9E1B0000 		.4byte	.LASF90
+ 818 0570 07       		.byte	0x7
+ 819 0571 8402     		.2byte	0x284
+ 820 0573 34060000 		.4byte	0x634
+ 821 0577 E002     		.2byte	0x2e0
+ 822 0579 17       		.uleb128 0x17
+ 823 057a 3D170000 		.4byte	.LASF91
+ 824 057e 07       		.byte	0x7
+ 825 057f 8502     		.2byte	0x285
+ 826 0581 8F080000 		.4byte	0x88f
+ 827 0585 EC02     		.2byte	0x2ec
+ 828 0587 00       		.byte	0
+ 829 0588 0F       		.uleb128 0xf
+ 830 0589 04       		.byte	0x4
+ 831 058a 8E050000 		.4byte	0x58e
+ 832 058e 02       		.uleb128 0x2
+ 833 058f 01       		.byte	0x1
+ 834 0590 08       		.byte	0x8
+ 835 0591 6F0D0000 		.4byte	.LASF92
+ 836 0595 0F       		.uleb128 0xf
+ 837 0596 04       		.byte	0x4
+ 838 0597 32040000 		.4byte	0x432
+ 839 059b 13       		.uleb128 0x13
+ 840 059c 94000000 		.4byte	0x94
+ 841 05a0 B9050000 		.4byte	0x5b9
+ 842 05a4 14       		.uleb128 0x14
+ 843 05a5 50040000 		.4byte	0x450
+ 844 05a9 14       		.uleb128 0x14
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 19
+
+
+ 845 05aa A9000000 		.4byte	0xa9
+ 846 05ae 14       		.uleb128 0x14
+ 847 05af B9050000 		.4byte	0x5b9
+ 848 05b3 14       		.uleb128 0x14
+ 849 05b4 94000000 		.4byte	0x94
+ 850 05b8 00       		.byte	0
+ 851 05b9 0F       		.uleb128 0xf
+ 852 05ba 04       		.byte	0x4
+ 853 05bb BF050000 		.4byte	0x5bf
+ 854 05bf 18       		.uleb128 0x18
+ 855 05c0 8E050000 		.4byte	0x58e
+ 856 05c4 0F       		.uleb128 0xf
+ 857 05c5 04       		.byte	0x4
+ 858 05c6 9B050000 		.4byte	0x59b
+ 859 05ca 13       		.uleb128 0x13
+ 860 05cb C1000000 		.4byte	0xc1
+ 861 05cf E8050000 		.4byte	0x5e8
+ 862 05d3 14       		.uleb128 0x14
+ 863 05d4 50040000 		.4byte	0x450
+ 864 05d8 14       		.uleb128 0x14
+ 865 05d9 A9000000 		.4byte	0xa9
+ 866 05dd 14       		.uleb128 0x14
+ 867 05de C1000000 		.4byte	0xc1
+ 868 05e2 14       		.uleb128 0x14
+ 869 05e3 94000000 		.4byte	0x94
+ 870 05e7 00       		.byte	0
+ 871 05e8 0F       		.uleb128 0xf
+ 872 05e9 04       		.byte	0x4
+ 873 05ea CA050000 		.4byte	0x5ca
+ 874 05ee 13       		.uleb128 0x13
+ 875 05ef 94000000 		.4byte	0x94
+ 876 05f3 02060000 		.4byte	0x602
+ 877 05f7 14       		.uleb128 0x14
+ 878 05f8 50040000 		.4byte	0x450
+ 879 05fc 14       		.uleb128 0x14
+ 880 05fd A9000000 		.4byte	0xa9
+ 881 0601 00       		.byte	0
+ 882 0602 0F       		.uleb128 0xf
+ 883 0603 04       		.byte	0x4
+ 884 0604 EE050000 		.4byte	0x5ee
+ 885 0608 09       		.uleb128 0x9
+ 886 0609 37000000 		.4byte	0x37
+ 887 060d 18060000 		.4byte	0x618
+ 888 0611 0A       		.uleb128 0xa
+ 889 0612 07010000 		.4byte	0x107
+ 890 0616 02       		.byte	0x2
+ 891 0617 00       		.byte	0
+ 892 0618 09       		.uleb128 0x9
+ 893 0619 37000000 		.4byte	0x37
+ 894 061d 28060000 		.4byte	0x628
+ 895 0621 0A       		.uleb128 0xa
+ 896 0622 07010000 		.4byte	0x107
+ 897 0626 00       		.byte	0
+ 898 0627 00       		.byte	0
+ 899 0628 06       		.uleb128 0x6
+ 900 0629 0F090000 		.4byte	.LASF93
+ 901 062d 07       		.byte	0x7
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 20
+
+
+ 902 062e 1D01     		.2byte	0x11d
+ 903 0630 08030000 		.4byte	0x308
+ 904 0634 19       		.uleb128 0x19
+ 905 0635 591B0000 		.4byte	.LASF94
+ 906 0639 0C       		.byte	0xc
+ 907 063a 07       		.byte	0x7
+ 908 063b 2101     		.2byte	0x121
+ 909 063d 69060000 		.4byte	0x669
+ 910 0641 16       		.uleb128 0x16
+ 911 0642 400B0000 		.4byte	.LASF27
+ 912 0646 07       		.byte	0x7
+ 913 0647 2301     		.2byte	0x123
+ 914 0649 69060000 		.4byte	0x669
+ 915 064d 00       		.byte	0
+ 916 064e 16       		.uleb128 0x16
+ 917 064f BE190000 		.4byte	.LASF95
+ 918 0653 07       		.byte	0x7
+ 919 0654 2401     		.2byte	0x124
+ 920 0656 94000000 		.4byte	0x94
+ 921 065a 04       		.byte	0x4
+ 922 065b 16       		.uleb128 0x16
+ 923 065c 231C0000 		.4byte	.LASF96
+ 924 0660 07       		.byte	0x7
+ 925 0661 2501     		.2byte	0x125
+ 926 0663 6F060000 		.4byte	0x66f
+ 927 0667 08       		.byte	0x8
+ 928 0668 00       		.byte	0
+ 929 0669 0F       		.uleb128 0xf
+ 930 066a 04       		.byte	0x4
+ 931 066b 34060000 		.4byte	0x634
+ 932 066f 0F       		.uleb128 0xf
+ 933 0670 04       		.byte	0x4
+ 934 0671 28060000 		.4byte	0x628
+ 935 0675 19       		.uleb128 0x19
+ 936 0676 06080000 		.4byte	.LASF97
+ 937 067a 0E       		.byte	0xe
+ 938 067b 07       		.byte	0x7
+ 939 067c 3D01     		.2byte	0x13d
+ 940 067e AA060000 		.4byte	0x6aa
+ 941 0682 16       		.uleb128 0x16
+ 942 0683 B0030000 		.4byte	.LASF98
+ 943 0687 07       		.byte	0x7
+ 944 0688 3E01     		.2byte	0x13e
+ 945 068a AA060000 		.4byte	0x6aa
+ 946 068e 00       		.byte	0
+ 947 068f 16       		.uleb128 0x16
+ 948 0690 EB0A0000 		.4byte	.LASF99
+ 949 0694 07       		.byte	0x7
+ 950 0695 3F01     		.2byte	0x13f
+ 951 0697 AA060000 		.4byte	0x6aa
+ 952 069b 06       		.byte	0x6
+ 953 069c 16       		.uleb128 0x16
+ 954 069d C7100000 		.4byte	.LASF100
+ 955 06a1 07       		.byte	0x7
+ 956 06a2 4001     		.2byte	0x140
+ 957 06a4 5B000000 		.4byte	0x5b
+ 958 06a8 0C       		.byte	0xc
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 21
+
+
+ 959 06a9 00       		.byte	0
+ 960 06aa 09       		.uleb128 0x9
+ 961 06ab 5B000000 		.4byte	0x5b
+ 962 06af BA060000 		.4byte	0x6ba
+ 963 06b3 0A       		.uleb128 0xa
+ 964 06b4 07010000 		.4byte	0x107
+ 965 06b8 02       		.byte	0x2
+ 966 06b9 00       		.byte	0
+ 967 06ba 1A       		.uleb128 0x1a
+ 968 06bb D0       		.byte	0xd0
+ 969 06bc 07       		.byte	0x7
+ 970 06bd 5702     		.2byte	0x257
+ 971 06bf BB070000 		.4byte	0x7bb
+ 972 06c3 16       		.uleb128 0x16
+ 973 06c4 2D1D0000 		.4byte	.LASF101
+ 974 06c8 07       		.byte	0x7
+ 975 06c9 5902     		.2byte	0x259
+ 976 06cb 9B000000 		.4byte	0x9b
+ 977 06cf 00       		.byte	0
+ 978 06d0 16       		.uleb128 0x16
+ 979 06d1 DA1B0000 		.4byte	.LASF102
+ 980 06d5 07       		.byte	0x7
+ 981 06d6 5A02     		.2byte	0x25a
+ 982 06d8 88050000 		.4byte	0x588
+ 983 06dc 04       		.byte	0x4
+ 984 06dd 16       		.uleb128 0x16
+ 985 06de 89080000 		.4byte	.LASF103
+ 986 06e2 07       		.byte	0x7
+ 987 06e3 5B02     		.2byte	0x25b
+ 988 06e5 BB070000 		.4byte	0x7bb
+ 989 06e9 08       		.byte	0x8
+ 990 06ea 16       		.uleb128 0x16
+ 991 06eb F3010000 		.4byte	.LASF104
+ 992 06ef 07       		.byte	0x7
+ 993 06f0 5C02     		.2byte	0x25c
+ 994 06f2 B9010000 		.4byte	0x1b9
+ 995 06f6 24       		.byte	0x24
+ 996 06f7 16       		.uleb128 0x16
+ 997 06f8 7C140000 		.4byte	.LASF105
+ 998 06fc 07       		.byte	0x7
+ 999 06fd 5D02     		.2byte	0x25d
+ 1000 06ff 94000000 		.4byte	0x94
+ 1001 0703 48       		.byte	0x48
+ 1002 0704 16       		.uleb128 0x16
+ 1003 0705 F51D0000 		.4byte	.LASF106
+ 1004 0709 07       		.byte	0x7
+ 1005 070a 5E02     		.2byte	0x25e
+ 1006 070c 8D000000 		.4byte	0x8d
+ 1007 0710 50       		.byte	0x50
+ 1008 0711 16       		.uleb128 0x16
+ 1009 0712 21020000 		.4byte	.LASF107
+ 1010 0716 07       		.byte	0x7
+ 1011 0717 5F02     		.2byte	0x25f
+ 1012 0719 75060000 		.4byte	0x675
+ 1013 071d 58       		.byte	0x58
+ 1014 071e 16       		.uleb128 0x16
+ 1015 071f E5110000 		.4byte	.LASF108
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 22
+
+
+ 1016 0723 07       		.byte	0x7
+ 1017 0724 6002     		.2byte	0x260
+ 1018 0726 2F010000 		.4byte	0x12f
+ 1019 072a 68       		.byte	0x68
+ 1020 072b 16       		.uleb128 0x16
+ 1021 072c E71B0000 		.4byte	.LASF109
+ 1022 0730 07       		.byte	0x7
+ 1023 0731 6102     		.2byte	0x261
+ 1024 0733 2F010000 		.4byte	0x12f
+ 1025 0737 70       		.byte	0x70
+ 1026 0738 16       		.uleb128 0x16
+ 1027 0739 E5010000 		.4byte	.LASF110
+ 1028 073d 07       		.byte	0x7
+ 1029 073e 6202     		.2byte	0x262
+ 1030 0740 2F010000 		.4byte	0x12f
+ 1031 0744 78       		.byte	0x78
+ 1032 0745 16       		.uleb128 0x16
+ 1033 0746 51180000 		.4byte	.LASF111
+ 1034 074a 07       		.byte	0x7
+ 1035 074b 6302     		.2byte	0x263
+ 1036 074d CB070000 		.4byte	0x7cb
+ 1037 0751 80       		.byte	0x80
+ 1038 0752 16       		.uleb128 0x16
+ 1039 0753 49020000 		.4byte	.LASF112
+ 1040 0757 07       		.byte	0x7
+ 1041 0758 6402     		.2byte	0x264
+ 1042 075a DB070000 		.4byte	0x7db
+ 1043 075e 88       		.byte	0x88
+ 1044 075f 16       		.uleb128 0x16
+ 1045 0760 8E1A0000 		.4byte	.LASF113
+ 1046 0764 07       		.byte	0x7
+ 1047 0765 6502     		.2byte	0x265
+ 1048 0767 94000000 		.4byte	0x94
+ 1049 076b A0       		.byte	0xa0
+ 1050 076c 16       		.uleb128 0x16
+ 1051 076d 55040000 		.4byte	.LASF114
+ 1052 0771 07       		.byte	0x7
+ 1053 0772 6602     		.2byte	0x266
+ 1054 0774 2F010000 		.4byte	0x12f
+ 1055 0778 A4       		.byte	0xa4
+ 1056 0779 16       		.uleb128 0x16
+ 1057 077a 14040000 		.4byte	.LASF115
+ 1058 077e 07       		.byte	0x7
+ 1059 077f 6702     		.2byte	0x267
+ 1060 0781 2F010000 		.4byte	0x12f
+ 1061 0785 AC       		.byte	0xac
+ 1062 0786 16       		.uleb128 0x16
+ 1063 0787 8F0B0000 		.4byte	.LASF116
+ 1064 078b 07       		.byte	0x7
+ 1065 078c 6802     		.2byte	0x268
+ 1066 078e 2F010000 		.4byte	0x12f
+ 1067 0792 B4       		.byte	0xb4
+ 1068 0793 16       		.uleb128 0x16
+ 1069 0794 1C110000 		.4byte	.LASF117
+ 1070 0798 07       		.byte	0x7
+ 1071 0799 6902     		.2byte	0x269
+ 1072 079b 2F010000 		.4byte	0x12f
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 23
+
+
+ 1073 079f BC       		.byte	0xbc
+ 1074 07a0 16       		.uleb128 0x16
+ 1075 07a1 AF120000 		.4byte	.LASF118
+ 1076 07a5 07       		.byte	0x7
+ 1077 07a6 6A02     		.2byte	0x26a
+ 1078 07a8 2F010000 		.4byte	0x12f
+ 1079 07ac C4       		.byte	0xc4
+ 1080 07ad 16       		.uleb128 0x16
+ 1081 07ae DE120000 		.4byte	.LASF119
+ 1082 07b2 07       		.byte	0x7
+ 1083 07b3 6B02     		.2byte	0x26b
+ 1084 07b5 94000000 		.4byte	0x94
+ 1085 07b9 CC       		.byte	0xcc
+ 1086 07ba 00       		.byte	0
+ 1087 07bb 09       		.uleb128 0x9
+ 1088 07bc 8E050000 		.4byte	0x58e
+ 1089 07c0 CB070000 		.4byte	0x7cb
+ 1090 07c4 0A       		.uleb128 0xa
+ 1091 07c5 07010000 		.4byte	0x107
+ 1092 07c9 19       		.byte	0x19
+ 1093 07ca 00       		.byte	0
+ 1094 07cb 09       		.uleb128 0x9
+ 1095 07cc 8E050000 		.4byte	0x58e
+ 1096 07d0 DB070000 		.4byte	0x7db
+ 1097 07d4 0A       		.uleb128 0xa
+ 1098 07d5 07010000 		.4byte	0x107
+ 1099 07d9 07       		.byte	0x7
+ 1100 07da 00       		.byte	0
+ 1101 07db 09       		.uleb128 0x9
+ 1102 07dc 8E050000 		.4byte	0x58e
+ 1103 07e0 EB070000 		.4byte	0x7eb
+ 1104 07e4 0A       		.uleb128 0xa
+ 1105 07e5 07010000 		.4byte	0x107
+ 1106 07e9 17       		.byte	0x17
+ 1107 07ea 00       		.byte	0
+ 1108 07eb 1A       		.uleb128 0x1a
+ 1109 07ec F0       		.byte	0xf0
+ 1110 07ed 07       		.byte	0x7
+ 1111 07ee 7002     		.2byte	0x270
+ 1112 07f0 0F080000 		.4byte	0x80f
+ 1113 07f4 16       		.uleb128 0x16
+ 1114 07f5 DF070000 		.4byte	.LASF120
+ 1115 07f9 07       		.byte	0x7
+ 1116 07fa 7302     		.2byte	0x273
+ 1117 07fc 0F080000 		.4byte	0x80f
+ 1118 0800 00       		.byte	0
+ 1119 0801 16       		.uleb128 0x16
+ 1120 0802 3B1E0000 		.4byte	.LASF121
+ 1121 0806 07       		.byte	0x7
+ 1122 0807 7402     		.2byte	0x274
+ 1123 0809 1F080000 		.4byte	0x81f
+ 1124 080d 78       		.byte	0x78
+ 1125 080e 00       		.byte	0
+ 1126 080f 09       		.uleb128 0x9
+ 1127 0810 02030000 		.4byte	0x302
+ 1128 0814 1F080000 		.4byte	0x81f
+ 1129 0818 0A       		.uleb128 0xa
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 24
+
+
+ 1130 0819 07010000 		.4byte	0x107
+ 1131 081d 1D       		.byte	0x1d
+ 1132 081e 00       		.byte	0
+ 1133 081f 09       		.uleb128 0x9
+ 1134 0820 9B000000 		.4byte	0x9b
+ 1135 0824 2F080000 		.4byte	0x82f
+ 1136 0828 0A       		.uleb128 0xa
+ 1137 0829 07010000 		.4byte	0x107
+ 1138 082d 1D       		.byte	0x1d
+ 1139 082e 00       		.byte	0
+ 1140 082f 1B       		.uleb128 0x1b
+ 1141 0830 F0       		.byte	0xf0
+ 1142 0831 07       		.byte	0x7
+ 1143 0832 5502     		.2byte	0x255
+ 1144 0834 51080000 		.4byte	0x851
+ 1145 0838 1C       		.uleb128 0x1c
+ 1146 0839 341C0000 		.4byte	.LASF70
+ 1147 083d 07       		.byte	0x7
+ 1148 083e 6C02     		.2byte	0x26c
+ 1149 0840 BA060000 		.4byte	0x6ba
+ 1150 0844 1C       		.uleb128 0x1c
+ 1151 0845 2A180000 		.4byte	.LASF122
+ 1152 0849 07       		.byte	0x7
+ 1153 084a 7502     		.2byte	0x275
+ 1154 084c EB070000 		.4byte	0x7eb
+ 1155 0850 00       		.byte	0
+ 1156 0851 09       		.uleb128 0x9
+ 1157 0852 8E050000 		.4byte	0x58e
+ 1158 0856 61080000 		.4byte	0x861
+ 1159 085a 0A       		.uleb128 0xa
+ 1160 085b 07010000 		.4byte	0x107
+ 1161 085f 18       		.byte	0x18
+ 1162 0860 00       		.byte	0
+ 1163 0861 1D       		.uleb128 0x1d
+ 1164 0862 6C080000 		.4byte	0x86c
+ 1165 0866 14       		.uleb128 0x14
+ 1166 0867 50040000 		.4byte	0x450
+ 1167 086b 00       		.byte	0
+ 1168 086c 0F       		.uleb128 0xf
+ 1169 086d 04       		.byte	0x4
+ 1170 086e 61080000 		.4byte	0x861
+ 1171 0872 0F       		.uleb128 0xf
+ 1172 0873 04       		.byte	0x4
+ 1173 0874 A3010000 		.4byte	0x1a3
+ 1174 0878 1D       		.uleb128 0x1d
+ 1175 0879 83080000 		.4byte	0x883
+ 1176 087d 14       		.uleb128 0x14
+ 1177 087e 94000000 		.4byte	0x94
+ 1178 0882 00       		.byte	0
+ 1179 0883 0F       		.uleb128 0xf
+ 1180 0884 04       		.byte	0x4
+ 1181 0885 89080000 		.4byte	0x889
+ 1182 0889 0F       		.uleb128 0xf
+ 1183 088a 04       		.byte	0x4
+ 1184 088b 78080000 		.4byte	0x878
+ 1185 088f 09       		.uleb128 0x9
+ 1186 0890 28060000 		.4byte	0x628
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 25
+
+
+ 1187 0894 9F080000 		.4byte	0x89f
+ 1188 0898 0A       		.uleb128 0xa
+ 1189 0899 07010000 		.4byte	0x107
+ 1190 089d 02       		.byte	0x2
+ 1191 089e 00       		.byte	0
+ 1192 089f 03       		.uleb128 0x3
+ 1193 08a0 040F0000 		.4byte	.LASF123
+ 1194 08a4 08       		.byte	0x8
+ 1195 08a5 18       		.byte	0x18
+ 1196 08a6 2C000000 		.4byte	0x2c
+ 1197 08aa 03       		.uleb128 0x3
+ 1198 08ab FE070000 		.4byte	.LASF124
+ 1199 08af 08       		.byte	0x8
+ 1200 08b0 20       		.byte	0x20
+ 1201 08b1 3E000000 		.4byte	0x3e
+ 1202 08b5 03       		.uleb128 0x3
+ 1203 08b6 30140000 		.4byte	.LASF125
+ 1204 08ba 08       		.byte	0x8
+ 1205 08bb 24       		.byte	0x24
+ 1206 08bc 50000000 		.4byte	0x50
+ 1207 08c0 03       		.uleb128 0x3
+ 1208 08c1 D2190000 		.4byte	.LASF126
+ 1209 08c5 08       		.byte	0x8
+ 1210 08c6 2C       		.byte	0x2c
+ 1211 08c7 62000000 		.4byte	0x62
+ 1212 08cb 03       		.uleb128 0x3
+ 1213 08cc D2060000 		.4byte	.LASF127
+ 1214 08d0 08       		.byte	0x8
+ 1215 08d1 30       		.byte	0x30
+ 1216 08d2 74000000 		.4byte	0x74
+ 1217 08d6 1E       		.uleb128 0x1e
+ 1218 08d7 CB080000 		.4byte	0x8cb
+ 1219 08db 0B       		.uleb128 0xb
+ 1220 08dc B8       		.byte	0xb8
+ 1221 08dd 09       		.byte	0x9
+ 1222 08de 34       		.byte	0x34
+ 1223 08df EC0C0000 		.4byte	0xcec
+ 1224 08e3 0C       		.uleb128 0xc
+ 1225 08e4 34030000 		.4byte	.LASF128
+ 1226 08e8 09       		.byte	0x9
+ 1227 08e9 37       		.byte	0x37
+ 1228 08ea CB080000 		.4byte	0x8cb
+ 1229 08ee 00       		.byte	0
+ 1230 08ef 0C       		.uleb128 0xc
+ 1231 08f0 640D0000 		.4byte	.LASF129
+ 1232 08f4 09       		.byte	0x9
+ 1233 08f5 38       		.byte	0x38
+ 1234 08f6 CB080000 		.4byte	0x8cb
+ 1235 08fa 04       		.byte	0x4
+ 1236 08fb 0C       		.uleb128 0xc
+ 1237 08fc DC010000 		.4byte	.LASF130
+ 1238 0900 09       		.byte	0x9
+ 1239 0901 39       		.byte	0x39
+ 1240 0902 CB080000 		.4byte	0x8cb
+ 1241 0906 08       		.byte	0x8
+ 1242 0907 0C       		.uleb128 0xc
+ 1243 0908 07090000 		.4byte	.LASF131
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 26
+
+
+ 1244 090c 09       		.byte	0x9
+ 1245 090d 3A       		.byte	0x3a
+ 1246 090e CB080000 		.4byte	0x8cb
+ 1247 0912 0C       		.byte	0xc
+ 1248 0913 0C       		.uleb128 0xc
+ 1249 0914 39140000 		.4byte	.LASF132
+ 1250 0918 09       		.byte	0x9
+ 1251 0919 3B       		.byte	0x3b
+ 1252 091a CB080000 		.4byte	0x8cb
+ 1253 091e 10       		.byte	0x10
+ 1254 091f 0C       		.uleb128 0xc
+ 1255 0920 5E110000 		.4byte	.LASF133
+ 1256 0924 09       		.byte	0x9
+ 1257 0925 3C       		.byte	0x3c
+ 1258 0926 CB080000 		.4byte	0x8cb
+ 1259 092a 14       		.byte	0x14
+ 1260 092b 0C       		.uleb128 0xc
+ 1261 092c 690B0000 		.4byte	.LASF134
+ 1262 0930 09       		.byte	0x9
+ 1263 0931 3D       		.byte	0x3d
+ 1264 0932 CB080000 		.4byte	0x8cb
+ 1265 0936 18       		.byte	0x18
+ 1266 0937 0C       		.uleb128 0xc
+ 1267 0938 081D0000 		.4byte	.LASF135
+ 1268 093c 09       		.byte	0x9
+ 1269 093d 3E       		.byte	0x3e
+ 1270 093e CB080000 		.4byte	0x8cb
+ 1271 0942 1C       		.byte	0x1c
+ 1272 0943 0C       		.uleb128 0xc
+ 1273 0944 5D100000 		.4byte	.LASF136
+ 1274 0948 09       		.byte	0x9
+ 1275 0949 3F       		.byte	0x3f
+ 1276 094a CB080000 		.4byte	0x8cb
+ 1277 094e 20       		.byte	0x20
+ 1278 094f 0C       		.uleb128 0xc
+ 1279 0950 93100000 		.4byte	.LASF137
+ 1280 0954 09       		.byte	0x9
+ 1281 0955 40       		.byte	0x40
+ 1282 0956 CB080000 		.4byte	0x8cb
+ 1283 095a 24       		.byte	0x24
+ 1284 095b 0C       		.uleb128 0xc
+ 1285 095c A4160000 		.4byte	.LASF138
+ 1286 0960 09       		.byte	0x9
+ 1287 0961 43       		.byte	0x43
+ 1288 0962 9F080000 		.4byte	0x89f
+ 1289 0966 28       		.byte	0x28
+ 1290 0967 0C       		.uleb128 0xc
+ 1291 0968 A2070000 		.4byte	.LASF139
+ 1292 096c 09       		.byte	0x9
+ 1293 096d 44       		.byte	0x44
+ 1294 096e 9F080000 		.4byte	0x89f
+ 1295 0972 29       		.byte	0x29
+ 1296 0973 0C       		.uleb128 0xc
+ 1297 0974 B3140000 		.4byte	.LASF140
+ 1298 0978 09       		.byte	0x9
+ 1299 0979 45       		.byte	0x45
+ 1300 097a 9F080000 		.4byte	0x89f
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 27
+
+
+ 1301 097e 2A       		.byte	0x2a
+ 1302 097f 0C       		.uleb128 0xc
+ 1303 0980 FD160000 		.4byte	.LASF141
+ 1304 0984 09       		.byte	0x9
+ 1305 0985 46       		.byte	0x46
+ 1306 0986 9F080000 		.4byte	0x89f
+ 1307 098a 2B       		.byte	0x2b
+ 1308 098b 0C       		.uleb128 0xc
+ 1309 098c BE160000 		.4byte	.LASF142
+ 1310 0990 09       		.byte	0x9
+ 1311 0991 47       		.byte	0x47
+ 1312 0992 9F080000 		.4byte	0x89f
+ 1313 0996 2C       		.byte	0x2c
+ 1314 0997 0C       		.uleb128 0xc
+ 1315 0998 88190000 		.4byte	.LASF143
+ 1316 099c 09       		.byte	0x9
+ 1317 099d 48       		.byte	0x48
+ 1318 099e 9F080000 		.4byte	0x89f
+ 1319 09a2 2D       		.byte	0x2d
+ 1320 09a3 0C       		.uleb128 0xc
+ 1321 09a4 061E0000 		.4byte	.LASF144
+ 1322 09a8 09       		.byte	0x9
+ 1323 09a9 49       		.byte	0x49
+ 1324 09aa 9F080000 		.4byte	0x89f
+ 1325 09ae 2E       		.byte	0x2e
+ 1326 09af 0C       		.uleb128 0xc
+ 1327 09b0 7F030000 		.4byte	.LASF145
+ 1328 09b4 09       		.byte	0x9
+ 1329 09b5 4A       		.byte	0x4a
+ 1330 09b6 9F080000 		.4byte	0x89f
+ 1331 09ba 2F       		.byte	0x2f
+ 1332 09bb 0C       		.uleb128 0xc
+ 1333 09bc 070C0000 		.4byte	.LASF146
+ 1334 09c0 09       		.byte	0x9
+ 1335 09c1 4B       		.byte	0x4b
+ 1336 09c2 9F080000 		.4byte	0x89f
+ 1337 09c6 30       		.byte	0x30
+ 1338 09c7 0C       		.uleb128 0xc
+ 1339 09c8 B00C0000 		.4byte	.LASF147
+ 1340 09cc 09       		.byte	0x9
+ 1341 09cd 4E       		.byte	0x4e
+ 1342 09ce 9F080000 		.4byte	0x89f
+ 1343 09d2 31       		.byte	0x31
+ 1344 09d3 0C       		.uleb128 0xc
+ 1345 09d4 3B1C0000 		.4byte	.LASF148
+ 1346 09d8 09       		.byte	0x9
+ 1347 09d9 4F       		.byte	0x4f
+ 1348 09da 9F080000 		.4byte	0x89f
+ 1349 09de 32       		.byte	0x32
+ 1350 09df 0C       		.uleb128 0xc
+ 1351 09e0 FD110000 		.4byte	.LASF149
+ 1352 09e4 09       		.byte	0x9
+ 1353 09e5 50       		.byte	0x50
+ 1354 09e6 9F080000 		.4byte	0x89f
+ 1355 09ea 33       		.byte	0x33
+ 1356 09eb 0C       		.uleb128 0xc
+ 1357 09ec 290D0000 		.4byte	.LASF150
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 28
+
+
+ 1358 09f0 09       		.byte	0x9
+ 1359 09f1 51       		.byte	0x51
+ 1360 09f2 9F080000 		.4byte	0x89f
+ 1361 09f6 34       		.byte	0x34
+ 1362 09f7 0C       		.uleb128 0xc
+ 1363 09f8 6E0F0000 		.4byte	.LASF151
+ 1364 09fc 09       		.byte	0x9
+ 1365 09fd 52       		.byte	0x52
+ 1366 09fe AA080000 		.4byte	0x8aa
+ 1367 0a02 36       		.byte	0x36
+ 1368 0a03 0C       		.uleb128 0xc
+ 1369 0a04 C3040000 		.4byte	.LASF152
+ 1370 0a08 09       		.byte	0x9
+ 1371 0a09 53       		.byte	0x53
+ 1372 0a0a AA080000 		.4byte	0x8aa
+ 1373 0a0e 38       		.byte	0x38
+ 1374 0a0f 0C       		.uleb128 0xc
+ 1375 0a10 B6030000 		.4byte	.LASF153
+ 1376 0a14 09       		.byte	0x9
+ 1377 0a15 54       		.byte	0x54
+ 1378 0a16 AA080000 		.4byte	0x8aa
+ 1379 0a1a 3A       		.byte	0x3a
+ 1380 0a1b 0C       		.uleb128 0xc
+ 1381 0a1c 96080000 		.4byte	.LASF154
+ 1382 0a20 09       		.byte	0x9
+ 1383 0a21 55       		.byte	0x55
+ 1384 0a22 9F080000 		.4byte	0x89f
+ 1385 0a26 3C       		.byte	0x3c
+ 1386 0a27 0C       		.uleb128 0xc
+ 1387 0a28 540A0000 		.4byte	.LASF155
+ 1388 0a2c 09       		.byte	0x9
+ 1389 0a2d 56       		.byte	0x56
+ 1390 0a2e 9F080000 		.4byte	0x89f
+ 1391 0a32 3D       		.byte	0x3d
+ 1392 0a33 0C       		.uleb128 0xc
+ 1393 0a34 A5140000 		.4byte	.LASF156
+ 1394 0a38 09       		.byte	0x9
+ 1395 0a39 57       		.byte	0x57
+ 1396 0a3a 9F080000 		.4byte	0x89f
+ 1397 0a3e 3E       		.byte	0x3e
+ 1398 0a3f 0C       		.uleb128 0xc
+ 1399 0a40 4F010000 		.4byte	.LASF157
+ 1400 0a44 09       		.byte	0x9
+ 1401 0a45 58       		.byte	0x58
+ 1402 0a46 9F080000 		.4byte	0x89f
+ 1403 0a4a 3F       		.byte	0x3f
+ 1404 0a4b 0C       		.uleb128 0xc
+ 1405 0a4c B5020000 		.4byte	.LASF158
+ 1406 0a50 09       		.byte	0x9
+ 1407 0a51 59       		.byte	0x59
+ 1408 0a52 9F080000 		.4byte	0x89f
+ 1409 0a56 40       		.byte	0x40
+ 1410 0a57 0C       		.uleb128 0xc
+ 1411 0a58 C0120000 		.4byte	.LASF159
+ 1412 0a5c 09       		.byte	0x9
+ 1413 0a5d 5A       		.byte	0x5a
+ 1414 0a5e 9F080000 		.4byte	0x89f
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 29
+
+
+ 1415 0a62 41       		.byte	0x41
+ 1416 0a63 0C       		.uleb128 0xc
+ 1417 0a64 D3070000 		.4byte	.LASF160
+ 1418 0a68 09       		.byte	0x9
+ 1419 0a69 5B       		.byte	0x5b
+ 1420 0a6a 9F080000 		.4byte	0x89f
+ 1421 0a6e 42       		.byte	0x42
+ 1422 0a6f 0C       		.uleb128 0xc
+ 1423 0a70 400C0000 		.4byte	.LASF161
+ 1424 0a74 09       		.byte	0x9
+ 1425 0a75 5C       		.byte	0x5c
+ 1426 0a76 9F080000 		.4byte	0x89f
+ 1427 0a7a 43       		.byte	0x43
+ 1428 0a7b 0C       		.uleb128 0xc
+ 1429 0a7c FA0D0000 		.4byte	.LASF162
+ 1430 0a80 09       		.byte	0x9
+ 1431 0a81 5D       		.byte	0x5d
+ 1432 0a82 9F080000 		.4byte	0x89f
+ 1433 0a86 44       		.byte	0x44
+ 1434 0a87 0C       		.uleb128 0xc
+ 1435 0a88 0B170000 		.4byte	.LASF163
+ 1436 0a8c 09       		.byte	0x9
+ 1437 0a8d 5E       		.byte	0x5e
+ 1438 0a8e CB080000 		.4byte	0x8cb
+ 1439 0a92 48       		.byte	0x48
+ 1440 0a93 0C       		.uleb128 0xc
+ 1441 0a94 0B0E0000 		.4byte	.LASF164
+ 1442 0a98 09       		.byte	0x9
+ 1443 0a99 5F       		.byte	0x5f
+ 1444 0a9a CB080000 		.4byte	0x8cb
+ 1445 0a9e 4C       		.byte	0x4c
+ 1446 0a9f 0C       		.uleb128 0xc
+ 1447 0aa0 C91B0000 		.4byte	.LASF165
+ 1448 0aa4 09       		.byte	0x9
+ 1449 0aa5 60       		.byte	0x60
+ 1450 0aa6 9F080000 		.4byte	0x89f
+ 1451 0aaa 50       		.byte	0x50
+ 1452 0aab 0C       		.uleb128 0xc
+ 1453 0aac AE0A0000 		.4byte	.LASF166
+ 1454 0ab0 09       		.byte	0x9
+ 1455 0ab1 61       		.byte	0x61
+ 1456 0ab2 9F080000 		.4byte	0x89f
+ 1457 0ab6 51       		.byte	0x51
+ 1458 0ab7 0C       		.uleb128 0xc
+ 1459 0ab8 130C0000 		.4byte	.LASF167
+ 1460 0abc 09       		.byte	0x9
+ 1461 0abd 62       		.byte	0x62
+ 1462 0abe 9F080000 		.4byte	0x89f
+ 1463 0ac2 52       		.byte	0x52
+ 1464 0ac3 0C       		.uleb128 0xc
+ 1465 0ac4 D9130000 		.4byte	.LASF168
+ 1466 0ac8 09       		.byte	0x9
+ 1467 0ac9 63       		.byte	0x63
+ 1468 0aca 9F080000 		.4byte	0x89f
+ 1469 0ace 53       		.byte	0x53
+ 1470 0acf 0C       		.uleb128 0xc
+ 1471 0ad0 1D1B0000 		.4byte	.LASF169
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 30
+
+
+ 1472 0ad4 09       		.byte	0x9
+ 1473 0ad5 64       		.byte	0x64
+ 1474 0ad6 9F080000 		.4byte	0x89f
+ 1475 0ada 54       		.byte	0x54
+ 1476 0adb 0C       		.uleb128 0xc
+ 1477 0adc 0A0B0000 		.4byte	.LASF170
+ 1478 0ae0 09       		.byte	0x9
+ 1479 0ae1 65       		.byte	0x65
+ 1480 0ae2 9F080000 		.4byte	0x89f
+ 1481 0ae6 55       		.byte	0x55
+ 1482 0ae7 0C       		.uleb128 0xc
+ 1483 0ae8 00000000 		.4byte	.LASF171
+ 1484 0aec 09       		.byte	0x9
+ 1485 0aed 66       		.byte	0x66
+ 1486 0aee 9F080000 		.4byte	0x89f
+ 1487 0af2 56       		.byte	0x56
+ 1488 0af3 0C       		.uleb128 0xc
+ 1489 0af4 BD140000 		.4byte	.LASF172
+ 1490 0af8 09       		.byte	0x9
+ 1491 0af9 67       		.byte	0x67
+ 1492 0afa 9F080000 		.4byte	0x89f
+ 1493 0afe 57       		.byte	0x57
+ 1494 0aff 0C       		.uleb128 0xc
+ 1495 0b00 200A0000 		.4byte	.LASF173
+ 1496 0b04 09       		.byte	0x9
+ 1497 0b05 68       		.byte	0x68
+ 1498 0b06 9F080000 		.4byte	0x89f
+ 1499 0b0a 58       		.byte	0x58
+ 1500 0b0b 0C       		.uleb128 0xc
+ 1501 0b0c 3A1D0000 		.4byte	.LASF174
+ 1502 0b10 09       		.byte	0x9
+ 1503 0b11 69       		.byte	0x69
+ 1504 0b12 9F080000 		.4byte	0x89f
+ 1505 0b16 59       		.byte	0x59
+ 1506 0b17 0C       		.uleb128 0xc
+ 1507 0b18 291C0000 		.4byte	.LASF175
+ 1508 0b1c 09       		.byte	0x9
+ 1509 0b1d 6E       		.byte	0x6e
+ 1510 0b1e B5080000 		.4byte	0x8b5
+ 1511 0b22 5A       		.byte	0x5a
+ 1512 0b23 0C       		.uleb128 0xc
+ 1513 0b24 26020000 		.4byte	.LASF176
+ 1514 0b28 09       		.byte	0x9
+ 1515 0b29 6F       		.byte	0x6f
+ 1516 0b2a B5080000 		.4byte	0x8b5
+ 1517 0b2e 5C       		.byte	0x5c
+ 1518 0b2f 0C       		.uleb128 0xc
+ 1519 0b30 65100000 		.4byte	.LASF177
+ 1520 0b34 09       		.byte	0x9
+ 1521 0b35 70       		.byte	0x70
+ 1522 0b36 9F080000 		.4byte	0x89f
+ 1523 0b3a 5E       		.byte	0x5e
+ 1524 0b3b 0C       		.uleb128 0xc
+ 1525 0b3c 491C0000 		.4byte	.LASF178
+ 1526 0b40 09       		.byte	0x9
+ 1527 0b41 71       		.byte	0x71
+ 1528 0b42 9F080000 		.4byte	0x89f
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 31
+
+
+ 1529 0b46 5F       		.byte	0x5f
+ 1530 0b47 0C       		.uleb128 0xc
+ 1531 0b48 940C0000 		.4byte	.LASF179
+ 1532 0b4c 09       		.byte	0x9
+ 1533 0b4d 72       		.byte	0x72
+ 1534 0b4e 9F080000 		.4byte	0x89f
+ 1535 0b52 60       		.byte	0x60
+ 1536 0b53 0C       		.uleb128 0xc
+ 1537 0b54 F30E0000 		.4byte	.LASF180
+ 1538 0b58 09       		.byte	0x9
+ 1539 0b59 73       		.byte	0x73
+ 1540 0b5a CB080000 		.4byte	0x8cb
+ 1541 0b5e 64       		.byte	0x64
+ 1542 0b5f 0C       		.uleb128 0xc
+ 1543 0b60 D1140000 		.4byte	.LASF181
+ 1544 0b64 09       		.byte	0x9
+ 1545 0b65 76       		.byte	0x76
+ 1546 0b66 B5080000 		.4byte	0x8b5
+ 1547 0b6a 68       		.byte	0x68
+ 1548 0b6b 0C       		.uleb128 0xc
+ 1549 0b6c 42140000 		.4byte	.LASF182
+ 1550 0b70 09       		.byte	0x9
+ 1551 0b71 77       		.byte	0x77
+ 1552 0b72 B5080000 		.4byte	0x8b5
+ 1553 0b76 6A       		.byte	0x6a
+ 1554 0b77 0C       		.uleb128 0xc
+ 1555 0b78 CC110000 		.4byte	.LASF183
+ 1556 0b7c 09       		.byte	0x9
+ 1557 0b7d 78       		.byte	0x78
+ 1558 0b7e B5080000 		.4byte	0x8b5
+ 1559 0b82 6C       		.byte	0x6c
+ 1560 0b83 0C       		.uleb128 0xc
+ 1561 0b84 EB030000 		.4byte	.LASF184
+ 1562 0b88 09       		.byte	0x9
+ 1563 0b89 79       		.byte	0x79
+ 1564 0b8a B5080000 		.4byte	0x8b5
+ 1565 0b8e 6E       		.byte	0x6e
+ 1566 0b8f 0C       		.uleb128 0xc
+ 1567 0b90 DC090000 		.4byte	.LASF185
+ 1568 0b94 09       		.byte	0x9
+ 1569 0b95 7B       		.byte	0x7b
+ 1570 0b96 9F080000 		.4byte	0x89f
+ 1571 0b9a 70       		.byte	0x70
+ 1572 0b9b 0C       		.uleb128 0xc
+ 1573 0b9c 24060000 		.4byte	.LASF186
+ 1574 0ba0 09       		.byte	0x9
+ 1575 0ba1 7C       		.byte	0x7c
+ 1576 0ba2 9F080000 		.4byte	0x89f
+ 1577 0ba6 71       		.byte	0x71
+ 1578 0ba7 0C       		.uleb128 0xc
+ 1579 0ba8 34090000 		.4byte	.LASF187
+ 1580 0bac 09       		.byte	0x9
+ 1581 0bad 7D       		.byte	0x7d
+ 1582 0bae 9F080000 		.4byte	0x89f
+ 1583 0bb2 72       		.byte	0x72
+ 1584 0bb3 0C       		.uleb128 0xc
+ 1585 0bb4 C2020000 		.4byte	.LASF188
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 32
+
+
+ 1586 0bb8 09       		.byte	0x9
+ 1587 0bb9 7E       		.byte	0x7e
+ 1588 0bba 9F080000 		.4byte	0x89f
+ 1589 0bbe 73       		.byte	0x73
+ 1590 0bbf 0C       		.uleb128 0xc
+ 1591 0bc0 EF150000 		.4byte	.LASF189
+ 1592 0bc4 09       		.byte	0x9
+ 1593 0bc5 80       		.byte	0x80
+ 1594 0bc6 B5080000 		.4byte	0x8b5
+ 1595 0bca 74       		.byte	0x74
+ 1596 0bcb 0C       		.uleb128 0xc
+ 1597 0bcc EB130000 		.4byte	.LASF190
+ 1598 0bd0 09       		.byte	0x9
+ 1599 0bd1 81       		.byte	0x81
+ 1600 0bd2 B5080000 		.4byte	0x8b5
+ 1601 0bd6 76       		.byte	0x76
+ 1602 0bd7 0C       		.uleb128 0xc
+ 1603 0bd8 BC0F0000 		.4byte	.LASF191
+ 1604 0bdc 09       		.byte	0x9
+ 1605 0bdd 82       		.byte	0x82
+ 1606 0bde B5080000 		.4byte	0x8b5
+ 1607 0be2 78       		.byte	0x78
+ 1608 0be3 0C       		.uleb128 0xc
+ 1609 0be4 74080000 		.4byte	.LASF192
+ 1610 0be8 09       		.byte	0x9
+ 1611 0be9 83       		.byte	0x83
+ 1612 0bea B5080000 		.4byte	0x8b5
+ 1613 0bee 7A       		.byte	0x7a
+ 1614 0bef 0C       		.uleb128 0xc
+ 1615 0bf0 7A180000 		.4byte	.LASF193
+ 1616 0bf4 09       		.byte	0x9
+ 1617 0bf5 86       		.byte	0x86
+ 1618 0bf6 9F080000 		.4byte	0x89f
+ 1619 0bfa 7C       		.byte	0x7c
+ 1620 0bfb 0C       		.uleb128 0xc
+ 1621 0bfc F51B0000 		.4byte	.LASF194
+ 1622 0c00 09       		.byte	0x9
+ 1623 0c01 87       		.byte	0x87
+ 1624 0c02 9F080000 		.4byte	0x89f
+ 1625 0c06 7D       		.byte	0x7d
+ 1626 0c07 0C       		.uleb128 0xc
+ 1627 0c08 0E080000 		.4byte	.LASF195
+ 1628 0c0c 09       		.byte	0x9
+ 1629 0c0d 88       		.byte	0x88
+ 1630 0c0e 9F080000 		.4byte	0x89f
+ 1631 0c12 7E       		.byte	0x7e
+ 1632 0c13 0C       		.uleb128 0xc
+ 1633 0c14 65070000 		.4byte	.LASF196
+ 1634 0c18 09       		.byte	0x9
+ 1635 0c19 89       		.byte	0x89
+ 1636 0c1a 9F080000 		.4byte	0x89f
+ 1637 0c1e 7F       		.byte	0x7f
+ 1638 0c1f 0C       		.uleb128 0xc
+ 1639 0c20 86120000 		.4byte	.LASF197
+ 1640 0c24 09       		.byte	0x9
+ 1641 0c25 8A       		.byte	0x8a
+ 1642 0c26 9F080000 		.4byte	0x89f
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 33
+
+
+ 1643 0c2a 80       		.byte	0x80
+ 1644 0c2b 0C       		.uleb128 0xc
+ 1645 0c2c 38010000 		.4byte	.LASF198
+ 1646 0c30 09       		.byte	0x9
+ 1647 0c31 8D       		.byte	0x8d
+ 1648 0c32 CB080000 		.4byte	0x8cb
+ 1649 0c36 84       		.byte	0x84
+ 1650 0c37 0C       		.uleb128 0xc
+ 1651 0c38 16190000 		.4byte	.LASF199
+ 1652 0c3c 09       		.byte	0x9
+ 1653 0c3d 8E       		.byte	0x8e
+ 1654 0c3e CB080000 		.4byte	0x8cb
+ 1655 0c42 88       		.byte	0x88
+ 1656 0c43 0C       		.uleb128 0xc
+ 1657 0c44 9A120000 		.4byte	.LASF200
+ 1658 0c48 09       		.byte	0x9
+ 1659 0c49 8F       		.byte	0x8f
+ 1660 0c4a CB080000 		.4byte	0x8cb
+ 1661 0c4e 8C       		.byte	0x8c
+ 1662 0c4f 0C       		.uleb128 0xc
+ 1663 0c50 171A0000 		.4byte	.LASF201
+ 1664 0c54 09       		.byte	0x9
+ 1665 0c55 90       		.byte	0x90
+ 1666 0c56 CB080000 		.4byte	0x8cb
+ 1667 0c5a 90       		.byte	0x90
+ 1668 0c5b 0C       		.uleb128 0xc
+ 1669 0c5c DA150000 		.4byte	.LASF202
+ 1670 0c60 09       		.byte	0x9
+ 1671 0c61 91       		.byte	0x91
+ 1672 0c62 CB080000 		.4byte	0x8cb
+ 1673 0c66 94       		.byte	0x94
+ 1674 0c67 0C       		.uleb128 0xc
+ 1675 0c68 39060000 		.4byte	.LASF203
+ 1676 0c6c 09       		.byte	0x9
+ 1677 0c6d 92       		.byte	0x92
+ 1678 0c6e CB080000 		.4byte	0x8cb
+ 1679 0c72 98       		.byte	0x98
+ 1680 0c73 0C       		.uleb128 0xc
+ 1681 0c74 54190000 		.4byte	.LASF204
+ 1682 0c78 09       		.byte	0x9
+ 1683 0c79 93       		.byte	0x93
+ 1684 0c7a CB080000 		.4byte	0x8cb
+ 1685 0c7e 9C       		.byte	0x9c
+ 1686 0c7f 0C       		.uleb128 0xc
+ 1687 0c80 62020000 		.4byte	.LASF205
+ 1688 0c84 09       		.byte	0x9
+ 1689 0c85 94       		.byte	0x94
+ 1690 0c86 CB080000 		.4byte	0x8cb
+ 1691 0c8a A0       		.byte	0xa0
+ 1692 0c8b 0C       		.uleb128 0xc
+ 1693 0c8c BD180000 		.4byte	.LASF206
+ 1694 0c90 09       		.byte	0x9
+ 1695 0c91 95       		.byte	0x95
+ 1696 0c92 B5080000 		.4byte	0x8b5
+ 1697 0c96 A4       		.byte	0xa4
+ 1698 0c97 0C       		.uleb128 0xc
+ 1699 0c98 C5150000 		.4byte	.LASF207
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 34
+
+
+ 1700 0c9c 09       		.byte	0x9
+ 1701 0c9d 96       		.byte	0x96
+ 1702 0c9e B5080000 		.4byte	0x8b5
+ 1703 0ca2 A6       		.byte	0xa6
+ 1704 0ca3 0C       		.uleb128 0xc
+ 1705 0ca4 B2190000 		.4byte	.LASF208
+ 1706 0ca8 09       		.byte	0x9
+ 1707 0ca9 97       		.byte	0x97
+ 1708 0caa B5080000 		.4byte	0x8b5
+ 1709 0cae A8       		.byte	0xa8
+ 1710 0caf 0C       		.uleb128 0xc
+ 1711 0cb0 41100000 		.4byte	.LASF209
+ 1712 0cb4 09       		.byte	0x9
+ 1713 0cb5 98       		.byte	0x98
+ 1714 0cb6 B5080000 		.4byte	0x8b5
+ 1715 0cba AA       		.byte	0xaa
+ 1716 0cbb 0C       		.uleb128 0xc
+ 1717 0cbc 63040000 		.4byte	.LASF210
+ 1718 0cc0 09       		.byte	0x9
+ 1719 0cc1 99       		.byte	0x99
+ 1720 0cc2 B5080000 		.4byte	0x8b5
+ 1721 0cc6 AC       		.byte	0xac
+ 1722 0cc7 0C       		.uleb128 0xc
+ 1723 0cc8 D0120000 		.4byte	.LASF211
+ 1724 0ccc 09       		.byte	0x9
+ 1725 0ccd 9A       		.byte	0x9a
+ 1726 0cce B5080000 		.4byte	0x8b5
+ 1727 0cd2 AE       		.byte	0xae
+ 1728 0cd3 0C       		.uleb128 0xc
+ 1729 0cd4 99040000 		.4byte	.LASF212
+ 1730 0cd8 09       		.byte	0x9
+ 1731 0cd9 9D       		.byte	0x9d
+ 1732 0cda B5080000 		.4byte	0x8b5
+ 1733 0cde B0       		.byte	0xb0
+ 1734 0cdf 0C       		.uleb128 0xc
+ 1735 0ce0 7A1A0000 		.4byte	.LASF213
+ 1736 0ce4 09       		.byte	0x9
+ 1737 0ce5 9E       		.byte	0x9e
+ 1738 0ce6 CB080000 		.4byte	0x8cb
+ 1739 0cea B4       		.byte	0xb4
+ 1740 0ceb 00       		.byte	0
+ 1741 0cec 03       		.uleb128 0x3
+ 1742 0ced A61C0000 		.4byte	.LASF214
+ 1743 0cf1 09       		.byte	0x9
+ 1744 0cf2 9F       		.byte	0x9f
+ 1745 0cf3 DB080000 		.4byte	0x8db
+ 1746 0cf7 02       		.uleb128 0x2
+ 1747 0cf8 04       		.byte	0x4
+ 1748 0cf9 04       		.byte	0x4
+ 1749 0cfa CC190000 		.4byte	.LASF215
+ 1750 0cfe 02       		.uleb128 0x2
+ 1751 0cff 08       		.byte	0x8
+ 1752 0d00 04       		.byte	0x4
+ 1753 0d01 011D0000 		.4byte	.LASF216
+ 1754 0d05 02       		.uleb128 0x2
+ 1755 0d06 01       		.byte	0x1
+ 1756 0d07 02       		.byte	0x2
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 35
+
+
+ 1757 0d08 2D1B0000 		.4byte	.LASF217
+ 1758 0d0c 0F       		.uleb128 0xf
+ 1759 0d0d 04       		.byte	0x4
+ 1760 0d0e 120D0000 		.4byte	0xd12
+ 1761 0d12 1D       		.uleb128 0x1d
+ 1762 0d13 1D0D0000 		.4byte	0xd1d
+ 1763 0d17 14       		.uleb128 0x14
+ 1764 0d18 CB080000 		.4byte	0x8cb
+ 1765 0d1c 00       		.byte	0
+ 1766 0d1d 06       		.uleb128 0x6
+ 1767 0d1e E10F0000 		.4byte	.LASF218
+ 1768 0d22 0A       		.byte	0xa
+ 1769 0d23 D901     		.2byte	0x1d9
+ 1770 0d25 0C0D0000 		.4byte	0xd0c
+ 1771 0d29 19       		.uleb128 0x19
+ 1772 0d2a E6070000 		.4byte	.LASF219
+ 1773 0d2e 38       		.byte	0x38
+ 1774 0d2f 0A       		.byte	0xa
+ 1775 0d30 7502     		.2byte	0x275
+ 1776 0d32 ED0D0000 		.4byte	0xded
+ 1777 0d36 16       		.uleb128 0x16
+ 1778 0d37 D3010000 		.4byte	.LASF220
+ 1779 0d3b 0A       		.byte	0xa
+ 1780 0d3c 7802     		.2byte	0x278
+ 1781 0d3e D6080000 		.4byte	0x8d6
+ 1782 0d42 00       		.byte	0
+ 1783 0d43 16       		.uleb128 0x16
+ 1784 0d44 0C0A0000 		.4byte	.LASF221
+ 1785 0d48 0A       		.byte	0xa
+ 1786 0d49 7902     		.2byte	0x279
+ 1787 0d4b D6080000 		.4byte	0x8d6
+ 1788 0d4f 04       		.byte	0x4
+ 1789 0d50 16       		.uleb128 0x16
+ 1790 0d51 1A140000 		.4byte	.LASF222
+ 1791 0d55 0A       		.byte	0xa
+ 1792 0d56 7B02     		.2byte	0x27b
+ 1793 0d58 A9000000 		.4byte	0xa9
+ 1794 0d5c 08       		.byte	0x8
+ 1795 0d5d 16       		.uleb128 0x16
+ 1796 0d5e CB030000 		.4byte	.LASF223
+ 1797 0d62 0A       		.byte	0xa
+ 1798 0d63 7C02     		.2byte	0x27c
+ 1799 0d65 CB080000 		.4byte	0x8cb
+ 1800 0d69 0C       		.byte	0xc
+ 1801 0d6a 16       		.uleb128 0x16
+ 1802 0d6b 9E150000 		.4byte	.LASF224
+ 1803 0d6f 0A       		.byte	0xa
+ 1804 0d70 7D02     		.2byte	0x27d
+ 1805 0d72 D6080000 		.4byte	0x8d6
+ 1806 0d76 10       		.byte	0x10
+ 1807 0d77 16       		.uleb128 0x16
+ 1808 0d78 EC0D0000 		.4byte	.LASF225
+ 1809 0d7c 0A       		.byte	0xa
+ 1810 0d7d 7E02     		.2byte	0x27e
+ 1811 0d7f D6080000 		.4byte	0x8d6
+ 1812 0d83 14       		.byte	0x14
+ 1813 0d84 16       		.uleb128 0x16
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 36
+
+
+ 1814 0d85 D01D0000 		.4byte	.LASF226
+ 1815 0d89 0A       		.byte	0xa
+ 1816 0d8a 8002     		.2byte	0x280
+ 1817 0d8c A9000000 		.4byte	0xa9
+ 1818 0d90 18       		.byte	0x18
+ 1819 0d91 16       		.uleb128 0x16
+ 1820 0d92 4A1E0000 		.4byte	.LASF227
+ 1821 0d96 0A       		.byte	0xa
+ 1822 0d97 8102     		.2byte	0x281
+ 1823 0d99 CB080000 		.4byte	0x8cb
+ 1824 0d9d 1C       		.byte	0x1c
+ 1825 0d9e 16       		.uleb128 0x16
+ 1826 0d9f 980E0000 		.4byte	.LASF228
+ 1827 0da3 0A       		.byte	0xa
+ 1828 0da4 8202     		.2byte	0x282
+ 1829 0da6 D6080000 		.4byte	0x8d6
+ 1830 0daa 20       		.byte	0x20
+ 1831 0dab 16       		.uleb128 0x16
+ 1832 0dac D3130000 		.4byte	.LASF229
+ 1833 0db0 0A       		.byte	0xa
+ 1834 0db1 8402     		.2byte	0x284
+ 1835 0db3 A9000000 		.4byte	0xa9
+ 1836 0db7 24       		.byte	0x24
+ 1837 0db8 16       		.uleb128 0x16
+ 1838 0db9 5B120000 		.4byte	.LASF230
+ 1839 0dbd 0A       		.byte	0xa
+ 1840 0dbe 8502     		.2byte	0x285
+ 1841 0dc0 CB080000 		.4byte	0x8cb
+ 1842 0dc4 28       		.byte	0x28
+ 1843 0dc5 16       		.uleb128 0x16
+ 1844 0dc6 A9170000 		.4byte	.LASF231
+ 1845 0dca 0A       		.byte	0xa
+ 1846 0dcb 8602     		.2byte	0x286
+ 1847 0dcd D6080000 		.4byte	0x8d6
+ 1848 0dd1 2C       		.byte	0x2c
+ 1849 0dd2 16       		.uleb128 0x16
+ 1850 0dd3 000D0000 		.4byte	.LASF232
+ 1851 0dd7 0A       		.byte	0xa
+ 1852 0dd8 8B02     		.2byte	0x28b
+ 1853 0dda 1D0D0000 		.4byte	0xd1d
+ 1854 0dde 30       		.byte	0x30
+ 1855 0ddf 16       		.uleb128 0x16
+ 1856 0de0 E50E0000 		.4byte	.LASF233
+ 1857 0de4 0A       		.byte	0xa
+ 1858 0de5 8E02     		.2byte	0x28e
+ 1859 0de7 CB080000 		.4byte	0x8cb
+ 1860 0deb 34       		.byte	0x34
+ 1861 0dec 00       		.byte	0
+ 1862 0ded 06       		.uleb128 0x6
+ 1863 0dee B9070000 		.4byte	.LASF234
+ 1864 0df2 0A       		.byte	0xa
+ 1865 0df3 9102     		.2byte	0x291
+ 1866 0df5 290D0000 		.4byte	0xd29
+ 1867 0df9 1F       		.uleb128 0x1f
+ 1868 0dfa 02       		.byte	0x2
+ 1869 0dfb 5B000000 		.4byte	0x5b
+ 1870 0dff 0C       		.byte	0xc
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 37
+
+
+ 1871 0e00 5401     		.2byte	0x154
+ 1872 0e02 39110000 		.4byte	0x1139
+ 1873 0e06 20       		.uleb128 0x20
+ 1874 0e07 23040000 		.4byte	.LASF235
+ 1875 0e0b 00       		.byte	0
+ 1876 0e0c 21       		.uleb128 0x21
+ 1877 0e0d 27070000 		.4byte	.LASF236
+ 1878 0e11 0010     		.2byte	0x1000
+ 1879 0e13 21       		.uleb128 0x21
+ 1880 0e14 6F190000 		.4byte	.LASF237
+ 1881 0e18 0110     		.2byte	0x1001
+ 1882 0e1a 21       		.uleb128 0x21
+ 1883 0e1b 230C0000 		.4byte	.LASF238
+ 1884 0e1f 0210     		.2byte	0x1002
+ 1885 0e21 21       		.uleb128 0x21
+ 1886 0e22 C00C0000 		.4byte	.LASF239
+ 1887 0e26 0310     		.2byte	0x1003
+ 1888 0e28 21       		.uleb128 0x21
+ 1889 0e29 19010000 		.4byte	.LASF240
+ 1890 0e2d 0410     		.2byte	0x1004
+ 1891 0e2f 21       		.uleb128 0x21
+ 1892 0e30 0A030000 		.4byte	.LASF241
+ 1893 0e34 0510     		.2byte	0x1005
+ 1894 0e36 21       		.uleb128 0x21
+ 1895 0e37 8B140000 		.4byte	.LASF242
+ 1896 0e3b 0020     		.2byte	0x2000
+ 1897 0e3d 21       		.uleb128 0x21
+ 1898 0e3e DA170000 		.4byte	.LASF243
+ 1899 0e42 0120     		.2byte	0x2001
+ 1900 0e44 21       		.uleb128 0x21
+ 1901 0e45 4A000000 		.4byte	.LASF244
+ 1902 0e49 0220     		.2byte	0x2002
+ 1903 0e4b 21       		.uleb128 0x21
+ 1904 0e4c 680C0000 		.4byte	.LASF245
+ 1905 0e50 0320     		.2byte	0x2003
+ 1906 0e52 21       		.uleb128 0x21
+ 1907 0e53 720E0000 		.4byte	.LASF246
+ 1908 0e57 0420     		.2byte	0x2004
+ 1909 0e59 21       		.uleb128 0x21
+ 1910 0e5a FC100000 		.4byte	.LASF247
+ 1911 0e5e 0520     		.2byte	0x2005
+ 1912 0e60 21       		.uleb128 0x21
+ 1913 0e61 C80B0000 		.4byte	.LASF248
+ 1914 0e65 0620     		.2byte	0x2006
+ 1915 0e67 21       		.uleb128 0x21
+ 1916 0e68 8F180000 		.4byte	.LASF249
+ 1917 0e6c 0720     		.2byte	0x2007
+ 1918 0e6e 21       		.uleb128 0x21
+ 1919 0e6f CD1A0000 		.4byte	.LASF250
+ 1920 0e73 0820     		.2byte	0x2008
+ 1921 0e75 21       		.uleb128 0x21
+ 1922 0e76 7C090000 		.4byte	.LASF251
+ 1923 0e7a 0920     		.2byte	0x2009
+ 1924 0e7c 21       		.uleb128 0x21
+ 1925 0e7d 81070000 		.4byte	.LASF252
+ 1926 0e81 0A20     		.2byte	0x200a
+ 1927 0e83 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 38
+
+
+ 1928 0e84 3E030000 		.4byte	.LASF253
+ 1929 0e88 0B20     		.2byte	0x200b
+ 1930 0e8a 21       		.uleb128 0x21
+ 1931 0e8b 5D140000 		.4byte	.LASF254
+ 1932 0e8f 0C20     		.2byte	0x200c
+ 1933 0e91 21       		.uleb128 0x21
+ 1934 0e92 04070000 		.4byte	.LASF255
+ 1935 0e96 0D20     		.2byte	0x200d
+ 1936 0e98 21       		.uleb128 0x21
+ 1937 0e99 440E0000 		.4byte	.LASF256
+ 1938 0e9d 0E20     		.2byte	0x200e
+ 1939 0e9f 21       		.uleb128 0x21
+ 1940 0ea0 2C150000 		.4byte	.LASF257
+ 1941 0ea4 0F20     		.2byte	0x200f
+ 1942 0ea6 21       		.uleb128 0x21
+ 1943 0ea7 CC100000 		.4byte	.LASF258
+ 1944 0eab 1020     		.2byte	0x2010
+ 1945 0ead 21       		.uleb128 0x21
+ 1946 0eae 2E120000 		.4byte	.LASF259
+ 1947 0eb2 1120     		.2byte	0x2011
+ 1948 0eb4 21       		.uleb128 0x21
+ 1949 0eb5 9B1A0000 		.4byte	.LASF260
+ 1950 0eb9 1220     		.2byte	0x2012
+ 1951 0ebb 21       		.uleb128 0x21
+ 1952 0ebc F0090000 		.4byte	.LASF261
+ 1953 0ec0 1320     		.2byte	0x2013
+ 1954 0ec2 21       		.uleb128 0x21
+ 1955 0ec3 980F0000 		.4byte	.LASF262
+ 1956 0ec7 1420     		.2byte	0x2014
+ 1957 0ec9 21       		.uleb128 0x21
+ 1958 0eca A7040000 		.4byte	.LASF263
+ 1959 0ece 1520     		.2byte	0x2015
+ 1960 0ed0 21       		.uleb128 0x21
+ 1961 0ed1 D61D0000 		.4byte	.LASF264
+ 1962 0ed5 1620     		.2byte	0x2016
+ 1963 0ed7 21       		.uleb128 0x21
+ 1964 0ed8 8B030000 		.4byte	.LASF265
+ 1965 0edc 1720     		.2byte	0x2017
+ 1966 0ede 21       		.uleb128 0x21
+ 1967 0edf 3B070000 		.4byte	.LASF266
+ 1968 0ee3 0030     		.2byte	0x3000
+ 1969 0ee5 21       		.uleb128 0x21
+ 1970 0ee6 5F0A0000 		.4byte	.LASF267
+ 1971 0eea 0130     		.2byte	0x3001
+ 1972 0eec 21       		.uleb128 0x21
+ 1973 0eed 4A090000 		.4byte	.LASF268
+ 1974 0ef1 0230     		.2byte	0x3002
+ 1975 0ef3 21       		.uleb128 0x21
+ 1976 0ef4 D2180000 		.4byte	.LASF269
+ 1977 0ef8 0330     		.2byte	0x3003
+ 1978 0efa 21       		.uleb128 0x21
+ 1979 0efb BB080000 		.4byte	.LASF270
+ 1980 0eff 0430     		.2byte	0x3004
+ 1981 0f01 21       		.uleb128 0x21
+ 1982 0f02 2D190000 		.4byte	.LASF271
+ 1983 0f06 0530     		.2byte	0x3005
+ 1984 0f08 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 39
+
+
+ 1985 0f09 02020000 		.4byte	.LASF272
+ 1986 0f0d 0630     		.2byte	0x3006
+ 1987 0f0f 21       		.uleb128 0x21
+ 1988 0f10 7E1C0000 		.4byte	.LASF273
+ 1989 0f14 0730     		.2byte	0x3007
+ 1990 0f16 21       		.uleb128 0x21
+ 1991 0f17 3B110000 		.4byte	.LASF274
+ 1992 0f1b 0830     		.2byte	0x3008
+ 1993 0f1d 21       		.uleb128 0x21
+ 1994 0f1e 460B0000 		.4byte	.LASF275
+ 1995 0f22 0930     		.2byte	0x3009
+ 1996 0f24 21       		.uleb128 0x21
+ 1997 0f25 F6180000 		.4byte	.LASF276
+ 1998 0f29 0A30     		.2byte	0x300a
+ 1999 0f2b 21       		.uleb128 0x21
+ 2000 0f2c 740D0000 		.4byte	.LASF277
+ 2001 0f30 0B30     		.2byte	0x300b
+ 2002 0f32 21       		.uleb128 0x21
+ 2003 0f33 5B010000 		.4byte	.LASF278
+ 2004 0f37 0C30     		.2byte	0x300c
+ 2005 0f39 21       		.uleb128 0x21
+ 2006 0f3a 310F0000 		.4byte	.LASF279
+ 2007 0f3e 1130     		.2byte	0x3011
+ 2008 0f40 21       		.uleb128 0x21
+ 2009 0f41 7B150000 		.4byte	.LASF280
+ 2010 0f45 1230     		.2byte	0x3012
+ 2011 0f47 21       		.uleb128 0x21
+ 2012 0f48 DA190000 		.4byte	.LASF281
+ 2013 0f4c 1330     		.2byte	0x3013
+ 2014 0f4e 21       		.uleb128 0x21
+ 2015 0f4f 04180000 		.4byte	.LASF282
+ 2016 0f53 1430     		.2byte	0x3014
+ 2017 0f55 21       		.uleb128 0x21
+ 2018 0f56 CA160000 		.4byte	.LASF283
+ 2019 0f5a 1530     		.2byte	0x3015
+ 2020 0f5c 21       		.uleb128 0x21
+ 2021 0f5d 1E100000 		.4byte	.LASF284
+ 2022 0f61 1630     		.2byte	0x3016
+ 2023 0f63 21       		.uleb128 0x21
+ 2024 0f64 E7120000 		.4byte	.LASF285
+ 2025 0f68 1730     		.2byte	0x3017
+ 2026 0f6a 21       		.uleb128 0x21
+ 2027 0f6b DA0C0000 		.4byte	.LASF286
+ 2028 0f6f 1830     		.2byte	0x3018
+ 2029 0f71 21       		.uleb128 0x21
+ 2030 0f72 60160000 		.4byte	.LASF287
+ 2031 0f76 1930     		.2byte	0x3019
+ 2032 0f78 21       		.uleb128 0x21
+ 2033 0f79 09130000 		.4byte	.LASF288
+ 2034 0f7d 0040     		.2byte	0x4000
+ 2035 0f7f 21       		.uleb128 0x21
+ 2036 0f80 C4090000 		.4byte	.LASF289
+ 2037 0f84 0140     		.2byte	0x4001
+ 2038 0f86 21       		.uleb128 0x21
+ 2039 0f87 25000000 		.4byte	.LASF290
+ 2040 0f8b 0240     		.2byte	0x4002
+ 2041 0f8d 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 40
+
+
+ 2042 0f8e 4E1D0000 		.4byte	.LASF291
+ 2043 0f92 0340     		.2byte	0x4003
+ 2044 0f94 21       		.uleb128 0x21
+ 2045 0f95 7B0F0000 		.4byte	.LASF292
+ 2046 0f99 0440     		.2byte	0x4004
+ 2047 0f9b 21       		.uleb128 0x21
+ 2048 0f9c B51D0000 		.4byte	.LASF293
+ 2049 0fa0 0540     		.2byte	0x4005
+ 2050 0fa2 21       		.uleb128 0x21
+ 2051 0fa3 93000000 		.4byte	.LASF294
+ 2052 0fa7 0640     		.2byte	0x4006
+ 2053 0fa9 21       		.uleb128 0x21
+ 2054 0faa 340A0000 		.4byte	.LASF295
+ 2055 0fae 0740     		.2byte	0x4007
+ 2056 0fb0 21       		.uleb128 0x21
+ 2057 0fb1 78160000 		.4byte	.LASF296
+ 2058 0fb5 0840     		.2byte	0x4008
+ 2059 0fb7 21       		.uleb128 0x21
+ 2060 0fb8 16090000 		.4byte	.LASF297
+ 2061 0fbc 0940     		.2byte	0x4009
+ 2062 0fbe 21       		.uleb128 0x21
+ 2063 0fbf 6D1E0000 		.4byte	.LASF298
+ 2064 0fc3 0A40     		.2byte	0x400a
+ 2065 0fc5 21       		.uleb128 0x21
+ 2066 0fc6 980D0000 		.4byte	.LASF299
+ 2067 0fca 0B40     		.2byte	0x400b
+ 2068 0fcc 21       		.uleb128 0x21
+ 2069 0fcd 09120000 		.4byte	.LASF300
+ 2070 0fd1 0C40     		.2byte	0x400c
+ 2071 0fd3 21       		.uleb128 0x21
+ 2072 0fd4 BB0E0000 		.4byte	.LASF301
+ 2073 0fd8 0D40     		.2byte	0x400d
+ 2074 0fda 21       		.uleb128 0x21
+ 2075 0fdb 67130000 		.4byte	.LASF302
+ 2076 0fdf 0E40     		.2byte	0x400e
+ 2077 0fe1 21       		.uleb128 0x21
+ 2078 0fe2 C20D0000 		.4byte	.LASF303
+ 2079 0fe6 0F40     		.2byte	0x400f
+ 2080 0fe8 21       		.uleb128 0x21
+ 2081 0fe9 2E080000 		.4byte	.LASF304
+ 2082 0fed 1040     		.2byte	0x4010
+ 2083 0fef 21       		.uleb128 0x21
+ 2084 0ff0 F11A0000 		.4byte	.LASF305
+ 2085 0ff4 1140     		.2byte	0x4011
+ 2086 0ff6 21       		.uleb128 0x21
+ 2087 0ff7 A00B0000 		.4byte	.LASF306
+ 2088 0ffb 1240     		.2byte	0x4012
+ 2089 0ffd 21       		.uleb128 0x21
+ 2090 0ffe 48170000 		.4byte	.LASF307
+ 2091 1002 1340     		.2byte	0x4013
+ 2092 1004 21       		.uleb128 0x21
+ 2093 1005 D9020000 		.4byte	.LASF308
+ 2094 1009 1440     		.2byte	0x4014
+ 2095 100b 21       		.uleb128 0x21
+ 2096 100c B3050000 		.4byte	.LASF309
+ 2097 1010 1540     		.2byte	0x4015
+ 2098 1012 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 41
+
+
+ 2099 1013 7D1D0000 		.4byte	.LASF310
+ 2100 1017 1640     		.2byte	0x4016
+ 2101 1019 21       		.uleb128 0x21
+ 2102 101a 8A020000 		.4byte	.LASF311
+ 2103 101e 1740     		.2byte	0x4017
+ 2104 1020 21       		.uleb128 0x21
+ 2105 1021 AE100000 		.4byte	.LASF312
+ 2106 1025 1840     		.2byte	0x4018
+ 2107 1027 21       		.uleb128 0x21
+ 2108 1028 01160000 		.4byte	.LASF313
+ 2109 102c 1940     		.2byte	0x4019
+ 2110 102e 21       		.uleb128 0x21
+ 2111 102f 70120000 		.4byte	.LASF314
+ 2112 1033 1A40     		.2byte	0x401a
+ 2113 1035 21       		.uleb128 0x21
+ 2114 1036 E9140000 		.4byte	.LASF315
+ 2115 103a 0050     		.2byte	0x5000
+ 2116 103c 21       		.uleb128 0x21
+ 2117 103d F8030000 		.4byte	.LASF316
+ 2118 1041 0150     		.2byte	0x5001
+ 2119 1043 21       		.uleb128 0x21
+ 2120 1044 3A1B0000 		.4byte	.LASF317
+ 2121 1048 0250     		.2byte	0x5002
+ 2122 104a 21       		.uleb128 0x21
+ 2123 104b 7F1B0000 		.4byte	.LASF318
+ 2124 104f 0350     		.2byte	0x5003
+ 2125 1051 21       		.uleb128 0x21
+ 2126 1052 4F060000 		.4byte	.LASF319
+ 2127 1056 0450     		.2byte	0x5004
+ 2128 1058 21       		.uleb128 0x21
+ 2129 1059 04150000 		.4byte	.LASF320
+ 2130 105d 0550     		.2byte	0x5005
+ 2131 105f 21       		.uleb128 0x21
+ 2132 1060 220E0000 		.4byte	.LASF321
+ 2133 1064 0650     		.2byte	0x5006
+ 2134 1066 21       		.uleb128 0x21
+ 2135 1067 60030000 		.4byte	.LASF322
+ 2136 106b 0750     		.2byte	0x5007
+ 2137 106d 21       		.uleb128 0x21
+ 2138 106e 71040000 		.4byte	.LASF323
+ 2139 1072 0850     		.2byte	0x5008
+ 2140 1074 21       		.uleb128 0x21
+ 2141 1075 4D130000 		.4byte	.LASF324
+ 2142 1079 0950     		.2byte	0x5009
+ 2143 107b 21       		.uleb128 0x21
+ 2144 107c B3060000 		.4byte	.LASF325
+ 2145 1080 0A50     		.2byte	0x500a
+ 2146 1082 21       		.uleb128 0x21
+ 2147 1083 1D170000 		.4byte	.LASF326
+ 2148 1087 0B50     		.2byte	0x500b
+ 2149 1089 21       		.uleb128 0x21
+ 2150 108a 57150000 		.4byte	.LASF327
+ 2151 108e 0C50     		.2byte	0x500c
+ 2152 1090 21       		.uleb128 0x21
+ 2153 1091 EC0B0000 		.4byte	.LASF328
+ 2154 1095 0D50     		.2byte	0x500d
+ 2155 1097 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 42
+
+
+ 2156 1098 5F1C0000 		.4byte	.LASF329
+ 2157 109c 0E50     		.2byte	0x500e
+ 2158 109e 21       		.uleb128 0x21
+ 2159 109f 8E0A0000 		.4byte	.LASF330
+ 2160 10a3 0F50     		.2byte	0x500f
+ 2161 10a5 21       		.uleb128 0x21
+ 2162 10a6 BA170000 		.4byte	.LASF331
+ 2163 10aa 1050     		.2byte	0x5010
+ 2164 10ac 21       		.uleb128 0x21
+ 2165 10ad 5F1B0000 		.4byte	.LASF332
+ 2166 10b1 1150     		.2byte	0x5011
+ 2167 10b3 21       		.uleb128 0x21
+ 2168 10b4 7F010000 		.4byte	.LASF333
+ 2169 10b8 1250     		.2byte	0x5012
+ 2170 10ba 21       		.uleb128 0x21
+ 2171 10bb C90A0000 		.4byte	.LASF334
+ 2172 10bf 1350     		.2byte	0x5013
+ 2173 10c1 21       		.uleb128 0x21
+ 2174 10c2 6E060000 		.4byte	.LASF335
+ 2175 10c6 1450     		.2byte	0x5014
+ 2176 10c8 21       		.uleb128 0x21
+ 2177 10c9 4A1A0000 		.4byte	.LASF336
+ 2178 10cd 1550     		.2byte	0x5015
+ 2179 10cf 21       		.uleb128 0x21
+ 2180 10d0 A61B0000 		.4byte	.LASF337
+ 2181 10d4 1650     		.2byte	0x5016
+ 2182 10d6 21       		.uleb128 0x21
+ 2183 10d7 CE040000 		.4byte	.LASF338
+ 2184 10db 1750     		.2byte	0x5017
+ 2185 10dd 21       		.uleb128 0x21
+ 2186 10de 68110000 		.4byte	.LASF339
+ 2187 10e2 1850     		.2byte	0x5018
+ 2188 10e4 21       		.uleb128 0x21
+ 2189 10e5 D41C0000 		.4byte	.LASF340
+ 2190 10e9 0060     		.2byte	0x6000
+ 2191 10eb 21       		.uleb128 0x21
+ 2192 10ec 2F160000 		.4byte	.LASF341
+ 2193 10f0 0160     		.2byte	0x6001
+ 2194 10f2 21       		.uleb128 0x21
+ 2195 10f3 4B0C0000 		.4byte	.LASF342
+ 2196 10f7 0260     		.2byte	0x6002
+ 2197 10f9 21       		.uleb128 0x21
+ 2198 10fa 2E130000 		.4byte	.LASF343
+ 2199 10fe 0360     		.2byte	0x6003
+ 2200 1100 21       		.uleb128 0x21
+ 2201 1101 74100000 		.4byte	.LASF344
+ 2202 1105 0460     		.2byte	0x6004
+ 2203 1107 21       		.uleb128 0x21
+ 2204 1108 87170000 		.4byte	.LASF345
+ 2205 110c 0560     		.2byte	0x6005
+ 2206 110e 21       		.uleb128 0x21
+ 2207 110f 1E0B0000 		.4byte	.LASF346
+ 2208 1113 0660     		.2byte	0x6006
+ 2209 1115 21       		.uleb128 0x21
+ 2210 1116 73000000 		.4byte	.LASF347
+ 2211 111a 0760     		.2byte	0x6007
+ 2212 111c 21       		.uleb128 0x21
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 43
+
+
+ 2213 111d C7000000 		.4byte	.LASF348
+ 2214 1121 0860     		.2byte	0x6008
+ 2215 1123 21       		.uleb128 0x21
+ 2216 1124 F5000000 		.4byte	.LASF349
+ 2217 1128 0960     		.2byte	0x6009
+ 2218 112a 21       		.uleb128 0x21
+ 2219 112b 0C0F0000 		.4byte	.LASF350
+ 2220 112f 0A60     		.2byte	0x600a
+ 2221 1131 21       		.uleb128 0x21
+ 2222 1132 FB0A0000 		.4byte	.LASF351
+ 2223 1136 FFFF     		.2byte	0xffff
+ 2224 1138 00       		.byte	0
+ 2225 1139 1A       		.uleb128 0x1a
+ 2226 113a 02       		.byte	0x2
+ 2227 113b 0B       		.byte	0xb
+ 2228 113c 6401     		.2byte	0x164
+ 2229 113e 5D110000 		.4byte	0x115d
+ 2230 1142 16       		.uleb128 0x16
+ 2231 1143 061C0000 		.4byte	.LASF352
+ 2232 1147 0B       		.byte	0xb
+ 2233 1148 6E01     		.2byte	0x16e
+ 2234 114a 9F080000 		.4byte	0x89f
+ 2235 114e 00       		.byte	0
+ 2236 114f 16       		.uleb128 0x16
+ 2237 1150 76090000 		.4byte	.LASF353
+ 2238 1154 0B       		.byte	0xb
+ 2239 1155 7201     		.2byte	0x172
+ 2240 1157 9F080000 		.4byte	0x89f
+ 2241 115b 01       		.byte	0x1
+ 2242 115c 00       		.byte	0
+ 2243 115d 06       		.uleb128 0x6
+ 2244 115e AC150000 		.4byte	.LASF354
+ 2245 1162 0B       		.byte	0xb
+ 2246 1163 7401     		.2byte	0x174
+ 2247 1165 39110000 		.4byte	0x1139
+ 2248 1169 22       		.uleb128 0x22
+ 2249 116a 01       		.byte	0x1
+ 2250 116b 37000000 		.4byte	0x37
+ 2251 116f 0D       		.byte	0xd
+ 2252 1170 7E       		.byte	0x7e
+ 2253 1171 8E110000 		.4byte	0x118e
+ 2254 1175 20       		.uleb128 0x20
+ 2255 1176 3C040000 		.4byte	.LASF355
+ 2256 117a 00       		.byte	0
+ 2257 117b 20       		.uleb128 0x20
+ 2258 117c E8080000 		.4byte	.LASF356
+ 2259 1180 01       		.byte	0x1
+ 2260 1181 20       		.uleb128 0x20
+ 2261 1182 720B0000 		.4byte	.LASF357
+ 2262 1186 02       		.byte	0x2
+ 2263 1187 20       		.uleb128 0x20
+ 2264 1188 090D0000 		.4byte	.LASF358
+ 2265 118c 03       		.byte	0x3
+ 2266 118d 00       		.byte	0
+ 2267 118e 03       		.uleb128 0x3
+ 2268 118f A5080000 		.4byte	.LASF359
+ 2269 1193 0D       		.byte	0xd
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 44
+
+
+ 2270 1194 83       		.byte	0x83
+ 2271 1195 69110000 		.4byte	0x1169
+ 2272 1199 22       		.uleb128 0x22
+ 2273 119a 01       		.byte	0x1
+ 2274 119b 37000000 		.4byte	0x37
+ 2275 119f 0D       		.byte	0xd
+ 2276 11a0 87       		.byte	0x87
+ 2277 11a1 D6110000 		.4byte	0x11d6
+ 2278 11a5 20       		.uleb128 0x20
+ 2279 11a6 E5060000 		.4byte	.LASF360
+ 2280 11aa 00       		.byte	0
+ 2281 11ab 20       		.uleb128 0x20
+ 2282 11ac DA050000 		.4byte	.LASF361
+ 2283 11b0 01       		.byte	0x1
+ 2284 11b1 20       		.uleb128 0x20
+ 2285 11b2 B7130000 		.4byte	.LASF362
+ 2286 11b6 02       		.byte	0x2
+ 2287 11b7 20       		.uleb128 0x20
+ 2288 11b8 111E0000 		.4byte	.LASF363
+ 2289 11bc 03       		.byte	0x3
+ 2290 11bd 20       		.uleb128 0x20
+ 2291 11be 9A090000 		.4byte	.LASF364
+ 2292 11c2 04       		.byte	0x4
+ 2293 11c3 20       		.uleb128 0x20
+ 2294 11c4 3A0D0000 		.4byte	.LASF365
+ 2295 11c8 05       		.byte	0x5
+ 2296 11c9 20       		.uleb128 0x20
+ 2297 11ca 8C130000 		.4byte	.LASF366
+ 2298 11ce 06       		.byte	0x6
+ 2299 11cf 20       		.uleb128 0x20
+ 2300 11d0 AF010000 		.4byte	.LASF367
+ 2301 11d4 07       		.byte	0x7
+ 2302 11d5 00       		.byte	0
+ 2303 11d6 03       		.uleb128 0x3
+ 2304 11d7 00100000 		.4byte	.LASF368
+ 2305 11db 0D       		.byte	0xd
+ 2306 11dc 90       		.byte	0x90
+ 2307 11dd 99110000 		.4byte	0x1199
+ 2308 11e1 03       		.uleb128 0x3
+ 2309 11e2 A10E0000 		.4byte	.LASF369
+ 2310 11e6 0E       		.byte	0xe
+ 2311 11e7 2E       		.byte	0x2e
+ 2312 11e8 A9000000 		.4byte	0xa9
+ 2313 11ec 03       		.uleb128 0x3
+ 2314 11ed EB160000 		.4byte	.LASF370
+ 2315 11f1 0F       		.byte	0xf
+ 2316 11f2 25       		.byte	0x25
+ 2317 11f3 E1110000 		.4byte	0x11e1
+ 2318 11f7 23       		.uleb128 0x23
+ 2319 11f8 B61C0000 		.4byte	.LASF389
+ 2320 11fc 02       		.byte	0x2
+ 2321 11fd 81       		.byte	0x81
+ 2322 11fe 03       		.byte	0x3
+ 2323 11ff 24       		.uleb128 0x24
+ 2324 1200 A11C0000 		.4byte	.LASF390
+ 2325 1204 01       		.byte	0x1
+ 2326 1205 18       		.byte	0x18
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 45
+
+
+ 2327 1206 94000000 		.4byte	0x94
+ 2328 120a 00000000 		.4byte	.LFB496
+ 2329 120e 6C000000 		.4byte	.LFE496-.LFB496
+ 2330 1212 01       		.uleb128 0x1
+ 2331 1213 9C       		.byte	0x9c
+ 2332 1214 D4120000 		.4byte	0x12d4
+ 2333 1218 25       		.uleb128 0x25
+ 2334 1219 F7110000 		.4byte	0x11f7
+ 2335 121d 04000000 		.4byte	.LBB4
+ 2336 1221 02000000 		.4byte	.LBE4-.LBB4
+ 2337 1225 01       		.byte	0x1
+ 2338 1226 1A       		.byte	0x1a
+ 2339 1227 26       		.uleb128 0x26
+ 2340 1228 0A000000 		.4byte	.LVL0
+ 2341 122c 73130000 		.4byte	0x1373
+ 2342 1230 27       		.uleb128 0x27
+ 2343 1231 1A000000 		.4byte	.LVL1
+ 2344 1235 7E130000 		.4byte	0x137e
+ 2345 1239 4D120000 		.4byte	0x124d
+ 2346 123d 28       		.uleb128 0x28
+ 2347 123e 01       		.uleb128 0x1
+ 2348 123f 51       		.byte	0x51
+ 2349 1240 01       		.uleb128 0x1
+ 2350 1241 30       		.byte	0x30
+ 2351 1242 28       		.uleb128 0x28
+ 2352 1243 01       		.uleb128 0x1
+ 2353 1244 52       		.byte	0x52
+ 2354 1245 01       		.uleb128 0x1
+ 2355 1246 32       		.byte	0x32
+ 2356 1247 28       		.uleb128 0x28
+ 2357 1248 01       		.uleb128 0x1
+ 2358 1249 53       		.byte	0x53
+ 2359 124a 01       		.uleb128 0x1
+ 2360 124b 30       		.byte	0x30
+ 2361 124c 00       		.byte	0
+ 2362 124d 27       		.uleb128 0x27
+ 2363 124e 28000000 		.4byte	.LVL2
+ 2364 1252 7E130000 		.4byte	0x137e
+ 2365 1256 6A120000 		.4byte	0x126a
+ 2366 125a 28       		.uleb128 0x28
+ 2367 125b 01       		.uleb128 0x1
+ 2368 125c 51       		.byte	0x51
+ 2369 125d 01       		.uleb128 0x1
+ 2370 125e 30       		.byte	0x30
+ 2371 125f 28       		.uleb128 0x28
+ 2372 1260 01       		.uleb128 0x1
+ 2373 1261 52       		.byte	0x52
+ 2374 1262 01       		.uleb128 0x1
+ 2375 1263 32       		.byte	0x32
+ 2376 1264 28       		.uleb128 0x28
+ 2377 1265 01       		.uleb128 0x1
+ 2378 1266 53       		.byte	0x53
+ 2379 1267 01       		.uleb128 0x1
+ 2380 1268 30       		.byte	0x30
+ 2381 1269 00       		.byte	0
+ 2382 126a 27       		.uleb128 0x27
+ 2383 126b 2E000000 		.4byte	.LVL3
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 46
+
+
+ 2384 126f 89130000 		.4byte	0x1389
+ 2385 1273 81120000 		.4byte	0x1281
+ 2386 1277 28       		.uleb128 0x28
+ 2387 1278 01       		.uleb128 0x1
+ 2388 1279 50       		.byte	0x50
+ 2389 127a 05       		.uleb128 0x5
+ 2390 127b 03       		.byte	0x3
+ 2391 127c 00000000 		.4byte	.LC0
+ 2392 1280 00       		.byte	0
+ 2393 1281 27       		.uleb128 0x27
+ 2394 1282 44000000 		.4byte	.LVL4
+ 2395 1286 94130000 		.4byte	0x1394
+ 2396 128a B2120000 		.4byte	0x12b2
+ 2397 128e 28       		.uleb128 0x28
+ 2398 128f 01       		.uleb128 0x1
+ 2399 1290 51       		.byte	0x51
+ 2400 1291 05       		.uleb128 0x5
+ 2401 1292 03       		.byte	0x3
+ 2402 1293 1C000000 		.4byte	.LC1
+ 2403 1297 28       		.uleb128 0x28
+ 2404 1298 01       		.uleb128 0x1
+ 2405 1299 52       		.byte	0x52
+ 2406 129a 03       		.uleb128 0x3
+ 2407 129b 0A       		.byte	0xa
+ 2408 129c 0020     		.2byte	0x2000
+ 2409 129e 28       		.uleb128 0x28
+ 2410 129f 01       		.uleb128 0x1
+ 2411 12a0 53       		.byte	0x53
+ 2412 12a1 02       		.uleb128 0x2
+ 2413 12a2 74       		.byte	0x74
+ 2414 12a3 00       		.sleb128 0
+ 2415 12a4 28       		.uleb128 0x28
+ 2416 12a5 02       		.uleb128 0x2
+ 2417 12a6 7D       		.byte	0x7d
+ 2418 12a7 00       		.sleb128 0
+ 2419 12a8 01       		.uleb128 0x1
+ 2420 12a9 32       		.byte	0x32
+ 2421 12aa 28       		.uleb128 0x28
+ 2422 12ab 02       		.uleb128 0x2
+ 2423 12ac 7D       		.byte	0x7d
+ 2424 12ad 04       		.sleb128 4
+ 2425 12ae 02       		.uleb128 0x2
+ 2426 12af 74       		.byte	0x74
+ 2427 12b0 00       		.sleb128 0
+ 2428 12b1 00       		.byte	0
+ 2429 12b2 26       		.uleb128 0x26
+ 2430 12b3 48000000 		.4byte	.LVL5
+ 2431 12b7 A0130000 		.4byte	0x13a0
+ 2432 12bb 29       		.uleb128 0x29
+ 2433 12bc 50000000 		.4byte	.LVL6
+ 2434 12c0 AC130000 		.4byte	0x13ac
+ 2435 12c4 28       		.uleb128 0x28
+ 2436 12c5 01       		.uleb128 0x1
+ 2437 12c6 50       		.byte	0x50
+ 2438 12c7 05       		.uleb128 0x5
+ 2439 12c8 03       		.byte	0x3
+ 2440 12c9 24000000 		.4byte	.LC2
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 47
+
+
+ 2441 12cd 28       		.uleb128 0x28
+ 2442 12ce 01       		.uleb128 0x1
+ 2443 12cf 51       		.byte	0x51
+ 2444 12d0 01       		.uleb128 0x1
+ 2445 12d1 31       		.byte	0x31
+ 2446 12d2 00       		.byte	0
+ 2447 12d3 00       		.byte	0
+ 2448 12d4 2A       		.uleb128 0x2a
+ 2449 12d5 0B060000 		.4byte	.LASF371
+ 2450 12d9 07       		.byte	0x7
+ 2451 12da FD02     		.2byte	0x2fd
+ 2452 12dc 50040000 		.4byte	0x450
+ 2453 12e0 2A       		.uleb128 0x2a
+ 2454 12e1 B1160000 		.4byte	.LASF372
+ 2455 12e5 10       		.byte	0x10
+ 2456 12e6 F907     		.2byte	0x7f9
+ 2457 12e8 EC120000 		.4byte	0x12ec
+ 2458 12ec 1E       		.uleb128 0x1e
+ 2459 12ed C0080000 		.4byte	0x8c0
+ 2460 12f1 2B       		.uleb128 0x2b
+ 2461 12f2 EB000000 		.4byte	.LASF373
+ 2462 12f6 09       		.byte	0x9
+ 2463 12f7 A7       		.byte	0xa7
+ 2464 12f8 FC120000 		.4byte	0x12fc
+ 2465 12fc 0F       		.uleb128 0xf
+ 2466 12fd 04       		.byte	0x4
+ 2467 12fe 02130000 		.4byte	0x1302
+ 2468 1302 18       		.uleb128 0x18
+ 2469 1303 EC0C0000 		.4byte	0xcec
+ 2470 1307 2A       		.uleb128 0x2a
+ 2471 1308 D10F0000 		.4byte	.LASF374
+ 2472 130c 0D       		.byte	0xd
+ 2473 130d 2202     		.2byte	0x222
+ 2474 130f 8E110000 		.4byte	0x118e
+ 2475 1313 09       		.uleb128 0x9
+ 2476 1314 5D110000 		.4byte	0x115d
+ 2477 1318 23130000 		.4byte	0x1323
+ 2478 131c 0A       		.uleb128 0xa
+ 2479 131d 07010000 		.4byte	0x107
+ 2480 1321 00       		.byte	0
+ 2481 1322 00       		.byte	0
+ 2482 1323 2A       		.uleb128 0x2a
+ 2483 1324 78020000 		.4byte	.LASF375
+ 2484 1328 0D       		.byte	0xd
+ 2485 1329 2C02     		.2byte	0x22c
+ 2486 132b 13130000 		.4byte	0x1313
+ 2487 132f 09       		.uleb128 0x9
+ 2488 1330 D6110000 		.4byte	0x11d6
+ 2489 1334 3F130000 		.4byte	0x133f
+ 2490 1338 0A       		.uleb128 0xa
+ 2491 1339 07010000 		.4byte	0x107
+ 2492 133d 00       		.byte	0
+ 2493 133e 00       		.byte	0
+ 2494 133f 2A       		.uleb128 0x2a
+ 2495 1340 14000000 		.4byte	.LASF376
+ 2496 1344 0D       		.byte	0xd
+ 2497 1345 2D02     		.2byte	0x22d
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 48
+
+
+ 2498 1347 2F130000 		.4byte	0x132f
+ 2499 134b 2A       		.uleb128 0x2a
+ 2500 134c 541E0000 		.4byte	.LASF377
+ 2501 1350 0D       		.byte	0xd
+ 2502 1351 5202     		.2byte	0x252
+ 2503 1353 9F080000 		.4byte	0x89f
+ 2504 1357 2B       		.uleb128 0x2b
+ 2505 1358 181D0000 		.4byte	.LASF378
+ 2506 135c 11       		.byte	0x11
+ 2507 135d 87       		.byte	0x87
+ 2508 135e ED0D0000 		.4byte	0xded
+ 2509 1362 2C       		.uleb128 0x2c
+ 2510 1363 21080000 		.4byte	.LASF379
+ 2511 1367 01       		.byte	0x1
+ 2512 1368 16       		.byte	0x16
+ 2513 1369 EC110000 		.4byte	0x11ec
+ 2514 136d 05       		.uleb128 0x5
+ 2515 136e 03       		.byte	0x3
+ 2516 136f 00000000 		.4byte	bleSemaphore
+ 2517 1373 2D       		.uleb128 0x2d
+ 2518 1374 6D180000 		.4byte	.LASF380
+ 2519 1378 6D180000 		.4byte	.LASF380
+ 2520 137c 11       		.byte	0x11
+ 2521 137d 31       		.byte	0x31
+ 2522 137e 2D       		.uleb128 0x2d
+ 2523 137f 2F020000 		.4byte	.LASF381
+ 2524 1383 2F020000 		.4byte	.LASF381
+ 2525 1387 12       		.byte	0x12
+ 2526 1388 B6       		.byte	0xb6
+ 2527 1389 2D       		.uleb128 0x2d
+ 2528 138a 95190000 		.4byte	.LASF382
+ 2529 138e 95190000 		.4byte	.LASF382
+ 2530 1392 13       		.byte	0x13
+ 2531 1393 10       		.byte	0x10
+ 2532 1394 2E       		.uleb128 0x2e
+ 2533 1395 AF0E0000 		.4byte	.LASF383
+ 2534 1399 AF0E0000 		.4byte	.LASF383
+ 2535 139d 14       		.byte	0x14
+ 2536 139e 4101     		.2byte	0x141
+ 2537 13a0 2E       		.uleb128 0x2e
+ 2538 13a1 031A0000 		.4byte	.LASF384
+ 2539 13a5 031A0000 		.4byte	.LASF384
+ 2540 13a9 14       		.byte	0x14
+ 2541 13aa 8E04     		.2byte	0x48e
+ 2542 13ac 2D       		.uleb128 0x2d
+ 2543 13ad DD080000 		.4byte	.LASF385
+ 2544 13b1 DD080000 		.4byte	.LASF385
+ 2545 13b5 13       		.byte	0x13
+ 2546 13b6 14       		.byte	0x14
+ 2547 13b7 00       		.byte	0
+ 2548              		.section	.debug_abbrev,"",%progbits
+ 2549              	.Ldebug_abbrev0:
+ 2550 0000 01       		.uleb128 0x1
+ 2551 0001 11       		.uleb128 0x11
+ 2552 0002 01       		.byte	0x1
+ 2553 0003 25       		.uleb128 0x25
+ 2554 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 49
+
+
+ 2555 0005 13       		.uleb128 0x13
+ 2556 0006 0B       		.uleb128 0xb
+ 2557 0007 03       		.uleb128 0x3
+ 2558 0008 0E       		.uleb128 0xe
+ 2559 0009 1B       		.uleb128 0x1b
+ 2560 000a 0E       		.uleb128 0xe
+ 2561 000b 55       		.uleb128 0x55
+ 2562 000c 17       		.uleb128 0x17
+ 2563 000d 11       		.uleb128 0x11
+ 2564 000e 01       		.uleb128 0x1
+ 2565 000f 10       		.uleb128 0x10
+ 2566 0010 17       		.uleb128 0x17
+ 2567 0011 00       		.byte	0
+ 2568 0012 00       		.byte	0
+ 2569 0013 02       		.uleb128 0x2
+ 2570 0014 24       		.uleb128 0x24
+ 2571 0015 00       		.byte	0
+ 2572 0016 0B       		.uleb128 0xb
+ 2573 0017 0B       		.uleb128 0xb
+ 2574 0018 3E       		.uleb128 0x3e
+ 2575 0019 0B       		.uleb128 0xb
+ 2576 001a 03       		.uleb128 0x3
+ 2577 001b 0E       		.uleb128 0xe
+ 2578 001c 00       		.byte	0
+ 2579 001d 00       		.byte	0
+ 2580 001e 03       		.uleb128 0x3
+ 2581 001f 16       		.uleb128 0x16
+ 2582 0020 00       		.byte	0
+ 2583 0021 03       		.uleb128 0x3
+ 2584 0022 0E       		.uleb128 0xe
+ 2585 0023 3A       		.uleb128 0x3a
+ 2586 0024 0B       		.uleb128 0xb
+ 2587 0025 3B       		.uleb128 0x3b
+ 2588 0026 0B       		.uleb128 0xb
+ 2589 0027 49       		.uleb128 0x49
+ 2590 0028 13       		.uleb128 0x13
+ 2591 0029 00       		.byte	0
+ 2592 002a 00       		.byte	0
+ 2593 002b 04       		.uleb128 0x4
+ 2594 002c 24       		.uleb128 0x24
+ 2595 002d 00       		.byte	0
+ 2596 002e 0B       		.uleb128 0xb
+ 2597 002f 0B       		.uleb128 0xb
+ 2598 0030 3E       		.uleb128 0x3e
+ 2599 0031 0B       		.uleb128 0xb
+ 2600 0032 03       		.uleb128 0x3
+ 2601 0033 08       		.uleb128 0x8
+ 2602 0034 00       		.byte	0
+ 2603 0035 00       		.byte	0
+ 2604 0036 05       		.uleb128 0x5
+ 2605 0037 0F       		.uleb128 0xf
+ 2606 0038 00       		.byte	0
+ 2607 0039 0B       		.uleb128 0xb
+ 2608 003a 0B       		.uleb128 0xb
+ 2609 003b 00       		.byte	0
+ 2610 003c 00       		.byte	0
+ 2611 003d 06       		.uleb128 0x6
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 50
+
+
+ 2612 003e 16       		.uleb128 0x16
+ 2613 003f 00       		.byte	0
+ 2614 0040 03       		.uleb128 0x3
+ 2615 0041 0E       		.uleb128 0xe
+ 2616 0042 3A       		.uleb128 0x3a
+ 2617 0043 0B       		.uleb128 0xb
+ 2618 0044 3B       		.uleb128 0x3b
+ 2619 0045 05       		.uleb128 0x5
+ 2620 0046 49       		.uleb128 0x49
+ 2621 0047 13       		.uleb128 0x13
+ 2622 0048 00       		.byte	0
+ 2623 0049 00       		.byte	0
+ 2624 004a 07       		.uleb128 0x7
+ 2625 004b 17       		.uleb128 0x17
+ 2626 004c 01       		.byte	0x1
+ 2627 004d 0B       		.uleb128 0xb
+ 2628 004e 0B       		.uleb128 0xb
+ 2629 004f 3A       		.uleb128 0x3a
+ 2630 0050 0B       		.uleb128 0xb
+ 2631 0051 3B       		.uleb128 0x3b
+ 2632 0052 0B       		.uleb128 0xb
+ 2633 0053 01       		.uleb128 0x1
+ 2634 0054 13       		.uleb128 0x13
+ 2635 0055 00       		.byte	0
+ 2636 0056 00       		.byte	0
+ 2637 0057 08       		.uleb128 0x8
+ 2638 0058 0D       		.uleb128 0xd
+ 2639 0059 00       		.byte	0
+ 2640 005a 03       		.uleb128 0x3
+ 2641 005b 0E       		.uleb128 0xe
+ 2642 005c 3A       		.uleb128 0x3a
+ 2643 005d 0B       		.uleb128 0xb
+ 2644 005e 3B       		.uleb128 0x3b
+ 2645 005f 0B       		.uleb128 0xb
+ 2646 0060 49       		.uleb128 0x49
+ 2647 0061 13       		.uleb128 0x13
+ 2648 0062 00       		.byte	0
+ 2649 0063 00       		.byte	0
+ 2650 0064 09       		.uleb128 0x9
+ 2651 0065 01       		.uleb128 0x1
+ 2652 0066 01       		.byte	0x1
+ 2653 0067 49       		.uleb128 0x49
+ 2654 0068 13       		.uleb128 0x13
+ 2655 0069 01       		.uleb128 0x1
+ 2656 006a 13       		.uleb128 0x13
+ 2657 006b 00       		.byte	0
+ 2658 006c 00       		.byte	0
+ 2659 006d 0A       		.uleb128 0xa
+ 2660 006e 21       		.uleb128 0x21
+ 2661 006f 00       		.byte	0
+ 2662 0070 49       		.uleb128 0x49
+ 2663 0071 13       		.uleb128 0x13
+ 2664 0072 2F       		.uleb128 0x2f
+ 2665 0073 0B       		.uleb128 0xb
+ 2666 0074 00       		.byte	0
+ 2667 0075 00       		.byte	0
+ 2668 0076 0B       		.uleb128 0xb
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 51
+
+
+ 2669 0077 13       		.uleb128 0x13
+ 2670 0078 01       		.byte	0x1
+ 2671 0079 0B       		.uleb128 0xb
+ 2672 007a 0B       		.uleb128 0xb
+ 2673 007b 3A       		.uleb128 0x3a
+ 2674 007c 0B       		.uleb128 0xb
+ 2675 007d 3B       		.uleb128 0x3b
+ 2676 007e 0B       		.uleb128 0xb
+ 2677 007f 01       		.uleb128 0x1
+ 2678 0080 13       		.uleb128 0x13
+ 2679 0081 00       		.byte	0
+ 2680 0082 00       		.byte	0
+ 2681 0083 0C       		.uleb128 0xc
+ 2682 0084 0D       		.uleb128 0xd
+ 2683 0085 00       		.byte	0
+ 2684 0086 03       		.uleb128 0x3
+ 2685 0087 0E       		.uleb128 0xe
+ 2686 0088 3A       		.uleb128 0x3a
+ 2687 0089 0B       		.uleb128 0xb
+ 2688 008a 3B       		.uleb128 0x3b
+ 2689 008b 0B       		.uleb128 0xb
+ 2690 008c 49       		.uleb128 0x49
+ 2691 008d 13       		.uleb128 0x13
+ 2692 008e 38       		.uleb128 0x38
+ 2693 008f 0B       		.uleb128 0xb
+ 2694 0090 00       		.byte	0
+ 2695 0091 00       		.byte	0
+ 2696 0092 0D       		.uleb128 0xd
+ 2697 0093 13       		.uleb128 0x13
+ 2698 0094 01       		.byte	0x1
+ 2699 0095 03       		.uleb128 0x3
+ 2700 0096 0E       		.uleb128 0xe
+ 2701 0097 0B       		.uleb128 0xb
+ 2702 0098 0B       		.uleb128 0xb
+ 2703 0099 3A       		.uleb128 0x3a
+ 2704 009a 0B       		.uleb128 0xb
+ 2705 009b 3B       		.uleb128 0x3b
+ 2706 009c 0B       		.uleb128 0xb
+ 2707 009d 01       		.uleb128 0x1
+ 2708 009e 13       		.uleb128 0x13
+ 2709 009f 00       		.byte	0
+ 2710 00a0 00       		.byte	0
+ 2711 00a1 0E       		.uleb128 0xe
+ 2712 00a2 0D       		.uleb128 0xd
+ 2713 00a3 00       		.byte	0
+ 2714 00a4 03       		.uleb128 0x3
+ 2715 00a5 08       		.uleb128 0x8
+ 2716 00a6 3A       		.uleb128 0x3a
+ 2717 00a7 0B       		.uleb128 0xb
+ 2718 00a8 3B       		.uleb128 0x3b
+ 2719 00a9 0B       		.uleb128 0xb
+ 2720 00aa 49       		.uleb128 0x49
+ 2721 00ab 13       		.uleb128 0x13
+ 2722 00ac 38       		.uleb128 0x38
+ 2723 00ad 0B       		.uleb128 0xb
+ 2724 00ae 00       		.byte	0
+ 2725 00af 00       		.byte	0
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 52
+
+
+ 2726 00b0 0F       		.uleb128 0xf
+ 2727 00b1 0F       		.uleb128 0xf
+ 2728 00b2 00       		.byte	0
+ 2729 00b3 0B       		.uleb128 0xb
+ 2730 00b4 0B       		.uleb128 0xb
+ 2731 00b5 49       		.uleb128 0x49
+ 2732 00b6 13       		.uleb128 0x13
+ 2733 00b7 00       		.byte	0
+ 2734 00b8 00       		.byte	0
+ 2735 00b9 10       		.uleb128 0x10
+ 2736 00ba 13       		.uleb128 0x13
+ 2737 00bb 01       		.byte	0x1
+ 2738 00bc 03       		.uleb128 0x3
+ 2739 00bd 0E       		.uleb128 0xe
+ 2740 00be 0B       		.uleb128 0xb
+ 2741 00bf 05       		.uleb128 0x5
+ 2742 00c0 3A       		.uleb128 0x3a
+ 2743 00c1 0B       		.uleb128 0xb
+ 2744 00c2 3B       		.uleb128 0x3b
+ 2745 00c3 0B       		.uleb128 0xb
+ 2746 00c4 01       		.uleb128 0x1
+ 2747 00c5 13       		.uleb128 0x13
+ 2748 00c6 00       		.byte	0
+ 2749 00c7 00       		.byte	0
+ 2750 00c8 11       		.uleb128 0x11
+ 2751 00c9 0D       		.uleb128 0xd
+ 2752 00ca 00       		.byte	0
+ 2753 00cb 03       		.uleb128 0x3
+ 2754 00cc 0E       		.uleb128 0xe
+ 2755 00cd 3A       		.uleb128 0x3a
+ 2756 00ce 0B       		.uleb128 0xb
+ 2757 00cf 3B       		.uleb128 0x3b
+ 2758 00d0 0B       		.uleb128 0xb
+ 2759 00d1 49       		.uleb128 0x49
+ 2760 00d2 13       		.uleb128 0x13
+ 2761 00d3 38       		.uleb128 0x38
+ 2762 00d4 05       		.uleb128 0x5
+ 2763 00d5 00       		.byte	0
+ 2764 00d6 00       		.byte	0
+ 2765 00d7 12       		.uleb128 0x12
+ 2766 00d8 15       		.uleb128 0x15
+ 2767 00d9 00       		.byte	0
+ 2768 00da 27       		.uleb128 0x27
+ 2769 00db 19       		.uleb128 0x19
+ 2770 00dc 00       		.byte	0
+ 2771 00dd 00       		.byte	0
+ 2772 00de 13       		.uleb128 0x13
+ 2773 00df 15       		.uleb128 0x15
+ 2774 00e0 01       		.byte	0x1
+ 2775 00e1 27       		.uleb128 0x27
+ 2776 00e2 19       		.uleb128 0x19
+ 2777 00e3 49       		.uleb128 0x49
+ 2778 00e4 13       		.uleb128 0x13
+ 2779 00e5 01       		.uleb128 0x1
+ 2780 00e6 13       		.uleb128 0x13
+ 2781 00e7 00       		.byte	0
+ 2782 00e8 00       		.byte	0
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 53
+
+
+ 2783 00e9 14       		.uleb128 0x14
+ 2784 00ea 05       		.uleb128 0x5
+ 2785 00eb 00       		.byte	0
+ 2786 00ec 49       		.uleb128 0x49
+ 2787 00ed 13       		.uleb128 0x13
+ 2788 00ee 00       		.byte	0
+ 2789 00ef 00       		.byte	0
+ 2790 00f0 15       		.uleb128 0x15
+ 2791 00f1 13       		.uleb128 0x13
+ 2792 00f2 01       		.byte	0x1
+ 2793 00f3 03       		.uleb128 0x3
+ 2794 00f4 0E       		.uleb128 0xe
+ 2795 00f5 0B       		.uleb128 0xb
+ 2796 00f6 05       		.uleb128 0x5
+ 2797 00f7 3A       		.uleb128 0x3a
+ 2798 00f8 0B       		.uleb128 0xb
+ 2799 00f9 3B       		.uleb128 0x3b
+ 2800 00fa 05       		.uleb128 0x5
+ 2801 00fb 01       		.uleb128 0x1
+ 2802 00fc 13       		.uleb128 0x13
+ 2803 00fd 00       		.byte	0
+ 2804 00fe 00       		.byte	0
+ 2805 00ff 16       		.uleb128 0x16
+ 2806 0100 0D       		.uleb128 0xd
+ 2807 0101 00       		.byte	0
+ 2808 0102 03       		.uleb128 0x3
+ 2809 0103 0E       		.uleb128 0xe
+ 2810 0104 3A       		.uleb128 0x3a
+ 2811 0105 0B       		.uleb128 0xb
+ 2812 0106 3B       		.uleb128 0x3b
+ 2813 0107 05       		.uleb128 0x5
+ 2814 0108 49       		.uleb128 0x49
+ 2815 0109 13       		.uleb128 0x13
+ 2816 010a 38       		.uleb128 0x38
+ 2817 010b 0B       		.uleb128 0xb
+ 2818 010c 00       		.byte	0
+ 2819 010d 00       		.byte	0
+ 2820 010e 17       		.uleb128 0x17
+ 2821 010f 0D       		.uleb128 0xd
+ 2822 0110 00       		.byte	0
+ 2823 0111 03       		.uleb128 0x3
+ 2824 0112 0E       		.uleb128 0xe
+ 2825 0113 3A       		.uleb128 0x3a
+ 2826 0114 0B       		.uleb128 0xb
+ 2827 0115 3B       		.uleb128 0x3b
+ 2828 0116 05       		.uleb128 0x5
+ 2829 0117 49       		.uleb128 0x49
+ 2830 0118 13       		.uleb128 0x13
+ 2831 0119 38       		.uleb128 0x38
+ 2832 011a 05       		.uleb128 0x5
+ 2833 011b 00       		.byte	0
+ 2834 011c 00       		.byte	0
+ 2835 011d 18       		.uleb128 0x18
+ 2836 011e 26       		.uleb128 0x26
+ 2837 011f 00       		.byte	0
+ 2838 0120 49       		.uleb128 0x49
+ 2839 0121 13       		.uleb128 0x13
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 54
+
+
+ 2840 0122 00       		.byte	0
+ 2841 0123 00       		.byte	0
+ 2842 0124 19       		.uleb128 0x19
+ 2843 0125 13       		.uleb128 0x13
+ 2844 0126 01       		.byte	0x1
+ 2845 0127 03       		.uleb128 0x3
+ 2846 0128 0E       		.uleb128 0xe
+ 2847 0129 0B       		.uleb128 0xb
+ 2848 012a 0B       		.uleb128 0xb
+ 2849 012b 3A       		.uleb128 0x3a
+ 2850 012c 0B       		.uleb128 0xb
+ 2851 012d 3B       		.uleb128 0x3b
+ 2852 012e 05       		.uleb128 0x5
+ 2853 012f 01       		.uleb128 0x1
+ 2854 0130 13       		.uleb128 0x13
+ 2855 0131 00       		.byte	0
+ 2856 0132 00       		.byte	0
+ 2857 0133 1A       		.uleb128 0x1a
+ 2858 0134 13       		.uleb128 0x13
+ 2859 0135 01       		.byte	0x1
+ 2860 0136 0B       		.uleb128 0xb
+ 2861 0137 0B       		.uleb128 0xb
+ 2862 0138 3A       		.uleb128 0x3a
+ 2863 0139 0B       		.uleb128 0xb
+ 2864 013a 3B       		.uleb128 0x3b
+ 2865 013b 05       		.uleb128 0x5
+ 2866 013c 01       		.uleb128 0x1
+ 2867 013d 13       		.uleb128 0x13
+ 2868 013e 00       		.byte	0
+ 2869 013f 00       		.byte	0
+ 2870 0140 1B       		.uleb128 0x1b
+ 2871 0141 17       		.uleb128 0x17
+ 2872 0142 01       		.byte	0x1
+ 2873 0143 0B       		.uleb128 0xb
+ 2874 0144 0B       		.uleb128 0xb
+ 2875 0145 3A       		.uleb128 0x3a
+ 2876 0146 0B       		.uleb128 0xb
+ 2877 0147 3B       		.uleb128 0x3b
+ 2878 0148 05       		.uleb128 0x5
+ 2879 0149 01       		.uleb128 0x1
+ 2880 014a 13       		.uleb128 0x13
+ 2881 014b 00       		.byte	0
+ 2882 014c 00       		.byte	0
+ 2883 014d 1C       		.uleb128 0x1c
+ 2884 014e 0D       		.uleb128 0xd
+ 2885 014f 00       		.byte	0
+ 2886 0150 03       		.uleb128 0x3
+ 2887 0151 0E       		.uleb128 0xe
+ 2888 0152 3A       		.uleb128 0x3a
+ 2889 0153 0B       		.uleb128 0xb
+ 2890 0154 3B       		.uleb128 0x3b
+ 2891 0155 05       		.uleb128 0x5
+ 2892 0156 49       		.uleb128 0x49
+ 2893 0157 13       		.uleb128 0x13
+ 2894 0158 00       		.byte	0
+ 2895 0159 00       		.byte	0
+ 2896 015a 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 55
+
+
+ 2897 015b 15       		.uleb128 0x15
+ 2898 015c 01       		.byte	0x1
+ 2899 015d 27       		.uleb128 0x27
+ 2900 015e 19       		.uleb128 0x19
+ 2901 015f 01       		.uleb128 0x1
+ 2902 0160 13       		.uleb128 0x13
+ 2903 0161 00       		.byte	0
+ 2904 0162 00       		.byte	0
+ 2905 0163 1E       		.uleb128 0x1e
+ 2906 0164 35       		.uleb128 0x35
+ 2907 0165 00       		.byte	0
+ 2908 0166 49       		.uleb128 0x49
+ 2909 0167 13       		.uleb128 0x13
+ 2910 0168 00       		.byte	0
+ 2911 0169 00       		.byte	0
+ 2912 016a 1F       		.uleb128 0x1f
+ 2913 016b 04       		.uleb128 0x4
+ 2914 016c 01       		.byte	0x1
+ 2915 016d 0B       		.uleb128 0xb
+ 2916 016e 0B       		.uleb128 0xb
+ 2917 016f 49       		.uleb128 0x49
+ 2918 0170 13       		.uleb128 0x13
+ 2919 0171 3A       		.uleb128 0x3a
+ 2920 0172 0B       		.uleb128 0xb
+ 2921 0173 3B       		.uleb128 0x3b
+ 2922 0174 05       		.uleb128 0x5
+ 2923 0175 01       		.uleb128 0x1
+ 2924 0176 13       		.uleb128 0x13
+ 2925 0177 00       		.byte	0
+ 2926 0178 00       		.byte	0
+ 2927 0179 20       		.uleb128 0x20
+ 2928 017a 28       		.uleb128 0x28
+ 2929 017b 00       		.byte	0
+ 2930 017c 03       		.uleb128 0x3
+ 2931 017d 0E       		.uleb128 0xe
+ 2932 017e 1C       		.uleb128 0x1c
+ 2933 017f 0B       		.uleb128 0xb
+ 2934 0180 00       		.byte	0
+ 2935 0181 00       		.byte	0
+ 2936 0182 21       		.uleb128 0x21
+ 2937 0183 28       		.uleb128 0x28
+ 2938 0184 00       		.byte	0
+ 2939 0185 03       		.uleb128 0x3
+ 2940 0186 0E       		.uleb128 0xe
+ 2941 0187 1C       		.uleb128 0x1c
+ 2942 0188 05       		.uleb128 0x5
+ 2943 0189 00       		.byte	0
+ 2944 018a 00       		.byte	0
+ 2945 018b 22       		.uleb128 0x22
+ 2946 018c 04       		.uleb128 0x4
+ 2947 018d 01       		.byte	0x1
+ 2948 018e 0B       		.uleb128 0xb
+ 2949 018f 0B       		.uleb128 0xb
+ 2950 0190 49       		.uleb128 0x49
+ 2951 0191 13       		.uleb128 0x13
+ 2952 0192 3A       		.uleb128 0x3a
+ 2953 0193 0B       		.uleb128 0xb
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 56
+
+
+ 2954 0194 3B       		.uleb128 0x3b
+ 2955 0195 0B       		.uleb128 0xb
+ 2956 0196 01       		.uleb128 0x1
+ 2957 0197 13       		.uleb128 0x13
+ 2958 0198 00       		.byte	0
+ 2959 0199 00       		.byte	0
+ 2960 019a 23       		.uleb128 0x23
+ 2961 019b 2E       		.uleb128 0x2e
+ 2962 019c 00       		.byte	0
+ 2963 019d 03       		.uleb128 0x3
+ 2964 019e 0E       		.uleb128 0xe
+ 2965 019f 3A       		.uleb128 0x3a
+ 2966 01a0 0B       		.uleb128 0xb
+ 2967 01a1 3B       		.uleb128 0x3b
+ 2968 01a2 0B       		.uleb128 0xb
+ 2969 01a3 27       		.uleb128 0x27
+ 2970 01a4 19       		.uleb128 0x19
+ 2971 01a5 20       		.uleb128 0x20
+ 2972 01a6 0B       		.uleb128 0xb
+ 2973 01a7 00       		.byte	0
+ 2974 01a8 00       		.byte	0
+ 2975 01a9 24       		.uleb128 0x24
+ 2976 01aa 2E       		.uleb128 0x2e
+ 2977 01ab 01       		.byte	0x1
+ 2978 01ac 3F       		.uleb128 0x3f
+ 2979 01ad 19       		.uleb128 0x19
+ 2980 01ae 03       		.uleb128 0x3
+ 2981 01af 0E       		.uleb128 0xe
+ 2982 01b0 3A       		.uleb128 0x3a
+ 2983 01b1 0B       		.uleb128 0xb
+ 2984 01b2 3B       		.uleb128 0x3b
+ 2985 01b3 0B       		.uleb128 0xb
+ 2986 01b4 27       		.uleb128 0x27
+ 2987 01b5 19       		.uleb128 0x19
+ 2988 01b6 49       		.uleb128 0x49
+ 2989 01b7 13       		.uleb128 0x13
+ 2990 01b8 11       		.uleb128 0x11
+ 2991 01b9 01       		.uleb128 0x1
+ 2992 01ba 12       		.uleb128 0x12
+ 2993 01bb 06       		.uleb128 0x6
+ 2994 01bc 40       		.uleb128 0x40
+ 2995 01bd 18       		.uleb128 0x18
+ 2996 01be 9742     		.uleb128 0x2117
+ 2997 01c0 19       		.uleb128 0x19
+ 2998 01c1 01       		.uleb128 0x1
+ 2999 01c2 13       		.uleb128 0x13
+ 3000 01c3 00       		.byte	0
+ 3001 01c4 00       		.byte	0
+ 3002 01c5 25       		.uleb128 0x25
+ 3003 01c6 1D       		.uleb128 0x1d
+ 3004 01c7 00       		.byte	0
+ 3005 01c8 31       		.uleb128 0x31
+ 3006 01c9 13       		.uleb128 0x13
+ 3007 01ca 11       		.uleb128 0x11
+ 3008 01cb 01       		.uleb128 0x1
+ 3009 01cc 12       		.uleb128 0x12
+ 3010 01cd 06       		.uleb128 0x6
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 57
+
+
+ 3011 01ce 58       		.uleb128 0x58
+ 3012 01cf 0B       		.uleb128 0xb
+ 3013 01d0 59       		.uleb128 0x59
+ 3014 01d1 0B       		.uleb128 0xb
+ 3015 01d2 00       		.byte	0
+ 3016 01d3 00       		.byte	0
+ 3017 01d4 26       		.uleb128 0x26
+ 3018 01d5 898201   		.uleb128 0x4109
+ 3019 01d8 00       		.byte	0
+ 3020 01d9 11       		.uleb128 0x11
+ 3021 01da 01       		.uleb128 0x1
+ 3022 01db 31       		.uleb128 0x31
+ 3023 01dc 13       		.uleb128 0x13
+ 3024 01dd 00       		.byte	0
+ 3025 01de 00       		.byte	0
+ 3026 01df 27       		.uleb128 0x27
+ 3027 01e0 898201   		.uleb128 0x4109
+ 3028 01e3 01       		.byte	0x1
+ 3029 01e4 11       		.uleb128 0x11
+ 3030 01e5 01       		.uleb128 0x1
+ 3031 01e6 31       		.uleb128 0x31
+ 3032 01e7 13       		.uleb128 0x13
+ 3033 01e8 01       		.uleb128 0x1
+ 3034 01e9 13       		.uleb128 0x13
+ 3035 01ea 00       		.byte	0
+ 3036 01eb 00       		.byte	0
+ 3037 01ec 28       		.uleb128 0x28
+ 3038 01ed 8A8201   		.uleb128 0x410a
+ 3039 01f0 00       		.byte	0
+ 3040 01f1 02       		.uleb128 0x2
+ 3041 01f2 18       		.uleb128 0x18
+ 3042 01f3 9142     		.uleb128 0x2111
+ 3043 01f5 18       		.uleb128 0x18
+ 3044 01f6 00       		.byte	0
+ 3045 01f7 00       		.byte	0
+ 3046 01f8 29       		.uleb128 0x29
+ 3047 01f9 898201   		.uleb128 0x4109
+ 3048 01fc 01       		.byte	0x1
+ 3049 01fd 11       		.uleb128 0x11
+ 3050 01fe 01       		.uleb128 0x1
+ 3051 01ff 31       		.uleb128 0x31
+ 3052 0200 13       		.uleb128 0x13
+ 3053 0201 00       		.byte	0
+ 3054 0202 00       		.byte	0
+ 3055 0203 2A       		.uleb128 0x2a
+ 3056 0204 34       		.uleb128 0x34
+ 3057 0205 00       		.byte	0
+ 3058 0206 03       		.uleb128 0x3
+ 3059 0207 0E       		.uleb128 0xe
+ 3060 0208 3A       		.uleb128 0x3a
+ 3061 0209 0B       		.uleb128 0xb
+ 3062 020a 3B       		.uleb128 0x3b
+ 3063 020b 05       		.uleb128 0x5
+ 3064 020c 49       		.uleb128 0x49
+ 3065 020d 13       		.uleb128 0x13
+ 3066 020e 3F       		.uleb128 0x3f
+ 3067 020f 19       		.uleb128 0x19
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 58
+
+
+ 3068 0210 3C       		.uleb128 0x3c
+ 3069 0211 19       		.uleb128 0x19
+ 3070 0212 00       		.byte	0
+ 3071 0213 00       		.byte	0
+ 3072 0214 2B       		.uleb128 0x2b
+ 3073 0215 34       		.uleb128 0x34
+ 3074 0216 00       		.byte	0
+ 3075 0217 03       		.uleb128 0x3
+ 3076 0218 0E       		.uleb128 0xe
+ 3077 0219 3A       		.uleb128 0x3a
+ 3078 021a 0B       		.uleb128 0xb
+ 3079 021b 3B       		.uleb128 0x3b
+ 3080 021c 0B       		.uleb128 0xb
+ 3081 021d 49       		.uleb128 0x49
+ 3082 021e 13       		.uleb128 0x13
+ 3083 021f 3F       		.uleb128 0x3f
+ 3084 0220 19       		.uleb128 0x19
+ 3085 0221 3C       		.uleb128 0x3c
+ 3086 0222 19       		.uleb128 0x19
+ 3087 0223 00       		.byte	0
+ 3088 0224 00       		.byte	0
+ 3089 0225 2C       		.uleb128 0x2c
+ 3090 0226 34       		.uleb128 0x34
+ 3091 0227 00       		.byte	0
+ 3092 0228 03       		.uleb128 0x3
+ 3093 0229 0E       		.uleb128 0xe
+ 3094 022a 3A       		.uleb128 0x3a
+ 3095 022b 0B       		.uleb128 0xb
+ 3096 022c 3B       		.uleb128 0x3b
+ 3097 022d 0B       		.uleb128 0xb
+ 3098 022e 49       		.uleb128 0x49
+ 3099 022f 13       		.uleb128 0x13
+ 3100 0230 3F       		.uleb128 0x3f
+ 3101 0231 19       		.uleb128 0x19
+ 3102 0232 02       		.uleb128 0x2
+ 3103 0233 18       		.uleb128 0x18
+ 3104 0234 00       		.byte	0
+ 3105 0235 00       		.byte	0
+ 3106 0236 2D       		.uleb128 0x2d
+ 3107 0237 2E       		.uleb128 0x2e
+ 3108 0238 00       		.byte	0
+ 3109 0239 3F       		.uleb128 0x3f
+ 3110 023a 19       		.uleb128 0x19
+ 3111 023b 3C       		.uleb128 0x3c
+ 3112 023c 19       		.uleb128 0x19
+ 3113 023d 6E       		.uleb128 0x6e
+ 3114 023e 0E       		.uleb128 0xe
+ 3115 023f 03       		.uleb128 0x3
+ 3116 0240 0E       		.uleb128 0xe
+ 3117 0241 3A       		.uleb128 0x3a
+ 3118 0242 0B       		.uleb128 0xb
+ 3119 0243 3B       		.uleb128 0x3b
+ 3120 0244 0B       		.uleb128 0xb
+ 3121 0245 00       		.byte	0
+ 3122 0246 00       		.byte	0
+ 3123 0247 2E       		.uleb128 0x2e
+ 3124 0248 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 59
+
+
+ 3125 0249 00       		.byte	0
+ 3126 024a 3F       		.uleb128 0x3f
+ 3127 024b 19       		.uleb128 0x19
+ 3128 024c 3C       		.uleb128 0x3c
+ 3129 024d 19       		.uleb128 0x19
+ 3130 024e 6E       		.uleb128 0x6e
+ 3131 024f 0E       		.uleb128 0xe
+ 3132 0250 03       		.uleb128 0x3
+ 3133 0251 0E       		.uleb128 0xe
+ 3134 0252 3A       		.uleb128 0x3a
+ 3135 0253 0B       		.uleb128 0xb
+ 3136 0254 3B       		.uleb128 0x3b
+ 3137 0255 05       		.uleb128 0x5
+ 3138 0256 00       		.byte	0
+ 3139 0257 00       		.byte	0
+ 3140 0258 00       		.byte	0
+ 3141              		.section	.debug_aranges,"",%progbits
+ 3142 0000 1C000000 		.4byte	0x1c
+ 3143 0004 0200     		.2byte	0x2
+ 3144 0006 00000000 		.4byte	.Ldebug_info0
+ 3145 000a 04       		.byte	0x4
+ 3146 000b 00       		.byte	0
+ 3147 000c 0000     		.2byte	0
+ 3148 000e 0000     		.2byte	0
+ 3149 0010 00000000 		.4byte	.LFB496
+ 3150 0014 6C000000 		.4byte	.LFE496-.LFB496
+ 3151 0018 00000000 		.4byte	0
+ 3152 001c 00000000 		.4byte	0
+ 3153              		.section	.debug_ranges,"",%progbits
+ 3154              	.Ldebug_ranges0:
+ 3155 0000 00000000 		.4byte	.LFB496
+ 3156 0004 6C000000 		.4byte	.LFE496
+ 3157 0008 00000000 		.4byte	0
+ 3158 000c 00000000 		.4byte	0
+ 3159              		.section	.debug_line,"",%progbits
+ 3160              	.Ldebug_line0:
+ 3161 0000 1F040000 		.section	.debug_str,"MS",%progbits,1
+ 3161      0200F703 
+ 3161      00000201 
+ 3161      FB0E0D00 
+ 3161      01010101 
+ 3162              	.LASF171:
+ 3163 0000 666C6173 		.ascii	"flashCtlMainWs1Freq\000"
+ 3163      6843746C 
+ 3163      4D61696E 
+ 3163      57733146 
+ 3163      72657100 
+ 3164              	.LASF376:
+ 3165 0014 63795F62 		.ascii	"cy_ble_connState\000"
+ 3165      6C655F63 
+ 3165      6F6E6E53 
+ 3165      74617465 
+ 3165      00
+ 3166              	.LASF290:
+ 3167 0025 43595F42 		.ascii	"CY_BLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 3167      4C455F45 
+ 3167      56545F47 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 60
+
+
+ 3167      41505F50 
+ 3167      4153534B 
+ 3168              	.LASF244:
+ 3169 004a 43595F42 		.ascii	"CY_BLE_EVT_READ_AUTH_PAYLOAD_TO_COMPLETE\000"
+ 3169      4C455F45 
+ 3169      56545F52 
+ 3169      4541445F 
+ 3169      41555448 
+ 3170              	.LASF347:
+ 3171 0073 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 3171      4C455F45 
+ 3171      56545F4C 
+ 3171      32434150 
+ 3171      5F434246 
+ 3172              	.LASF294:
+ 3173 0093 43595F42 		.ascii	"CY_BLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 3173      4C455F45 
+ 3173      56545F47 
+ 3173      4150505F 
+ 3173      41445645 
+ 3174              	.LASF387:
+ 3175 00bc 6D61696E 		.ascii	"main_cm4.c\000"
+ 3175      5F636D34 
+ 3175      2E6300
+ 3176              	.LASF348:
+ 3177 00c7 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 3177      4C455F45 
+ 3177      56545F4C 
+ 3177      32434150 
+ 3177      5F434246 
+ 3178              	.LASF373:
+ 3179 00eb 63795F64 		.ascii	"cy_device\000"
+ 3179      65766963 
+ 3179      6500
+ 3180              	.LASF349:
+ 3181 00f5 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 3181      4C455F45 
+ 3181      56545F4C 
+ 3181      32434150 
+ 3181      5F434246 
+ 3182              	.LASF240:
+ 3183 0119 43595F42 		.ascii	"CY_BLE_EVT_PENDING_FLASH_WRITE\000"
+ 3183      4C455F45 
+ 3183      56545F50 
+ 3183      454E4449 
+ 3183      4E475F46 
+ 3184              	.LASF198:
+ 3185 0138 63707573 		.ascii	"cpussCm0ClockCtlOffset\000"
+ 3185      73436D30 
+ 3185      436C6F63 
+ 3185      6B43746C 
+ 3185      4F666673 
+ 3186              	.LASF157:
+ 3187 014f 70657269 		.ascii	"periClockNr\000"
+ 3187      436C6F63 
+ 3187      6B4E7200 
+ 3188              	.LASF278:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 61
+
+
+ 3189 015b 43595F42 		.ascii	"CY_BLE_EVT_AES_CCM_DECRYPT_COMPLETE\000"
+ 3189      4C455F45 
+ 3189      56545F41 
+ 3189      45535F43 
+ 3189      434D5F44 
+ 3190              	.LASF333:
+ 3191 017f 43595F42 		.ascii	"CY_BLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 3191      4C455F45 
+ 3191      56545F47 
+ 3191      41545443 
+ 3191      5F48414E 
+ 3192              	.LASF42:
+ 3193 01a1 5F6F6E5F 		.ascii	"_on_exit_args\000"
+ 3193      65786974 
+ 3193      5F617267 
+ 3193      7300
+ 3194              	.LASF367:
+ 3195 01af 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_DISCOVERED\000"
+ 3195      4C455F43 
+ 3195      4F4E4E5F 
+ 3195      53544154 
+ 3195      455F434C 
+ 3196              	.LASF220:
+ 3197 01d3 74785374 		.ascii	"txStatus\000"
+ 3197      61747573 
+ 3197      00
+ 3198              	.LASF130:
+ 3199 01dc 70657269 		.ascii	"periBase\000"
+ 3199      42617365 
+ 3199      00
+ 3200              	.LASF110:
+ 3201 01e5 5F776374 		.ascii	"_wctomb_state\000"
+ 3201      6F6D625F 
+ 3201      73746174 
+ 3201      6500
+ 3202              	.LASF104:
+ 3203 01f3 5F6C6F63 		.ascii	"_localtime_buf\000"
+ 3203      616C7469 
+ 3203      6D655F62 
+ 3203      756600
+ 3204              	.LASF272:
+ 3205 0202 43595F42 		.ascii	"CY_BLE_EVT_SET_TX_PWR_COMPLETE\000"
+ 3205      4C455F45 
+ 3205      56545F53 
+ 3205      45545F54 
+ 3205      585F5057 
+ 3206              	.LASF107:
+ 3207 0221 5F723438 		.ascii	"_r48\000"
+ 3207      00
+ 3208              	.LASF176:
+ 3209 0226 64774368 		.ascii	"dwChSize\000"
+ 3209      53697A65 
+ 3209      00
+ 3210              	.LASF381:
+ 3211 022f 73657476 		.ascii	"setvbuf\000"
+ 3211      62756600 
+ 3212              	.LASF17:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 62
+
+
+ 3213 0237 5F66706F 		.ascii	"_fpos_t\000"
+ 3213      735F7400 
+ 3214              	.LASF36:
+ 3215 023f 5F5F746D 		.ascii	"__tm_mday\000"
+ 3215      5F6D6461 
+ 3215      7900
+ 3216              	.LASF112:
+ 3217 0249 5F736967 		.ascii	"_signal_buf\000"
+ 3217      6E616C5F 
+ 3217      62756600 
+ 3218              	.LASF13:
+ 3219 0255 756E7369 		.ascii	"unsigned int\000"
+ 3219      676E6564 
+ 3219      20696E74 
+ 3219      00
+ 3220              	.LASF205:
+ 3221 0262 63707573 		.ascii	"cpussSysTickCtlOffset\000"
+ 3221      73537973 
+ 3221      5469636B 
+ 3221      43746C4F 
+ 3221      66667365 
+ 3222              	.LASF375:
+ 3223 0278 63795F62 		.ascii	"cy_ble_connHandle\000"
+ 3223      6C655F63 
+ 3223      6F6E6E48 
+ 3223      616E646C 
+ 3223      6500
+ 3224              	.LASF311:
+ 3225 028a 43595F42 		.ascii	"CY_BLE_EVT_GAP_CREATE_CONN_CANCEL_COMPLETE\000"
+ 3225      4C455F45 
+ 3225      56545F47 
+ 3225      41505F43 
+ 3225      52454154 
+ 3226              	.LASF158:
+ 3227 02b5 736D6966 		.ascii	"smifDeviceNr\000"
+ 3227      44657669 
+ 3227      63654E72 
+ 3227      00
+ 3228              	.LASF188:
+ 3229 02c2 70657269 		.ascii	"periDivCmdPaTypeSelPos\000"
+ 3229      44697643 
+ 3229      6D645061 
+ 3229      54797065 
+ 3229      53656C50 
+ 3230              	.LASF308:
+ 3231 02d9 43595F42 		.ascii	"CY_BLE_EVT_GAP_KEYS_GEN_COMPLETE\000"
+ 3231      4C455F45 
+ 3231      56545F47 
+ 3231      41505F4B 
+ 3231      4559535F 
+ 3232              	.LASF56:
+ 3233 02fa 5F6C6266 		.ascii	"_lbfsize\000"
+ 3233      73697A65 
+ 3233      00
+ 3234              	.LASF54:
+ 3235 0303 5F666C61 		.ascii	"_flags\000"
+ 3235      677300
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 63
+
+
+ 3236              	.LASF241:
+ 3237 030a 43595F42 		.ascii	"CY_BLE_EVT_FLASH_CORRUPT\000"
+ 3237      4C455F45 
+ 3237      56545F46 
+ 3237      4C415348 
+ 3237      5F434F52 
+ 3238              	.LASF7:
+ 3239 0323 5F5F696E 		.ascii	"__int32_t\000"
+ 3239      7433325F 
+ 3239      7400
+ 3240              	.LASF71:
+ 3241 032d 5F657272 		.ascii	"_errno\000"
+ 3241      6E6F00
+ 3242              	.LASF128:
+ 3243 0334 63707573 		.ascii	"cpussBase\000"
+ 3243      73426173 
+ 3243      6500
+ 3244              	.LASF253:
+ 3245 033e 43595F42 		.ascii	"CY_BLE_EVT_GET_LOCAL_RPA_COMPLETE\000"
+ 3245      4C455F45 
+ 3245      56545F47 
+ 3245      45545F4C 
+ 3245      4F43414C 
+ 3246              	.LASF322:
+ 3247 0360 43595F42 		.ascii	"CY_BLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 3247      4C455F45 
+ 3247      56545F47 
+ 3247      41545443 
+ 3247      5F46494E 
+ 3248              	.LASF145:
+ 3249 037f 70657269 		.ascii	"periVersion\000"
+ 3249      56657273 
+ 3249      696F6E00 
+ 3250              	.LASF265:
+ 3251 038b 43595F42 		.ascii	"CY_BLE_EVT_SET_PRIVACY_MODE_COMPLETE\000"
+ 3251      4C455F45 
+ 3251      56545F53 
+ 3251      45545F50 
+ 3251      52495641 
+ 3252              	.LASF98:
+ 3253 03b0 5F736565 		.ascii	"_seed\000"
+ 3253      6400
+ 3254              	.LASF153:
+ 3255 03b6 63707573 		.ascii	"cpussNotConnectedIrq\000"
+ 3255      734E6F74 
+ 3255      436F6E6E 
+ 3255      65637465 
+ 3255      64497271 
+ 3256              	.LASF223:
+ 3257 03cb 72785269 		.ascii	"rxRingBufSize\000"
+ 3257      6E674275 
+ 3257      6653697A 
+ 3257      6500
+ 3258              	.LASF15:
+ 3259 03d9 5F4C4F43 		.ascii	"_LOCK_RECURSIVE_T\000"
+ 3259      4B5F5245 
+ 3259      43555253 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 64
+
+
+ 3259      4956455F 
+ 3259      5400
+ 3260              	.LASF184:
+ 3261 03eb 70657269 		.ascii	"periTrGrSize\000"
+ 3261      54724772 
+ 3261      53697A65 
+ 3261      00
+ 3262              	.LASF316:
+ 3263 03f8 43595F42 		.ascii	"CY_BLE_EVT_GATT_CONNECT_IND\000"
+ 3263      4C455F45 
+ 3263      56545F47 
+ 3263      4154545F 
+ 3263      434F4E4E 
+ 3264              	.LASF115:
+ 3265 0414 5F6D6272 		.ascii	"_mbrtowc_state\000"
+ 3265      746F7763 
+ 3265      5F737461 
+ 3265      746500
+ 3266              	.LASF235:
+ 3267 0423 43595F42 		.ascii	"CY_BLE_EVT_INVALID\000"
+ 3267      4C455F45 
+ 3267      56545F49 
+ 3267      4E56414C 
+ 3267      494400
+ 3268              	.LASF58:
+ 3269 0436 5F726561 		.ascii	"_read\000"
+ 3269      6400
+ 3270              	.LASF355:
+ 3271 043c 43595F42 		.ascii	"CY_BLE_ADV_STATE_STOPPED\000"
+ 3271      4C455F41 
+ 3271      44565F53 
+ 3271      54415445 
+ 3271      5F53544F 
+ 3272              	.LASF114:
+ 3273 0455 5F6D6272 		.ascii	"_mbrlen_state\000"
+ 3273      6C656E5F 
+ 3273      73746174 
+ 3273      6500
+ 3274              	.LASF210:
+ 3275 0463 63707573 		.ascii	"cpussRam1Ctl0\000"
+ 3275      7352616D 
+ 3275      3143746C 
+ 3275      3000
+ 3276              	.LASF323:
+ 3277 0471 43595F42 		.ascii	"CY_BLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 3277      4C455F45 
+ 3277      56545F47 
+ 3277      41545443 
+ 3277      5F46494E 
+ 3278              	.LASF212:
+ 3279 0499 69706353 		.ascii	"ipcStructSize\000"
+ 3279      74727563 
+ 3279      7453697A 
+ 3279      6500
+ 3280              	.LASF263:
+ 3281 04a7 43595F42 		.ascii	"CY_BLE_EVT_SET_PHY_COMPLETE\000"
+ 3281      4C455F45 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 65
+
+
+ 3281      56545F53 
+ 3281      45545F50 
+ 3281      48595F43 
+ 3282              	.LASF152:
+ 3283 04c3 63707573 		.ascii	"cpussFmIrq\000"
+ 3283      73466D49 
+ 3283      727100
+ 3284              	.LASF338:
+ 3285 04ce 43595F42 		.ascii	"CY_BLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 3285      4C455F45 
+ 3285      56545F47 
+ 3285      41545453 
+ 3285      5F524541 
+ 3286              	.LASF73:
+ 3287 04f8 5F737464 		.ascii	"_stdout\000"
+ 3287      6F757400 
+ 3288              	.LASF386:
+ 3289 0500 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3289      43313120 
+ 3289      352E342E 
+ 3289      31203230 
+ 3289      31363036 
+ 3290 0533 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+ 3290      20726576 
+ 3290      6973696F 
+ 3290      6E203233 
+ 3290      37373135 
+ 3291 0566 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+ 3291      70202D6D 
+ 3291      6670753D 
+ 3291      66707634 
+ 3291      2D73702D 
+ 3292 0599 65637469 		.ascii	"ections -ffat-lto-objects\000"
+ 3292      6F6E7320 
+ 3292      2D666661 
+ 3292      742D6C74 
+ 3292      6F2D6F62 
+ 3293              	.LASF309:
+ 3294 05b3 43595F42 		.ascii	"CY_BLE_EVT_GAP_RESOLVE_DEVICE_COMPLETE\000"
+ 3294      4C455F45 
+ 3294      56545F47 
+ 3294      41505F52 
+ 3294      45534F4C 
+ 3295              	.LASF361:
+ 3296 05da 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_DISCONNECTED_DISCOVERED\000"
+ 3296      4C455F43 
+ 3296      4F4E4E5F 
+ 3296      53544154 
+ 3296      455F434C 
+ 3297              	.LASF371:
+ 3298 060b 5F696D70 		.ascii	"_impure_ptr\000"
+ 3298      7572655F 
+ 3298      70747200 
+ 3299              	.LASF49:
+ 3300 0617 5F666E73 		.ascii	"_fns\000"
+ 3300      00
+ 3301              	.LASF57:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 66
+
+
+ 3302 061c 5F636F6F 		.ascii	"_cookie\000"
+ 3302      6B696500 
+ 3303              	.LASF186:
+ 3304 0624 70657269 		.ascii	"periDivCmdTypeSelPos\000"
+ 3304      44697643 
+ 3304      6D645479 
+ 3304      70655365 
+ 3304      6C506F73 
+ 3305              	.LASF203:
+ 3306 0639 63707573 		.ascii	"cpussTrimRamCtlOffset\000"
+ 3306      73547269 
+ 3306      6D52616D 
+ 3306      43746C4F 
+ 3306      66667365 
+ 3307              	.LASF319:
+ 3308 064f 43595F42 		.ascii	"CY_BLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 3308      4C455F45 
+ 3308      56545F47 
+ 3308      41545443 
+ 3308      5F584348 
+ 3309              	.LASF335:
+ 3310 066e 43595F42 		.ascii	"CY_BLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 3310      4C455F45 
+ 3310      56545F47 
+ 3310      41545453 
+ 3310      5F48414E 
+ 3311              	.LASF31:
+ 3312 0690 5F426967 		.ascii	"_Bigint\000"
+ 3312      696E7400 
+ 3313              	.LASF68:
+ 3314 0698 5F6D6273 		.ascii	"_mbstate\000"
+ 3314      74617465 
+ 3314      00
+ 3315              	.LASF39:
+ 3316 06a1 5F5F746D 		.ascii	"__tm_wday\000"
+ 3316      5F776461 
+ 3316      7900
+ 3317              	.LASF81:
+ 3318 06ab 5F726573 		.ascii	"_result\000"
+ 3318      756C7400 
+ 3319              	.LASF325:
+ 3320 06b3 43595F42 		.ascii	"CY_BLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 3320      4C455F45 
+ 3320      56545F47 
+ 3320      41545443 
+ 3320      5F524541 
+ 3321              	.LASF127:
+ 3322 06d2 75696E74 		.ascii	"uint32_t\000"
+ 3322      33325F74 
+ 3322      00
+ 3323              	.LASF35:
+ 3324 06db 5F5F746D 		.ascii	"__tm_hour\000"
+ 3324      5F686F75 
+ 3324      7200
+ 3325              	.LASF360:
+ 3326 06e5 43595F42 		.ascii	"CY_BLE_CONN_STATE_DISCONNECTED\000"
+ 3326      4C455F43 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 67
+
+
+ 3326      4F4E4E5F 
+ 3326      53544154 
+ 3326      455F4449 
+ 3327              	.LASF255:
+ 3328 0704 43595F42 		.ascii	"CY_BLE_EVT_SET_RPA_ENABLE_COMPLETE\000"
+ 3328      4C455F45 
+ 3328      56545F53 
+ 3328      45545F52 
+ 3328      50415F45 
+ 3329              	.LASF236:
+ 3330 0727 43595F42 		.ascii	"CY_BLE_EVT_STACK_ON\000"
+ 3330      4C455F45 
+ 3330      56545F53 
+ 3330      5441434B 
+ 3330      5F4F4E00 
+ 3331              	.LASF266:
+ 3332 073b 43595F42 		.ascii	"CY_BLE_EVT_LL_CNTRL_PROC_PENDING_COMPLETE\000"
+ 3332      4C455F45 
+ 3332      56545F4C 
+ 3332      4C5F434E 
+ 3332      54524C5F 
+ 3333              	.LASF196:
+ 3334 0765 6770696F 		.ascii	"gpioPrtCfgOutOffset\000"
+ 3334      50727443 
+ 3334      66674F75 
+ 3334      744F6666 
+ 3334      73657400 
+ 3335              	.LASF22:
+ 3336 0779 5F5F636F 		.ascii	"__count\000"
+ 3336      756E7400 
+ 3337              	.LASF252:
+ 3338 0781 43595F42 		.ascii	"CY_BLE_EVT_GET_PEER_RPA_COMPLETE\000"
+ 3338      4C455F45 
+ 3338      56545F47 
+ 3338      45545F50 
+ 3338      4545525F 
+ 3339              	.LASF139:
+ 3340 07a2 63727970 		.ascii	"cryptoVersion\000"
+ 3340      746F5665 
+ 3340      7273696F 
+ 3340      6E00
+ 3341              	.LASF34:
+ 3342 07b0 5F5F746D 		.ascii	"__tm_min\000"
+ 3342      5F6D696E 
+ 3342      00
+ 3343              	.LASF234:
+ 3344 07b9 63795F73 		.ascii	"cy_stc_scb_uart_context_t\000"
+ 3344      74635F73 
+ 3344      63625F75 
+ 3344      6172745F 
+ 3344      636F6E74 
+ 3345              	.LASF160:
+ 3346 07d3 65704D6F 		.ascii	"epMonitorNr\000"
+ 3346      6E69746F 
+ 3346      724E7200 
+ 3347              	.LASF120:
+ 3348 07df 5F6E6578 		.ascii	"_nextf\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 68
+
+
+ 3348      746600
+ 3349              	.LASF219:
+ 3350 07e6 63795F73 		.ascii	"cy_stc_scb_uart_context\000"
+ 3350      74635F73 
+ 3350      63625F75 
+ 3350      6172745F 
+ 3350      636F6E74 
+ 3351              	.LASF124:
+ 3352 07fe 696E7431 		.ascii	"int16_t\000"
+ 3352      365F7400 
+ 3353              	.LASF97:
+ 3354 0806 5F72616E 		.ascii	"_rand48\000"
+ 3354      64343800 
+ 3355              	.LASF195:
+ 3356 080e 6770696F 		.ascii	"gpioPrtCfgInOffset\000"
+ 3356      50727443 
+ 3356      6667496E 
+ 3356      4F666673 
+ 3356      657400
+ 3357              	.LASF379:
+ 3358 0821 626C6553 		.ascii	"bleSemaphore\000"
+ 3358      656D6170 
+ 3358      686F7265 
+ 3358      00
+ 3359              	.LASF304:
+ 3360 082e 43595F42 		.ascii	"CY_BLE_EVT_GAP_ENHANCE_CONN_COMPLETE\000"
+ 3360      4C455F45 
+ 3360      56545F47 
+ 3360      41505F45 
+ 3360      4E48414E 
+ 3361              	.LASF82:
+ 3362 0853 5F726573 		.ascii	"_result_k\000"
+ 3362      756C745F 
+ 3362      6B00
+ 3363              	.LASF12:
+ 3364 085d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3364      206C6F6E 
+ 3364      6720756E 
+ 3364      7369676E 
+ 3364      65642069 
+ 3365              	.LASF192:
+ 3366 0874 70657269 		.ascii	"periDiv24_5CtlOffset\000"
+ 3366      44697632 
+ 3366      345F3543 
+ 3366      746C4F66 
+ 3366      66736574 
+ 3367              	.LASF103:
+ 3368 0889 5F617363 		.ascii	"_asctime_buf\000"
+ 3368      74696D65 
+ 3368      5F627566 
+ 3368      00
+ 3369              	.LASF154:
+ 3370 0896 73727373 		.ascii	"srssNumClkpath\000"
+ 3370      4E756D43 
+ 3370      6C6B7061 
+ 3370      746800
+ 3371              	.LASF359:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 69
+
+
+ 3372 08a5 63795F65 		.ascii	"cy_en_ble_adv_state_t\000"
+ 3372      6E5F626C 
+ 3372      655F6164 
+ 3372      765F7374 
+ 3372      6174655F 
+ 3373              	.LASF270:
+ 3374 08bb 43595F42 		.ascii	"CY_BLE_EVT_GET_RSSI_COMPLETE\000"
+ 3374      4C455F45 
+ 3374      56545F47 
+ 3374      45545F52 
+ 3374      5353495F 
+ 3375              	.LASF30:
+ 3376 08d8 5F776473 		.ascii	"_wds\000"
+ 3376      00
+ 3377              	.LASF385:
+ 3378 08dd 7468726F 		.ascii	"throwError\000"
+ 3378      77457272 
+ 3378      6F7200
+ 3379              	.LASF356:
+ 3380 08e8 43595F42 		.ascii	"CY_BLE_ADV_STATE_ADV_INITIATED\000"
+ 3380      4C455F41 
+ 3380      44565F53 
+ 3380      54415445 
+ 3380      5F414456 
+ 3381              	.LASF131:
+ 3382 0907 75646242 		.ascii	"udbBase\000"
+ 3382      61736500 
+ 3383              	.LASF93:
+ 3384 090f 5F5F4649 		.ascii	"__FILE\000"
+ 3384      4C4500
+ 3385              	.LASF297:
+ 3386 0916 43595F42 		.ascii	"CY_BLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 3386      4C455F45 
+ 3386      56545F47 
+ 3386      41505F45 
+ 3386      4E435259 
+ 3387              	.LASF187:
+ 3388 0934 70657269 		.ascii	"periDivCmdPaDivSelPos\000"
+ 3388      44697643 
+ 3388      6D645061 
+ 3388      44697653 
+ 3388      656C506F 
+ 3389              	.LASF268:
+ 3390 094a 43595F42 		.ascii	"CY_BLE_EVT_SET_DEVICE_ADDR_COMPLETE\000"
+ 3390      4C455F45 
+ 3390      56545F53 
+ 3390      45545F44 
+ 3390      45564943 
+ 3391              	.LASF65:
+ 3392 096e 5F6F6666 		.ascii	"_offset\000"
+ 3392      73657400 
+ 3393              	.LASF353:
+ 3394 0976 61747449 		.ascii	"attId\000"
+ 3394      6400
+ 3395              	.LASF251:
+ 3396 097c 43595F42 		.ascii	"CY_BLE_EVT_DATA_LENGTH_CHANGE\000"
+ 3396      4C455F45 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 70
+
+
+ 3396      56545F44 
+ 3396      4154415F 
+ 3396      4C454E47 
+ 3397              	.LASF364:
+ 3398 099a 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_INCL_DISCOVERING\000"
+ 3398      4C455F43 
+ 3398      4F4E4E5F 
+ 3398      53544154 
+ 3398      455F434C 
+ 3399              	.LASF289:
+ 3400 09c4 43595F42 		.ascii	"CY_BLE_EVT_GAP_AUTH_REQ\000"
+ 3400      4C455F45 
+ 3400      56545F47 
+ 3400      41505F41 
+ 3400      5554485F 
+ 3401              	.LASF185:
+ 3402 09dc 70657269 		.ascii	"periDivCmdDivSelMsk\000"
+ 3402      44697643 
+ 3402      6D644469 
+ 3402      7653656C 
+ 3402      4D736B00 
+ 3403              	.LASF261:
+ 3404 09f0 43595F42 		.ascii	"CY_BLE_EVT_GET_PHY_COMPLETE\000"
+ 3404      4C455F45 
+ 3404      56545F47 
+ 3404      45545F50 
+ 3404      48595F43 
+ 3405              	.LASF221:
+ 3406 0a0c 72785374 		.ascii	"rxStatus\000"
+ 3406      61747573 
+ 3406      00
+ 3407              	.LASF76:
+ 3408 0a15 5F656D65 		.ascii	"_emergency\000"
+ 3408      7267656E 
+ 3408      637900
+ 3409              	.LASF173:
+ 3410 0a20 666C6173 		.ascii	"flashCtlMainWs3Freq\000"
+ 3410      6843746C 
+ 3410      4D61696E 
+ 3410      57733346 
+ 3410      72657100 
+ 3411              	.LASF295:
+ 3412 0a34 43595F42 		.ascii	"CY_BLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 3412      4C455F45 
+ 3412      56545F47 
+ 3412      41505F44 
+ 3412      45564943 
+ 3413              	.LASF155:
+ 3414 0a54 73727373 		.ascii	"srssNumPll\000"
+ 3414      4E756D50 
+ 3414      6C6C00
+ 3415              	.LASF267:
+ 3416 0a5f 43595F42 		.ascii	"CY_BLE_EVT_SOFT_RESET_COMPLETE\000"
+ 3416      4C455F45 
+ 3416      56545F53 
+ 3416      4F46545F 
+ 3416      52455345 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 71
+
+
+ 3417              	.LASF78:
+ 3418 0a7e 5F637572 		.ascii	"_current_locale\000"
+ 3418      72656E74 
+ 3418      5F6C6F63 
+ 3418      616C6500 
+ 3419              	.LASF330:
+ 3420 0a8e 43595F42 		.ascii	"CY_BLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ 3420      4C455F45 
+ 3420      56545F47 
+ 3420      41545453 
+ 3420      5F505245 
+ 3421              	.LASF166:
+ 3422 0aae 666C6173 		.ascii	"flashPipeRequired\000"
+ 3422      68506970 
+ 3422      65526571 
+ 3422      75697265 
+ 3422      6400
+ 3423              	.LASF33:
+ 3424 0ac0 5F5F746D 		.ascii	"__tm_sec\000"
+ 3424      5F736563 
+ 3424      00
+ 3425              	.LASF334:
+ 3426 0ac9 43595F42 		.ascii	"CY_BLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 3426      4C455F45 
+ 3426      56545F47 
+ 3426      41545443 
+ 3426      5F48414E 
+ 3427              	.LASF99:
+ 3428 0aeb 5F6D756C 		.ascii	"_mult\000"
+ 3428      7400
+ 3429              	.LASF75:
+ 3430 0af1 5F696E63 		.ascii	"_inc\000"
+ 3430      00
+ 3431              	.LASF48:
+ 3432 0af6 5F696E64 		.ascii	"_ind\000"
+ 3432      00
+ 3433              	.LASF351:
+ 3434 0afb 43595F42 		.ascii	"CY_BLE_EVT_MAX\000"
+ 3434      4C455F45 
+ 3434      56545F4D 
+ 3434      415800
+ 3435              	.LASF170:
+ 3436 0b0a 666C6173 		.ascii	"flashCtlMainWs0Freq\000"
+ 3436      6843746C 
+ 3436      4D61696E 
+ 3436      57733046 
+ 3436      72657100 
+ 3437              	.LASF346:
+ 3438 0b1e 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 3438      4C455F45 
+ 3438      56545F4C 
+ 3438      32434150 
+ 3438      5F434246 
+ 3439              	.LASF27:
+ 3440 0b40 5F6E6578 		.ascii	"_next\000"
+ 3440      7400
+ 3441              	.LASF275:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 72
+
+
+ 3442 0b46 43595F42 		.ascii	"CY_BLE_EVT_RANDOM_NUM_GEN_COMPLETE\000"
+ 3442      4C455F45 
+ 3442      56545F52 
+ 3442      414E444F 
+ 3442      4D5F4E55 
+ 3443              	.LASF134:
+ 3444 0b69 6770696F 		.ascii	"gpioBase\000"
+ 3444      42617365 
+ 3444      00
+ 3445              	.LASF357:
+ 3446 0b72 43595F42 		.ascii	"CY_BLE_ADV_STATE_ADVERTISING\000"
+ 3446      4C455F41 
+ 3446      44565F53 
+ 3446      54415445 
+ 3446      5F414456 
+ 3447              	.LASF116:
+ 3448 0b8f 5F6D6273 		.ascii	"_mbsrtowcs_state\000"
+ 3448      72746F77 
+ 3448      63735F73 
+ 3448      74617465 
+ 3448      00
+ 3449              	.LASF306:
+ 3450 0ba0 43595F42 		.ascii	"CY_BLE_EVT_GAP_SMP_NEGOTIATED_AUTH_INFO\000"
+ 3450      4C455F45 
+ 3450      56545F47 
+ 3450      41505F53 
+ 3450      4D505F4E 
+ 3451              	.LASF248:
+ 3452 0bc8 43595F42 		.ascii	"CY_BLE_EVT_SET_DATA_LENGTH_COMPLETE\000"
+ 3452      4C455F45 
+ 3452      56545F53 
+ 3452      45545F44 
+ 3452      4154415F 
+ 3453              	.LASF328:
+ 3454 0bec 43595F42 		.ascii	"CY_BLE_EVT_GATTC_WRITE_RSP\000"
+ 3454      4C455F45 
+ 3454      56545F47 
+ 3454      41545443 
+ 3454      5F575249 
+ 3455              	.LASF146:
+ 3456 0c07 70726F74 		.ascii	"protVersion\000"
+ 3456      56657273 
+ 3456      696F6E00 
+ 3457              	.LASF167:
+ 3458 0c13 666C6173 		.ascii	"flashWriteDelay\000"
+ 3458      68577269 
+ 3458      74654465 
+ 3458      6C617900 
+ 3459              	.LASF238:
+ 3460 0c23 43595F42 		.ascii	"CY_BLE_EVT_STACK_BUSY_STATUS\000"
+ 3460      4C455F45 
+ 3460      56545F53 
+ 3460      5441434B 
+ 3460      5F425553 
+ 3461              	.LASF161:
+ 3462 0c40 75646250 		.ascii	"udbPresent\000"
+ 3462      72657365 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 73
+
+
+ 3462      6E7400
+ 3463              	.LASF342:
+ 3464 0c4b 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_COMMAND_REJ\000"
+ 3464      4C455F45 
+ 3464      56545F4C 
+ 3464      32434150 
+ 3464      5F434F4D 
+ 3465              	.LASF245:
+ 3466 0c68 43595F42 		.ascii	"CY_BLE_EVT_GET_CHANNEL_MAP_COMPLETE\000"
+ 3466      4C455F45 
+ 3466      56545F47 
+ 3466      45545F43 
+ 3466      48414E4E 
+ 3467              	.LASF23:
+ 3468 0c8c 5F5F7661 		.ascii	"__value\000"
+ 3468      6C756500 
+ 3469              	.LASF179:
+ 3470 0c94 64775374 		.ascii	"dwStatusChIdxPos\000"
+ 3470      61747573 
+ 3470      43684964 
+ 3470      78506F73 
+ 3470      00
+ 3471              	.LASF5:
+ 3472 0ca5 5F5F7569 		.ascii	"__uint16_t\000"
+ 3472      6E743136 
+ 3472      5F7400
+ 3473              	.LASF147:
+ 3474 0cb0 63707573 		.ascii	"cpussIpcNr\000"
+ 3474      73497063 
+ 3474      4E7200
+ 3475              	.LASF83:
+ 3476 0cbb 5F703573 		.ascii	"_p5s\000"
+ 3476      00
+ 3477              	.LASF239:
+ 3478 0cc0 43595F42 		.ascii	"CY_BLE_EVT_MEMORY_REQUEST\000"
+ 3478      4C455F45 
+ 3478      56545F4D 
+ 3478      454D4F52 
+ 3478      595F5245 
+ 3479              	.LASF286:
+ 3480 0cda 43595F42 		.ascii	"CY_BLE_EVT_SET_CONN_PRIORITY_COMPLETE\000"
+ 3480      4C455F45 
+ 3480      56545F53 
+ 3480      45545F43 
+ 3480      4F4E4E5F 
+ 3481              	.LASF232:
+ 3482 0d00 63624576 		.ascii	"cbEvents\000"
+ 3482      656E7473 
+ 3482      00
+ 3483              	.LASF358:
+ 3484 0d09 43595F42 		.ascii	"CY_BLE_ADV_STATE_STOP_INITIATED\000"
+ 3484      4C455F41 
+ 3484      44565F53 
+ 3484      54415445 
+ 3484      5F53544F 
+ 3485              	.LASF150:
+ 3486 0d29 63707573 		.ascii	"cpussFlashPaSize\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 74
+
+
+ 3486      73466C61 
+ 3486      73685061 
+ 3486      53697A65 
+ 3486      00
+ 3487              	.LASF365:
+ 3488 0d3a 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_CHAR_DISCOVERING\000"
+ 3488      4C455F43 
+ 3488      4F4E4E5F 
+ 3488      53544154 
+ 3488      455F434C 
+ 3489              	.LASF129:
+ 3490 0d64 666C6173 		.ascii	"flashcBase\000"
+ 3490      68634261 
+ 3490      736500
+ 3491              	.LASF92:
+ 3492 0d6f 63686172 		.ascii	"char\000"
+ 3492      00
+ 3493              	.LASF277:
+ 3494 0d74 43595F42 		.ascii	"CY_BLE_EVT_AES_CCM_ENCRYPT_COMPLETE\000"
+ 3494      4C455F45 
+ 3494      56545F41 
+ 3494      45535F43 
+ 3494      434D5F45 
+ 3495              	.LASF299:
+ 3496 0d98 43595F42 		.ascii	"CY_BLE_EVT_GAPC_SCAN_START_STOP\000"
+ 3496      4C455F45 
+ 3496      56545F47 
+ 3496      4150435F 
+ 3496      5343414E 
+ 3497              	.LASF89:
+ 3498 0db8 5F736967 		.ascii	"_sig_func\000"
+ 3498      5F66756E 
+ 3498      6300
+ 3499              	.LASF303:
+ 3500 0dc2 43595F42 		.ascii	"CY_BLE_EVT_GAP_OOB_GENERATED_NOTIFICATION\000"
+ 3500      4C455F45 
+ 3500      56545F47 
+ 3500      41505F4F 
+ 3500      4F425F47 
+ 3501              	.LASF225:
+ 3502 0dec 72785269 		.ascii	"rxRingBufTail\000"
+ 3502      6E674275 
+ 3502      66546169 
+ 3502      6C00
+ 3503              	.LASF162:
+ 3504 0dfa 73797350 		.ascii	"sysPmSimoPresent\000"
+ 3504      6D53696D 
+ 3504      6F507265 
+ 3504      73656E74 
+ 3504      00
+ 3505              	.LASF164:
+ 3506 0e0b 63727970 		.ascii	"cryptoMemSize\000"
+ 3506      746F4D65 
+ 3506      6D53697A 
+ 3506      6500
+ 3507              	.LASF64:
+ 3508 0e19 5F626C6B 		.ascii	"_blksize\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 75
+
+
+ 3508      73697A65 
+ 3508      00
+ 3509              	.LASF321:
+ 3510 0e22 43595F42 		.ascii	"CY_BLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 3510      4C455F45 
+ 3510      56545F47 
+ 3510      41545443 
+ 3510      5F524541 
+ 3511              	.LASF256:
+ 3512 0e44 43595F42 		.ascii	"CY_BLE_EVT_SET_HOST_CHANNEL_COMPLETE\000"
+ 3512      4C455F45 
+ 3512      56545F53 
+ 3512      45545F48 
+ 3512      4F53545F 
+ 3513              	.LASF25:
+ 3514 0e69 5F666C6F 		.ascii	"_flock_t\000"
+ 3514      636B5F74 
+ 3514      00
+ 3515              	.LASF246:
+ 3516 0e72 43595F42 		.ascii	"CY_BLE_EVT_LE_SET_EVENT_MASK_COMPLETE\000"
+ 3516      4C455F45 
+ 3516      56545F4C 
+ 3516      455F5345 
+ 3516      545F4556 
+ 3517              	.LASF228:
+ 3518 0e98 72784275 		.ascii	"rxBufIdx\000"
+ 3518      66496478 
+ 3518      00
+ 3519              	.LASF369:
+ 3520 0ea1 51756575 		.ascii	"QueueHandle_t\000"
+ 3520      6548616E 
+ 3520      646C655F 
+ 3520      7400
+ 3521              	.LASF383:
+ 3522 0eaf 78546173 		.ascii	"xTaskCreate\000"
+ 3522      6B437265 
+ 3522      61746500 
+ 3523              	.LASF301:
+ 3524 0ebb 43595F42 		.ascii	"CY_BLE_EVT_GAP_NUMERIC_COMPARISON_REQUEST\000"
+ 3524      4C455F45 
+ 3524      56545F47 
+ 3524      41505F4E 
+ 3524      554D4552 
+ 3525              	.LASF233:
+ 3526 0ee5 696E6974 		.ascii	"initKey\000"
+ 3526      4B657900 
+ 3527              	.LASF19:
+ 3528 0eed 5F5F7763 		.ascii	"__wch\000"
+ 3528      6800
+ 3529              	.LASF180:
+ 3530 0ef3 64775374 		.ascii	"dwStatusChIdxMsk\000"
+ 3530      61747573 
+ 3530      43684964 
+ 3530      784D736B 
+ 3530      00
+ 3531              	.LASF123:
+ 3532 0f04 75696E74 		.ascii	"uint8_t\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 76
+
+
+ 3532      385F7400 
+ 3533              	.LASF350:
+ 3534 0f0c 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ 3534      4C455F45 
+ 3534      56545F4C 
+ 3534      32434150 
+ 3534      5F434246 
+ 3535              	.LASF279:
+ 3536 0f31 43595F42 		.ascii	"CY_BLE_EVT_SET_SLAVE_LATENCY_MODE_COMPLETE\000"
+ 3536      4C455F45 
+ 3536      56545F53 
+ 3536      45545F53 
+ 3536      4C415645 
+ 3537              	.LASF61:
+ 3538 0f5c 5F636C6F 		.ascii	"_close\000"
+ 3538      736500
+ 3539              	.LASF79:
+ 3540 0f63 5F5F7364 		.ascii	"__sdidinit\000"
+ 3540      6964696E 
+ 3540      697400
+ 3541              	.LASF151:
+ 3542 0f6e 63707573 		.ascii	"cpussIpc0Irq\000"
+ 3542      73497063 
+ 3542      30497271 
+ 3542      00
+ 3543              	.LASF292:
+ 3544 0f7b 43595F42 		.ascii	"CY_BLE_EVT_GAP_AUTH_COMPLETE\000"
+ 3544      4C455F45 
+ 3544      56545F47 
+ 3544      41505F41 
+ 3544      5554485F 
+ 3545              	.LASF262:
+ 3546 0f98 43595F42 		.ascii	"CY_BLE_EVT_SET_DEFAULT_PHY_COMPLETE\000"
+ 3546      4C455F45 
+ 3546      56545F53 
+ 3546      45545F44 
+ 3546      45464155 
+ 3547              	.LASF191:
+ 3548 0fbc 70657269 		.ascii	"periDiv16_5CtlOffset\000"
+ 3548      44697631 
+ 3548      365F3543 
+ 3548      746C4F66 
+ 3548      66736574 
+ 3549              	.LASF374:
+ 3550 0fd1 63795F62 		.ascii	"cy_ble_advState\000"
+ 3550      6C655F61 
+ 3550      64765374 
+ 3550      61746500 
+ 3551              	.LASF218:
+ 3552 0fe1 63795F63 		.ascii	"cy_cb_scb_uart_handle_events_t\000"
+ 3552      625F7363 
+ 3552      625F7561 
+ 3552      72745F68 
+ 3552      616E646C 
+ 3553              	.LASF368:
+ 3554 1000 63795F65 		.ascii	"cy_en_ble_conn_state_t\000"
+ 3554      6E5F626C 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 77
+
+
+ 3554      655F636F 
+ 3554      6E6E5F73 
+ 3554      74617465 
+ 3555              	.LASF72:
+ 3556 1017 5F737464 		.ascii	"_stdin\000"
+ 3556      696E00
+ 3557              	.LASF284:
+ 3558 101e 43595F42 		.ascii	"CY_BLE_EVT_SET_EVENT_MASK_COMPLETE\000"
+ 3558      4C455F45 
+ 3558      56545F53 
+ 3558      45545F45 
+ 3558      56454E54 
+ 3559              	.LASF209:
+ 3560 1041 63707573 		.ascii	"cpussRam0Ctl0\000"
+ 3560      7352616D 
+ 3560      3043746C 
+ 3560      3000
+ 3561              	.LASF11:
+ 3562 104f 6C6F6E67 		.ascii	"long long int\000"
+ 3562      206C6F6E 
+ 3562      6720696E 
+ 3562      7400
+ 3563              	.LASF136:
+ 3564 105d 69706342 		.ascii	"ipcBase\000"
+ 3564      61736500 
+ 3565              	.LASF177:
+ 3566 1065 64774368 		.ascii	"dwChCtlPrioPos\000"
+ 3566      43746C50 
+ 3566      72696F50 
+ 3566      6F7300
+ 3567              	.LASF344:
+ 3568 1074 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ 3568      4C455F45 
+ 3568      56545F4C 
+ 3568      32434150 
+ 3568      5F434246 
+ 3569              	.LASF137:
+ 3570 1093 63727970 		.ascii	"cryptoBase\000"
+ 3570      746F4261 
+ 3570      736500
+ 3571              	.LASF51:
+ 3572 109e 5F626173 		.ascii	"_base\000"
+ 3572      6500
+ 3573              	.LASF84:
+ 3574 10a4 5F667265 		.ascii	"_freelist\000"
+ 3574      656C6973 
+ 3574      7400
+ 3575              	.LASF312:
+ 3576 10ae 43595F42 		.ascii	"CY_BLE_EVT_GAP_CONN_ESTB\000"
+ 3576      4C455F45 
+ 3576      56545F47 
+ 3576      41505F43 
+ 3576      4F4E4E5F 
+ 3577              	.LASF100:
+ 3578 10c7 5F616464 		.ascii	"_add\000"
+ 3578      00
+ 3579              	.LASF258:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 78
+
+
+ 3580 10cc 43595F42 		.ascii	"CY_BLE_EVT_REMOVE_DEVICE_FROM_RPA_LIST_COMPLETE\000"
+ 3580      4C455F45 
+ 3580      56545F52 
+ 3580      454D4F56 
+ 3580      455F4445 
+ 3581              	.LASF247:
+ 3582 10fc 43595F42 		.ascii	"CY_BLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ 3582      4C455F45 
+ 3582      56545F4C 
+ 3582      455F5049 
+ 3582      4E475F41 
+ 3583              	.LASF117:
+ 3584 111c 5F776372 		.ascii	"_wcrtomb_state\000"
+ 3584      746F6D62 
+ 3584      5F737461 
+ 3584      746500
+ 3585              	.LASF55:
+ 3586 112b 5F66696C 		.ascii	"_file\000"
+ 3586      6500
+ 3587              	.LASF3:
+ 3588 1131 5F5F696E 		.ascii	"__int16_t\000"
+ 3588      7431365F 
+ 3588      7400
+ 3589              	.LASF274:
+ 3590 113b 43595F42 		.ascii	"CY_BLE_EVT_SET_CLK_CONFIG_COMPLETE\000"
+ 3590      4C455F45 
+ 3590      56545F53 
+ 3590      45545F43 
+ 3590      4C4B5F43 
+ 3591              	.LASF133:
+ 3592 115e 6873696F 		.ascii	"hsiomBase\000"
+ 3592      6D426173 
+ 3592      6500
+ 3593              	.LASF339:
+ 3594 1168 43595F42 		.ascii	"CY_BLE_EVT_GATTC_LONG_PROCEDURE_END\000"
+ 3594      4C455F45 
+ 3594      56545F47 
+ 3594      41545443 
+ 3594      5F4C4F4E 
+ 3595              	.LASF388:
+ 3596 118c 433A5C55 		.ascii	"C:\\Users\\donni\\Documents\\PSoC Creator\\BLEserve"
+ 3596      73657273 
+ 3596      5C646F6E 
+ 3596      6E695C44 
+ 3596      6F63756D 
+ 3597 11ba 725C424C 		.ascii	"r\\BLEserver.cydsn\000"
+ 3597      45736572 
+ 3597      7665722E 
+ 3597      63796473 
+ 3597      6E00
+ 3598              	.LASF183:
+ 3599 11cc 70657269 		.ascii	"periTrGrOffset\000"
+ 3599      54724772 
+ 3599      4F666673 
+ 3599      657400
+ 3600              	.LASF80:
+ 3601 11db 5F5F636C 		.ascii	"__cleanup\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 79
+
+
+ 3601      65616E75 
+ 3601      7000
+ 3602              	.LASF108:
+ 3603 11e5 5F6D626C 		.ascii	"_mblen_state\000"
+ 3603      656E5F73 
+ 3603      74617465 
+ 3603      00
+ 3604              	.LASF24:
+ 3605 11f2 5F6D6273 		.ascii	"_mbstate_t\000"
+ 3605      74617465 
+ 3605      5F7400
+ 3606              	.LASF149:
+ 3607 11fd 63707573 		.ascii	"cpussDwChNr\000"
+ 3607      73447743 
+ 3607      684E7200 
+ 3608              	.LASF300:
+ 3609 1209 43595F42 		.ascii	"CY_BLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 3609      4C455F45 
+ 3609      56545F47 
+ 3609      41505F4B 
+ 3609      4559494E 
+ 3610              	.LASF259:
+ 3611 122e 43595F42 		.ascii	"CY_BLE_EVT_ADD_DEVICE_TO_WHITE_LIST_COMPLETE\000"
+ 3611      4C455F45 
+ 3611      56545F41 
+ 3611      44445F44 
+ 3611      45564943 
+ 3612              	.LASF230:
+ 3613 125b 74784275 		.ascii	"txBufSize\000"
+ 3613      6653697A 
+ 3613      6500
+ 3614              	.LASF41:
+ 3615 1265 5F5F746D 		.ascii	"__tm_isdst\000"
+ 3615      5F697364 
+ 3615      737400
+ 3616              	.LASF314:
+ 3617 1270 43595F42 		.ascii	"CY_BLE_EVT_GAP_ADV_TX\000"
+ 3617      4C455F45 
+ 3617      56545F47 
+ 3617      41505F41 
+ 3617      44565F54 
+ 3618              	.LASF197:
+ 3619 1286 6770696F 		.ascii	"gpioPrtCfgSioOffset\000"
+ 3619      50727443 
+ 3619      66675369 
+ 3619      6F4F6666 
+ 3619      73657400 
+ 3620              	.LASF200:
+ 3621 129a 63707573 		.ascii	"cpussCm4StatusOffset\000"
+ 3621      73436D34 
+ 3621      53746174 
+ 3621      75734F66 
+ 3621      66736574 
+ 3622              	.LASF118:
+ 3623 12af 5F776373 		.ascii	"_wcsrtombs_state\000"
+ 3623      72746F6D 
+ 3623      62735F73 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 80
+
+
+ 3623      74617465 
+ 3623      00
+ 3624              	.LASF159:
+ 3625 12c0 70617373 		.ascii	"passSarChannels\000"
+ 3625      53617243 
+ 3625      68616E6E 
+ 3625      656C7300 
+ 3626              	.LASF211:
+ 3627 12d0 63707573 		.ascii	"cpussRam2Ctl0\000"
+ 3627      7352616D 
+ 3627      3243746C 
+ 3627      3000
+ 3628              	.LASF119:
+ 3629 12de 5F685F65 		.ascii	"_h_errno\000"
+ 3629      72726E6F 
+ 3629      00
+ 3630              	.LASF285:
+ 3631 12e7 43595F42 		.ascii	"CY_BLE_EVT_SET_CE_LENGTH_COMPLETE\000"
+ 3631      4C455F45 
+ 3631      56545F53 
+ 3631      45545F43 
+ 3631      455F4C45 
+ 3632              	.LASF288:
+ 3633 1309 43595F42 		.ascii	"CY_BLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 3633      4C455F45 
+ 3633      56545F47 
+ 3633      4150435F 
+ 3633      5343414E 
+ 3634              	.LASF343:
+ 3635 132e 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 3635      4C455F45 
+ 3635      56545F4C 
+ 3635      32434150 
+ 3635      5F434246 
+ 3636              	.LASF324:
+ 3637 134d 43595F42 		.ascii	"CY_BLE_EVT_GATTC_READ_RSP\000"
+ 3637      4C455F45 
+ 3637      56545F47 
+ 3637      41545443 
+ 3637      5F524541 
+ 3638              	.LASF302:
+ 3639 1367 43595F42 		.ascii	"CY_BLE_EVT_GAP_KEYPRESS_NOTIFICATION\000"
+ 3639      4C455F45 
+ 3639      56545F47 
+ 3639      41505F4B 
+ 3639      45595052 
+ 3640              	.LASF366:
+ 3641 138c 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_DESCR_DISCOVERING\000"
+ 3641      4C455F43 
+ 3641      4F4E4E5F 
+ 3641      53544154 
+ 3641      455F434C 
+ 3642              	.LASF362:
+ 3643 13b7 43595F42 		.ascii	"CY_BLE_CONN_STATE_CONNECTED\000"
+ 3643      4C455F43 
+ 3643      4F4E4E5F 
+ 3643      53544154 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 81
+
+
+ 3643      455F434F 
+ 3644              	.LASF229:
+ 3645 13d3 74784275 		.ascii	"txBuf\000"
+ 3645      6600
+ 3646              	.LASF168:
+ 3647 13d9 666C6173 		.ascii	"flashProgramDelay\000"
+ 3647      6850726F 
+ 3647      6772616D 
+ 3647      44656C61 
+ 3647      7900
+ 3648              	.LASF190:
+ 3649 13eb 70657269 		.ascii	"periDiv16CtlOffset\000"
+ 3649      44697631 
+ 3649      3643746C 
+ 3649      4F666673 
+ 3649      657400
+ 3650              	.LASF37:
+ 3651 13fe 5F5F746D 		.ascii	"__tm_mon\000"
+ 3651      5F6D6F6E 
+ 3651      00
+ 3652              	.LASF6:
+ 3653 1407 73686F72 		.ascii	"short unsigned int\000"
+ 3653      7420756E 
+ 3653      7369676E 
+ 3653      65642069 
+ 3653      6E7400
+ 3654              	.LASF222:
+ 3655 141a 72785269 		.ascii	"rxRingBuf\000"
+ 3655      6E674275 
+ 3655      6600
+ 3656              	.LASF14:
+ 3657 1424 6C6F6E67 		.ascii	"long double\000"
+ 3657      20646F75 
+ 3657      626C6500 
+ 3658              	.LASF125:
+ 3659 1430 75696E74 		.ascii	"uint16_t\000"
+ 3659      31365F74 
+ 3659      00
+ 3660              	.LASF132:
+ 3661 1439 70726F74 		.ascii	"protBase\000"
+ 3661      42617365 
+ 3661      00
+ 3662              	.LASF182:
+ 3663 1442 70657269 		.ascii	"periTrCmdGrSelMsk\000"
+ 3663      5472436D 
+ 3663      64477253 
+ 3663      656C4D73 
+ 3663      6B00
+ 3664              	.LASF88:
+ 3665 1454 5F617465 		.ascii	"_atexit0\000"
+ 3665      78697430 
+ 3665      00
+ 3666              	.LASF254:
+ 3667 145d 43595F42 		.ascii	"CY_BLE_EVT_SET_RPA_TO_COMPLETE\000"
+ 3667      4C455F45 
+ 3667      56545F53 
+ 3667      45545F52 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 82
+
+
+ 3667      50415F54 
+ 3668              	.LASF105:
+ 3669 147c 5F67616D 		.ascii	"_gamma_signgam\000"
+ 3669      6D615F73 
+ 3669      69676E67 
+ 3669      616D00
+ 3670              	.LASF242:
+ 3671 148b 43595F42 		.ascii	"CY_BLE_EVT_HARDWARE_ERROR\000"
+ 3671      4C455F45 
+ 3671      56545F48 
+ 3671      41524457 
+ 3671      4152455F 
+ 3672              	.LASF156:
+ 3673 14a5 73727373 		.ascii	"srssNumHfroot\000"
+ 3673      4E756D48 
+ 3673      66726F6F 
+ 3673      7400
+ 3674              	.LASF140:
+ 3675 14b3 64775665 		.ascii	"dwVersion\000"
+ 3675      7273696F 
+ 3675      6E00
+ 3676              	.LASF172:
+ 3677 14bd 666C6173 		.ascii	"flashCtlMainWs2Freq\000"
+ 3677      6843746C 
+ 3677      4D61696E 
+ 3677      57733246 
+ 3677      72657100 
+ 3678              	.LASF181:
+ 3679 14d1 70657269 		.ascii	"periTrCmdOffset\000"
+ 3679      5472436D 
+ 3679      644F6666 
+ 3679      73657400 
+ 3680              	.LASF47:
+ 3681 14e1 5F617465 		.ascii	"_atexit\000"
+ 3681      78697400 
+ 3682              	.LASF315:
+ 3683 14e9 43595F42 		.ascii	"CY_BLE_EVT_GATTC_ERROR_RSP\000"
+ 3683      4C455F45 
+ 3683      56545F47 
+ 3683      41545443 
+ 3683      5F455252 
+ 3684              	.LASF320:
+ 3685 1504 43595F42 		.ascii	"CY_BLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 3685      4C455F45 
+ 3685      56545F47 
+ 3685      41545443 
+ 3685      5F524541 
+ 3686              	.LASF257:
+ 3687 152c 43595F42 		.ascii	"CY_BLE_EVT_ADD_DEVICE_TO_RPA_LIST_COMPLETE\000"
+ 3687      4C455F45 
+ 3687      56545F41 
+ 3687      44445F44 
+ 3687      45564943 
+ 3688              	.LASF327:
+ 3689 1557 43595F42 		.ascii	"CY_BLE_EVT_GATTS_WRITE_REQ\000"
+ 3689      4C455F45 
+ 3689      56545F47 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 83
+
+
+ 3689      41545453 
+ 3689      5F575249 
+ 3690              	.LASF21:
+ 3691 1572 73697A65 		.ascii	"sizetype\000"
+ 3691      74797065 
+ 3691      00
+ 3692              	.LASF280:
+ 3693 157b 43595F42 		.ascii	"CY_BLE_EVT_STACK_SHUTDOWN_COMPLETE\000"
+ 3693      4C455F45 
+ 3693      56545F53 
+ 3693      5441434B 
+ 3693      5F534855 
+ 3694              	.LASF224:
+ 3695 159e 72785269 		.ascii	"rxRingBufHead\000"
+ 3695      6E674275 
+ 3695      66486561 
+ 3695      6400
+ 3696              	.LASF354:
+ 3697 15ac 63795F73 		.ascii	"cy_stc_ble_conn_handle_t\000"
+ 3697      74635F62 
+ 3697      6C655F63 
+ 3697      6F6E6E5F 
+ 3697      68616E64 
+ 3698              	.LASF207:
+ 3699 15c5 63707573 		.ascii	"cpussCm4NmiCtlOffset\000"
+ 3699      73436D34 
+ 3699      4E6D6943 
+ 3699      746C4F66 
+ 3699      66736574 
+ 3700              	.LASF202:
+ 3701 15da 63707573 		.ascii	"cpussCm4PwrCtlOffset\000"
+ 3701      73436D34 
+ 3701      50777243 
+ 3701      746C4F66 
+ 3701      66736574 
+ 3702              	.LASF189:
+ 3703 15ef 70657269 		.ascii	"periDiv8CtlOffset\000"
+ 3703      44697638 
+ 3703      43746C4F 
+ 3703      66667365 
+ 3703      7400
+ 3704              	.LASF313:
+ 3705 1601 43595F42 		.ascii	"CY_BLE_EVT_GAPP_UPDATE_ADV_SCAN_DATA_COMPLETE\000"
+ 3705      4C455F45 
+ 3705      56545F47 
+ 3705      4150505F 
+ 3705      55504441 
+ 3706              	.LASF341:
+ 3707 162f 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 3707      4C455F45 
+ 3707      56545F4C 
+ 3707      32434150 
+ 3707      5F434F4E 
+ 3708              	.LASF4:
+ 3709 1656 73686F72 		.ascii	"short int\000"
+ 3709      7420696E 
+ 3709      7400
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 84
+
+
+ 3710              	.LASF287:
+ 3711 1660 43595F42 		.ascii	"CY_BLE_EVT_HCI_PKT_RCVD\000"
+ 3711      4C455F45 
+ 3711      56545F48 
+ 3711      43495F50 
+ 3711      4B545F52 
+ 3712              	.LASF296:
+ 3713 1678 43595F42 		.ascii	"CY_BLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 3713      4C455F45 
+ 3713      56545F47 
+ 3713      41505F44 
+ 3713      45564943 
+ 3714              	.LASF8:
+ 3715 169b 6C6F6E67 		.ascii	"long int\000"
+ 3715      20696E74 
+ 3715      00
+ 3716              	.LASF138:
+ 3717 16a4 63707573 		.ascii	"cpussVersion\000"
+ 3717      73566572 
+ 3717      73696F6E 
+ 3717      00
+ 3718              	.LASF372:
+ 3719 16b1 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3719      52784275 
+ 3719      66666572 
+ 3719      00
+ 3720              	.LASF142:
+ 3721 16be 6770696F 		.ascii	"gpioVersion\000"
+ 3721      56657273 
+ 3721      696F6E00 
+ 3722              	.LASF283:
+ 3723 16ca 43595F42 		.ascii	"CY_BLE_EVT_AES_CMAC_GEN_COMPLETE\000"
+ 3723      4C455F45 
+ 3723      56545F41 
+ 3723      45535F43 
+ 3723      4D41435F 
+ 3724              	.LASF370:
+ 3725 16eb 53656D61 		.ascii	"SemaphoreHandle_t\000"
+ 3725      70686F72 
+ 3725      6548616E 
+ 3725      646C655F 
+ 3725      7400
+ 3726              	.LASF141:
+ 3727 16fd 666C6173 		.ascii	"flashcVersion\000"
+ 3727      68635665 
+ 3727      7273696F 
+ 3727      6E00
+ 3728              	.LASF163:
+ 3729 170b 70726F74 		.ascii	"protBusMasterMask\000"
+ 3729      4275734D 
+ 3729      61737465 
+ 3729      724D6173 
+ 3729      6B00
+ 3730              	.LASF326:
+ 3731 171d 43595F42 		.ascii	"CY_BLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 3731      4C455F45 
+ 3731      56545F47 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 85
+
+
+ 3731      41545443 
+ 3731      5F524541 
+ 3732              	.LASF91:
+ 3733 173d 5F5F7366 		.ascii	"__sf\000"
+ 3733      00
+ 3734              	.LASF29:
+ 3735 1742 5F736967 		.ascii	"_sign\000"
+ 3735      6E00
+ 3736              	.LASF307:
+ 3737 1748 43595F42 		.ascii	"CY_BLE_EVT_GAP_DEVICE_ADDR_GEN_COMPLETE\000"
+ 3737      4C455F45 
+ 3737      56545F47 
+ 3737      41505F44 
+ 3737      45564943 
+ 3738              	.LASF66:
+ 3739 1770 5F646174 		.ascii	"_data\000"
+ 3739      6100
+ 3740              	.LASF20:
+ 3741 1776 5F5F7763 		.ascii	"__wchb\000"
+ 3741      686200
+ 3742              	.LASF38:
+ 3743 177d 5F5F746D 		.ascii	"__tm_year\000"
+ 3743      5F796561 
+ 3743      7200
+ 3744              	.LASF345:
+ 3745 1787 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 3745      4C455F45 
+ 3745      56545F4C 
+ 3745      32434150 
+ 3745      5F434246 
+ 3746              	.LASF231:
+ 3747 17a9 74784C65 		.ascii	"txLeftToTransmit\000"
+ 3747      6674546F 
+ 3747      5472616E 
+ 3747      736D6974 
+ 3747      00
+ 3748              	.LASF331:
+ 3749 17ba 43595F42 		.ascii	"CY_BLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 3749      4C455F45 
+ 3749      56545F47 
+ 3749      41545453 
+ 3749      5F455845 
+ 3750              	.LASF243:
+ 3751 17da 43595F42 		.ascii	"CY_BLE_EVT_WRITE_AUTH_PAYLOAD_TO_COMPLETE\000"
+ 3751      4C455F45 
+ 3751      56545F57 
+ 3751      52495445 
+ 3751      5F415554 
+ 3752              	.LASF282:
+ 3753 1804 43595F42 		.ascii	"CY_BLE_EVT_RADIO_VOLTAGE_LEVEL\000"
+ 3753      4C455F45 
+ 3753      56545F52 
+ 3753      4144494F 
+ 3753      5F564F4C 
+ 3754              	.LASF59:
+ 3755 1823 5F777269 		.ascii	"_write\000"
+ 3755      746500
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 86
+
+
+ 3756              	.LASF122:
+ 3757 182a 5F756E75 		.ascii	"_unused\000"
+ 3757      73656400 
+ 3758              	.LASF2:
+ 3759 1832 5F5F7569 		.ascii	"__uint8_t\000"
+ 3759      6E74385F 
+ 3759      7400
+ 3760              	.LASF87:
+ 3761 183c 5F6E6577 		.ascii	"_new\000"
+ 3761      00
+ 3762              	.LASF85:
+ 3763 1841 5F637674 		.ascii	"_cvtlen\000"
+ 3763      6C656E00 
+ 3764              	.LASF28:
+ 3765 1849 5F6D6178 		.ascii	"_maxwds\000"
+ 3765      77647300 
+ 3766              	.LASF111:
+ 3767 1851 5F6C3634 		.ascii	"_l64a_buf\000"
+ 3767      615F6275 
+ 3767      6600
+ 3768              	.LASF77:
+ 3769 185b 5F637572 		.ascii	"_current_category\000"
+ 3769      72656E74 
+ 3769      5F636174 
+ 3769      65676F72 
+ 3769      7900
+ 3770              	.LASF380:
+ 3771 186d 55415254 		.ascii	"UART_1_Start\000"
+ 3771      5F315F53 
+ 3771      74617274 
+ 3771      00
+ 3772              	.LASF193:
+ 3773 187a 6770696F 		.ascii	"gpioPrtIntrCfgOffset\000"
+ 3773      50727449 
+ 3773      6E747243 
+ 3773      66674F66 
+ 3773      66736574 
+ 3774              	.LASF249:
+ 3775 188f 43595F42 		.ascii	"CY_BLE_EVT_SET_SUGGESTED_DATA_LENGTH_COMPLETE\000"
+ 3775      4C455F45 
+ 3775      56545F53 
+ 3775      45545F53 
+ 3775      55474745 
+ 3776              	.LASF206:
+ 3777 18bd 63707573 		.ascii	"cpussCm0NmiCtlOffset\000"
+ 3777      73436D30 
+ 3777      4E6D6943 
+ 3777      746C4F66 
+ 3777      66736574 
+ 3778              	.LASF269:
+ 3779 18d2 43595F42 		.ascii	"CY_BLE_EVT_GET_DEVICE_ADDR_COMPLETE\000"
+ 3779      4C455F45 
+ 3779      56545F47 
+ 3779      45545F44 
+ 3779      45564943 
+ 3780              	.LASF276:
+ 3781 18f6 43595F42 		.ascii	"CY_BLE_EVT_AES_ENCRYPT_COMPLETE\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 87
+
+
+ 3781      4C455F45 
+ 3781      56545F41 
+ 3781      45535F45 
+ 3781      4E435259 
+ 3782              	.LASF199:
+ 3783 1916 63707573 		.ascii	"cpussCm4ClockCtlOffset\000"
+ 3783      73436D34 
+ 3783      436C6F63 
+ 3783      6B43746C 
+ 3783      4F666673 
+ 3784              	.LASF271:
+ 3785 192d 43595F42 		.ascii	"CY_BLE_EVT_GET_TX_PWR_COMPLETE\000"
+ 3785      4C455F45 
+ 3785      56545F47 
+ 3785      45545F54 
+ 3785      585F5057 
+ 3786              	.LASF26:
+ 3787 194c 5F5F554C 		.ascii	"__ULong\000"
+ 3787      6F6E6700 
+ 3788              	.LASF204:
+ 3789 1954 63707573 		.ascii	"cpussTrimRomCtlOffset\000"
+ 3789      73547269 
+ 3789      6D526F6D 
+ 3789      43746C4F 
+ 3789      66667365 
+ 3790              	.LASF32:
+ 3791 196a 5F5F746D 		.ascii	"__tm\000"
+ 3791      00
+ 3792              	.LASF237:
+ 3793 196f 43595F42 		.ascii	"CY_BLE_EVT_TIMEOUT\000"
+ 3793      4C455F45 
+ 3793      56545F54 
+ 3793      494D454F 
+ 3793      555400
+ 3794              	.LASF67:
+ 3795 1982 5F6C6F63 		.ascii	"_lock\000"
+ 3795      6B00
+ 3796              	.LASF143:
+ 3797 1988 6873696F 		.ascii	"hsiomVersion\000"
+ 3797      6D566572 
+ 3797      73696F6E 
+ 3797      00
+ 3798              	.LASF382:
+ 3799 1995 77726974 		.ascii	"writeToLog\000"
+ 3799      65546F4C 
+ 3799      6F6700
+ 3800              	.LASF10:
+ 3801 19a0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3801      20756E73 
+ 3801      69676E65 
+ 3801      6420696E 
+ 3801      7400
+ 3802              	.LASF208:
+ 3803 19b2 63707573 		.ascii	"cpussRomCtl\000"
+ 3803      73526F6D 
+ 3803      43746C00 
+ 3804              	.LASF95:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 88
+
+
+ 3805 19be 5F6E696F 		.ascii	"_niobs\000"
+ 3805      627300
+ 3806              	.LASF18:
+ 3807 19c5 77696E74 		.ascii	"wint_t\000"
+ 3807      5F7400
+ 3808              	.LASF215:
+ 3809 19cc 666C6F61 		.ascii	"float\000"
+ 3809      7400
+ 3810              	.LASF126:
+ 3811 19d2 696E7433 		.ascii	"int32_t\000"
+ 3811      325F7400 
+ 3812              	.LASF281:
+ 3813 19da 43595F42 		.ascii	"CY_BLE_EVT_RADIO_TEMPERATURE\000"
+ 3813      4C455F45 
+ 3813      56545F52 
+ 3813      4144494F 
+ 3813      5F54454D 
+ 3814              	.LASF44:
+ 3815 19f7 5F64736F 		.ascii	"_dso_handle\000"
+ 3815      5F68616E 
+ 3815      646C6500 
+ 3816              	.LASF384:
+ 3817 1a03 76546173 		.ascii	"vTaskStartScheduler\000"
+ 3817      6B537461 
+ 3817      72745363 
+ 3817      68656475 
+ 3817      6C657200 
+ 3818              	.LASF201:
+ 3819 1a17 63707573 		.ascii	"cpussCm0StatusOffset\000"
+ 3819      73436D30 
+ 3819      53746174 
+ 3819      75734F66 
+ 3819      66736574 
+ 3820              	.LASF86:
+ 3821 1a2c 5F637674 		.ascii	"_cvtbuf\000"
+ 3821      62756600 
+ 3822              	.LASF1:
+ 3823 1a34 756E7369 		.ascii	"unsigned char\000"
+ 3823      676E6564 
+ 3823      20636861 
+ 3823      7200
+ 3824              	.LASF74:
+ 3825 1a42 5F737464 		.ascii	"_stderr\000"
+ 3825      65727200 
+ 3826              	.LASF336:
+ 3827 1a4a 43595F42 		.ascii	"CY_BLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ 3827      4C455F45 
+ 3827      56545F47 
+ 3827      41545453 
+ 3827      5F444154 
+ 3828              	.LASF9:
+ 3829 1a6f 5F5F7569 		.ascii	"__uint32_t\000"
+ 3829      6E743332 
+ 3829      5F7400
+ 3830              	.LASF213:
+ 3831 1a7a 6970634C 		.ascii	"ipcLockStatusOffset\000"
+ 3831      6F636B53 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 89
+
+
+ 3831      74617475 
+ 3831      734F6666 
+ 3831      73657400 
+ 3832              	.LASF113:
+ 3833 1a8e 5F676574 		.ascii	"_getdate_err\000"
+ 3833      64617465 
+ 3833      5F657272 
+ 3833      00
+ 3834              	.LASF260:
+ 3835 1a9b 43595F42 		.ascii	"CY_BLE_EVT_REMOVE_DEVICE_FROM_WHITE_LIST_COMPLETE\000"
+ 3835      4C455F45 
+ 3835      56545F52 
+ 3835      454D4F56 
+ 3835      455F4445 
+ 3836              	.LASF250:
+ 3837 1acd 43595F42 		.ascii	"CY_BLE_EVT_GET_DATA_LENGTH_COMPLETE\000"
+ 3837      4C455F45 
+ 3837      56545F47 
+ 3837      45545F44 
+ 3837      4154415F 
+ 3838              	.LASF305:
+ 3839 1af1 43595F42 		.ascii	"CY_BLE_EVT_GAPC_DIRECT_ADV_REPORT\000"
+ 3839      4C455F45 
+ 3839      56545F47 
+ 3839      4150435F 
+ 3839      44495245 
+ 3840              	.LASF40:
+ 3841 1b13 5F5F746D 		.ascii	"__tm_yday\000"
+ 3841      5F796461 
+ 3841      7900
+ 3842              	.LASF169:
+ 3843 1b1d 666C6173 		.ascii	"flashEraseDelay\000"
+ 3843      68457261 
+ 3843      73654465 
+ 3843      6C617900 
+ 3844              	.LASF217:
+ 3845 1b2d 5F426F6F 		.ascii	"_Bool\000"
+ 3845      6C00
+ 3846              	.LASF50:
+ 3847 1b33 5F5F7362 		.ascii	"__sbuf\000"
+ 3847      756600
+ 3848              	.LASF317:
+ 3849 1b3a 43595F42 		.ascii	"CY_BLE_EVT_GATT_DISCONNECT_IND\000"
+ 3849      4C455F45 
+ 3849      56545F47 
+ 3849      4154545F 
+ 3849      44495343 
+ 3850              	.LASF94:
+ 3851 1b59 5F676C75 		.ascii	"_glue\000"
+ 3851      6500
+ 3852              	.LASF332:
+ 3853 1b5f 43595F42 		.ascii	"CY_BLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 3853      4C455F45 
+ 3853      56545F47 
+ 3853      41545443 
+ 3853      5F455845 
+ 3854              	.LASF318:
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 90
+
+
+ 3855 1b7f 43595F42 		.ascii	"CY_BLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 3855      4C455F45 
+ 3855      56545F47 
+ 3855      41545453 
+ 3855      5F58434E 
+ 3856              	.LASF90:
+ 3857 1b9e 5F5F7367 		.ascii	"__sglue\000"
+ 3857      6C756500 
+ 3858              	.LASF337:
+ 3859 1ba6 43595F42 		.ascii	"CY_BLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 3859      4C455F45 
+ 3859      56545F47 
+ 3859      41545443 
+ 3859      5F53544F 
+ 3860              	.LASF165:
+ 3861 1bc9 666C6173 		.ascii	"flashRwwRequired\000"
+ 3861      68527777 
+ 3861      52657175 
+ 3861      69726564 
+ 3861      00
+ 3862              	.LASF102:
+ 3863 1bda 5F737472 		.ascii	"_strtok_last\000"
+ 3863      746F6B5F 
+ 3863      6C617374 
+ 3863      00
+ 3864              	.LASF109:
+ 3865 1be7 5F6D6274 		.ascii	"_mbtowc_state\000"
+ 3865      6F77635F 
+ 3865      73746174 
+ 3865      6500
+ 3866              	.LASF194:
+ 3867 1bf5 6770696F 		.ascii	"gpioPrtCfgOffset\000"
+ 3867      50727443 
+ 3867      66674F66 
+ 3867      66736574 
+ 3867      00
+ 3868              	.LASF352:
+ 3869 1c06 62644861 		.ascii	"bdHandle\000"
+ 3869      6E646C65 
+ 3869      00
+ 3870              	.LASF43:
+ 3871 1c0f 5F666E61 		.ascii	"_fnargs\000"
+ 3871      72677300 
+ 3872              	.LASF0:
+ 3873 1c17 7369676E 		.ascii	"signed char\000"
+ 3873      65642063 
+ 3873      68617200 
+ 3874              	.LASF96:
+ 3875 1c23 5F696F62 		.ascii	"_iobs\000"
+ 3875      7300
+ 3876              	.LASF175:
+ 3877 1c29 64774368 		.ascii	"dwChOffset\000"
+ 3877      4F666673 
+ 3877      657400
+ 3878              	.LASF70:
+ 3879 1c34 5F726565 		.ascii	"_reent\000"
+ 3879      6E7400
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 91
+
+
+ 3880              	.LASF148:
+ 3881 1c3b 63707573 		.ascii	"cpussIpcIrqNr\000"
+ 3881      73497063 
+ 3881      4972714E 
+ 3881      7200
+ 3882              	.LASF178:
+ 3883 1c49 64774368 		.ascii	"dwChCtlPreemptablePos\000"
+ 3883      43746C50 
+ 3883      7265656D 
+ 3883      70746162 
+ 3883      6C65506F 
+ 3884              	.LASF329:
+ 3885 1c5f 43595F42 		.ascii	"CY_BLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 3885      4C455F45 
+ 3885      56545F47 
+ 3885      41545453 
+ 3885      5F575249 
+ 3886              	.LASF273:
+ 3887 1c7e 43595F42 		.ascii	"CY_BLE_EVT_GET_CLK_CONFIG_COMPLETE\000"
+ 3887      4C455F45 
+ 3887      56545F47 
+ 3887      45545F43 
+ 3887      4C4B5F43 
+ 3888              	.LASF390:
+ 3889 1ca1 6D61696E 		.ascii	"main\000"
+ 3889      00
+ 3890              	.LASF214:
+ 3891 1ca6 63795F73 		.ascii	"cy_stc_device_t\000"
+ 3891      74635F64 
+ 3891      65766963 
+ 3891      655F7400 
+ 3892              	.LASF389:
+ 3893 1cb6 5F5F656E 		.ascii	"__enable_irq\000"
+ 3893      61626C65 
+ 3893      5F697271 
+ 3893      00
+ 3894              	.LASF45:
+ 3895 1cc3 5F666E74 		.ascii	"_fntypes\000"
+ 3895      79706573 
+ 3895      00
+ 3896              	.LASF53:
+ 3897 1ccc 5F5F7346 		.ascii	"__sFILE\000"
+ 3897      494C4500 
+ 3898              	.LASF340:
+ 3899 1cd4 43595F42 		.ascii	"CY_BLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 3899      4C455F45 
+ 3899      56545F4C 
+ 3899      32434150 
+ 3899      5F434F4E 
+ 3900              	.LASF52:
+ 3901 1cfb 5F73697A 		.ascii	"_size\000"
+ 3901      6500
+ 3902              	.LASF216:
+ 3903 1d01 646F7562 		.ascii	"double\000"
+ 3903      6C6500
+ 3904              	.LASF135:
+ 3905 1d08 70617373 		.ascii	"passBase\000"
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 92
+
+
+ 3905      42617365 
+ 3905      00
+ 3906              	.LASF16:
+ 3907 1d11 5F6F6666 		.ascii	"_off_t\000"
+ 3907      5F7400
+ 3908              	.LASF378:
+ 3909 1d18 55415254 		.ascii	"UART_1_context\000"
+ 3909      5F315F63 
+ 3909      6F6E7465 
+ 3909      787400
+ 3910              	.LASF63:
+ 3911 1d27 5F6E6275 		.ascii	"_nbuf\000"
+ 3911      6600
+ 3912              	.LASF101:
+ 3913 1d2d 5F756E75 		.ascii	"_unused_rand\000"
+ 3913      7365645F 
+ 3913      72616E64 
+ 3913      00
+ 3914              	.LASF174:
+ 3915 1d3a 666C6173 		.ascii	"flashCtlMainWs4Freq\000"
+ 3915      6843746C 
+ 3915      4D61696E 
+ 3915      57733446 
+ 3915      72657100 
+ 3916              	.LASF291:
+ 3917 1d4e 43595F42 		.ascii	"CY_BLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 3917      4C455F45 
+ 3917      56545F47 
+ 3917      41505F50 
+ 3917      4153534B 
+ 3918              	.LASF69:
+ 3919 1d75 5F666C61 		.ascii	"_flags2\000"
+ 3919      67733200 
+ 3920              	.LASF310:
+ 3921 1d7d 43595F42 		.ascii	"CY_BLE_EVT_GAP_GEN_SET_LOCAL_P256_KEYS_COMPLETE\000"
+ 3921      4C455F45 
+ 3921      56545F47 
+ 3921      41505F47 
+ 3921      454E5F53 
+ 3922              	.LASF46:
+ 3923 1dad 5F69735F 		.ascii	"_is_cxa\000"
+ 3923      63786100 
+ 3924              	.LASF293:
+ 3925 1db5 43595F42 		.ascii	"CY_BLE_EVT_GAP_AUTH_FAILED\000"
+ 3925      4C455F45 
+ 3925      56545F47 
+ 3925      41505F41 
+ 3925      5554485F 
+ 3926              	.LASF226:
+ 3927 1dd0 72784275 		.ascii	"rxBuf\000"
+ 3927      6600
+ 3928              	.LASF264:
+ 3929 1dd6 43595F42 		.ascii	"CY_BLE_EVT_PHY_UPDATE_COMPLETE\000"
+ 3929      4C455F45 
+ 3929      56545F50 
+ 3929      48595F55 
+ 3929      50444154 
+ARM GAS  C:\Users\donni\AppData\Local\Temp\cc7exrH2.s 			page 93
+
+
+ 3930              	.LASF106:
+ 3931 1df5 5F72616E 		.ascii	"_rand_next\000"
+ 3931      645F6E65 
+ 3931      787400
+ 3932              	.LASF60:
+ 3933 1e00 5F736565 		.ascii	"_seek\000"
+ 3933      6B00
+ 3934              	.LASF144:
+ 3935 1e06 69706356 		.ascii	"ipcVersion\000"
+ 3935      65727369 
+ 3935      6F6E00
+ 3936              	.LASF363:
+ 3937 1e11 43595F42 		.ascii	"CY_BLE_CONN_STATE_CLIENT_SRVC_DISCOVERING\000"
+ 3937      4C455F43 
+ 3937      4F4E4E5F 
+ 3937      53544154 
+ 3937      455F434C 
+ 3938              	.LASF121:
+ 3939 1e3b 5F6E6D61 		.ascii	"_nmalloc\000"
+ 3939      6C6C6F63 
+ 3939      00
+ 3940              	.LASF62:
+ 3941 1e44 5F756275 		.ascii	"_ubuf\000"
+ 3941      6600
+ 3942              	.LASF227:
+ 3943 1e4a 72784275 		.ascii	"rxBufSize\000"
+ 3943      6653697A 
+ 3943      6500
+ 3944              	.LASF377:
+ 3945 1e54 63795F62 		.ascii	"cy_ble_pendingFlashWrite\000"
+ 3945      6C655F70 
+ 3945      656E6469 
+ 3945      6E67466C 
+ 3945      61736857 
+ 3946              	.LASF298:
+ 3947 1e6d 43595F42 		.ascii	"CY_BLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 3947      4C455F45 
+ 3947      56545F47 
+ 3947      41505F43 
+ 3947      4F4E4E45 
+ 3948              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
